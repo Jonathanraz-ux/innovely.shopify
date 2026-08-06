@@ -4,6 +4,9 @@
     #product-form-custom .variant-chip { border: 1px solid var(--color-line); color: var(--color-ink-soft); }
     #product-form-custom .variant-chip:hover { border-color: color-mix(in srgb, var(--color-brand) 60%, transparent); }
     #product-form-custom .variant-chip.is-selected { border-color: var(--color-brand); background-color: var(--color-brand); color: var(--color-paper); }
+    #product-form-custom .checkmark { display: none; }
+    #product-form-custom button[data-added='true'] .arrow { display: none; }
+    #product-form-custom button[data-added='true'] .checkmark { display: inline; }
   </style>
   <div aria-hidden="true" class="pointer-events-none absolute inset-0" style="background: radial-gradient(50rem 30rem at 12% 0%, #00a2ff40 0%, transparent 55%), radial-gradient(40rem 28rem at 95% 100%, #0052ff33 0%, transparent 55%)"></div>
 
@@ -44,8 +47,20 @@
       <div class="reveal in-view lg:sticky lg:top-28 lg:self-start" style="transition-delay: 220ms;">
         <div class="flex flex-col rounded-4xl border border-line-dark bg-paper p-8 text-ink shadow-soft sm:p-10">
           {%- if section.settings.product != nil -%}
+          {%- liquid
+            assign product_variant_media = section.settings.product.selected_or_first_available_variant.featured_media.preview_image | image_url: width: 100
+            if product_variant_media == blank
+              assign product_variant_media = section.settings.product.featured_media.preview_image | image_url: width: 100
+            endif
+          -%}
+          <product-form-component
+            data-product-id="{{ section.settings.product.id }}"
+            data-quantity-default="1"
+            on:submit="/handleSubmit"
+          >
           {%- form 'product', section.settings.product, id: 'product-form-custom', class: 'form' -%}
-            <input type="hidden" name="id" value="{{ section.settings.product.selected_or_first_available_variant.id }}">
+            <div class="visually-hidden" aria-live="assertive" role="status" aria-atomic="true" ref="liveRegion"></div>
+            <input type="hidden" name="id" ref="variantId" value="{{ section.settings.product.selected_or_first_available_variant.id }}">
 
             {%- unless section.settings.product.has_only_default_variant -%}
               <div class="mt-6" style="display:flex;flex-direction:column;gap:1.25rem">
@@ -58,7 +73,7 @@
                         <input
                           type="radio"
                           id="CustomOption-{{ option_position }}-{{ forloop.index0 }}"
-                          name="option-{{ option_position }}-custom"
+                          name="option-{{ option_position }}"
                           value="{{ value | escape }}"
                           data-option-index="{{ option_position }}"
                           style="position:absolute;opacity:0;pointer-events:none"
@@ -109,23 +124,32 @@
                 </div>
               </div>
 
-              <button
-                type="submit"
-                name="add"
-                class="group flex w-full items-center justify-center gap-2.5 rounded-full bg-brand px-8 py-4 text-[15px] font-semibold text-paper transition-all duration-300 hover:bg-brand-deep hover:shadow-soft"
-                data-add-label="{{ 'products.product.add_to_cart' | t }}"
-                data-sold-out-label="{{ 'products.product.sold_out' | t }}"
-                {% if section.settings.product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+              <add-to-cart-component
+                ref="addToCartButtonContainer"
+                data-product-variant-media="{{ product_variant_media }}"
+                data-add-to-cart-animation="{{ settings.add_to_cart_animation }}"
               >
-                <span data-add-label-text>
-                  {% if section.settings.product.selected_or_first_available_variant.available %}
-                    {{ 'products.product.add_to_cart' | t }}
-                  {% else %}
-                    {{ 'products.product.sold_out' | t }}
-                  {% endif %}
-                </span>
-                <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-              </button>
+                <button
+                  type="submit"
+                  name="add"
+                  ref="addToCartButton"
+                  on:click="/handleClick"
+                  class="add-to-cart-button group flex w-full items-center justify-center gap-2.5 rounded-full bg-brand px-8 py-4 text-[15px] font-semibold text-paper transition-all duration-300 hover:bg-brand-deep hover:shadow-soft"
+                  data-add-label="{{ 'products.product.add_to_cart' | t }}"
+                  data-sold-out-label="{{ 'products.product.sold_out' | t }}"
+                  {% if section.settings.product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+                >
+                  <span data-add-label-text>
+                    {% if section.settings.product.selected_or_first_available_variant.available %}
+                      {{ 'products.product.add_to_cart' | t }}
+                    {% else %}
+                      {{ 'products.product.sold_out' | t }}
+                    {% endif %}
+                  </span>
+                  <svg class="arrow h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                  <span class="checkmark" aria-hidden="true">✓</span>
+                </button>
+              </add-to-cart-component>
             </div>
             
             {% if section.settings.show_dynamic_checkout %}
@@ -234,6 +258,7 @@
             {%- endif -%}
             
           {%- endform -%}
+          </product-form-component>
           {%- else -%}
           <div class="rounded-xl border border-dashed border-brand/50 bg-brand-soft/60 p-5 text-sm">
             {%- if request.design_mode -%}
