@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+.vendor/
+
+# Shopify CLI / local tooling
+.shopify/
+.theme_check/
+tmp/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Local env
+.env
+.env.*
+!.env.example

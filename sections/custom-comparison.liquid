@@ -1,0 +1,170 @@
+<section id="comparatif" class="bg-paper-deep/60">
+  <div class="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-32">
+    <div class="mx-auto max-w-2xl text-center">
+      <div class="reveal in-view">
+        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      </div>
+      <div class="reveal in-view" style="transition-delay: 80ms;">
+        <h2 class="mt-6 font-display text-4xl leading-[1.1] tracking-tight sm:text-5xl">
+          {{ section.settings.title }}
+        </h2>
+      </div>
+    </div>
+
+    <div class="reveal in-view" style="transition-delay: 140ms;">
+      <div class="mt-16 overflow-x-auto pb-2">
+        <div class="min-w-[720px]">
+          <!-- header -->
+          <div class="grid grid-cols-4 gap-3">
+            <div></div>
+            <div class="flex flex-col items-center justify-center rounded-2xl border border-brand/40 bg-brand-soft px-4 py-5 text-center">
+              <span class="font-display text-xl">{{ section.settings.col1_title }}</span>
+              <span class="mt-1 rounded-full bg-brand px-3 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-paper">
+                {{ section.settings.col1_badge }}
+              </span>
+            </div>
+            <div class="flex items-center justify-center rounded-2xl border border-line bg-paper px-4 py-5 text-center text-sm font-medium text-muted">
+              {{ section.settings.col2_title }}
+            </div>
+            <div class="flex items-center justify-center rounded-2xl border border-line bg-paper px-4 py-5 text-center text-sm font-medium text-muted">
+              {{ section.settings.col3_title }}
+            </div>
+          </div>
+
+          <!-- rows -->
+          <div class="mt-3 space-y-3">
+            {% for block in section.blocks %}
+              <div class="grid grid-cols-4 items-center gap-3">
+                <p class="pr-4 text-[15px] font-medium leading-snug text-ink">{{ block.settings.label }}</p>
+                <div class="flex justify-center rounded-2xl bg-brand-soft/60 py-3">
+                  {% render 'comparison-cell', value: block.settings.col1_val, note: block.settings.col1_note %}
+                </div>
+                <div class="flex justify-center rounded-2xl bg-paper py-3">
+                  {% render 'comparison-cell', value: block.settings.col2_val, note: block.settings.col2_note %}
+                </div>
+                <div class="flex justify-center rounded-2xl bg-paper py-3">
+                  {% render 'comparison-cell', value: block.settings.col3_val, note: block.settings.col3_note %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom Comparison",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "COMPARATIF"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Pourquoi choisir Innovely ?"
+    },
+    {
+      "type": "text",
+      "id": "col1_title",
+      "label": "Column 1 Title",
+      "default": "Innovely"
+    },
+    {
+      "type": "text",
+      "id": "col1_badge",
+      "label": "Column 1 Badge",
+      "default": "Recommandé"
+    },
+    {
+      "type": "text",
+      "id": "col2_title",
+      "label": "Column 2 Title",
+      "default": "Redresse-dos classique"
+    },
+    {
+      "type": "text",
+      "id": "col3_title",
+      "label": "Column 3 Title",
+      "default": "Autres capteurs"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Feature Label",
+          "default": "Rééducation active"
+        },
+        {
+          "type": "select",
+          "id": "col1_val",
+          "label": "Column 1 Value",
+          "options": [
+            { "value": "check", "label": "Check" },
+            { "value": "cross", "label": "Cross" },
+            { "value": "partial", "label": "Partial" }
+          ],
+          "default": "check"
+        },
+        {
+          "type": "text",
+          "id": "col1_note",
+          "label": "Column 1 Note (if partial)"
+        },
+        {
+          "type": "select",
+          "id": "col2_val",
+          "label": "Column 2 Value",
+          "options": [
+            { "value": "check", "label": "Check" },
+            { "value": "cross", "label": "Cross" },
+            { "value": "partial", "label": "Partial" }
+          ],
+          "default": "cross"
+        },
+        {
+          "type": "text",
+          "id": "col2_note",
+          "label": "Column 2 Note (if partial)"
+        },
+        {
+          "type": "select",
+          "id": "col3_val",
+          "label": "Column 3 Value",
+          "options": [
+            { "value": "check", "label": "Check" },
+            { "value": "cross", "label": "Cross" },
+            { "value": "partial", "label": "Partial" }
+          ],
+          "default": "partial"
+        },
+        {
+          "type": "text",
+          "id": "col3_note",
+          "label": "Column 3 Note (if partial)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Comparison",
+      "blocks": [
+        { "type": "feature", "settings": { "label": "Rééducation autonome", "col1_val": "check", "col2_val": "cross", "col3_val": "partial" } },
+        { "type": "feature", "settings": { "label": "Confort longue durée", "col1_val": "check", "col2_val": "cross", "col3_val": "check" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

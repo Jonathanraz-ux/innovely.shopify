@@ -1,0 +1,48 @@
+<section class="relative overflow-hidden border-y border-line bg-paper py-5" aria-hidden="true">
+  <div class="animate-marquee flex w-max items-center gap-10 whitespace-nowrap">
+    {% for i in (1..2) %}
+      {% for block in section.blocks %}
+        <span class="flex items-center gap-10">
+          <span class="text-sm font-medium uppercase tracking-[0.18em] text-muted">{{ block.settings.text }}</span>
+          <span class="h-1.5 w-1.5 rounded-full bg-brand/50"></span>
+        </span>
+      {% endfor %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom Marquee",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "marquee_item",
+      "name": "Marquee Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Conçu avec soin"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Marquee",
+      "blocks": [
+        { "type": "marquee_item", "settings": { "text": "Conçu avec soin" } },
+        { "type": "marquee_item", "settings": { "text": "Silicone médical" } },
+        { "type": "marquee_item", "settings": { "text": "Recharge USB-C" } },
+        { "type": "marquee_item", "settings": { "text": "Garantie 2 ans" } },
+        { "type": "marquee_item", "settings": { "text": "Discret et léger" } },
+        { "type": "marquee_item", "settings": { "text": "Adapté adultes & enfants" } },
+        { "type": "marquee_item", "settings": { "text": "Livraison offerte" } },
+        { "type": "marquee_item", "settings": { "text": "30 jours satisfait ou remboursé" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

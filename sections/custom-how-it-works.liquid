@@ -1,0 +1,117 @@
+<section id="methode" class="bg-paper">
+  <div class="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-32">
+    <div class="mx-auto max-w-2xl text-center">
+      <div class="reveal in-view">
+        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      </div>
+      <div class="reveal in-view" style="transition-delay: 80ms;">
+        <h2 class="mt-6 font-display text-4xl leading-[1.1] tracking-tight sm:text-5xl">
+          {{ section.settings.title }}
+        </h2>
+      </div>
+      <div class="reveal in-view" style="transition-delay: 160ms;">
+        <p class="mt-6 text-lg leading-relaxed text-muted">{{ section.settings.subtitle }}</p>
+      </div>
+    </div>
+
+    <div class="relative mt-20">
+      <!-- connecting line -->
+      <div aria-hidden="true" class="absolute left-8 top-2 hidden h-px w-full max-w-[calc(100%-4rem)] bg-gradient-to-r from-transparent via-line to-transparent lg:block lg:left-1/2 lg:-translate-x-1/2 lg:max-w-[70%]"></div>
+
+      <div class="grid gap-6 lg:grid-cols-3 lg:gap-8">
+        {% for block in section.blocks %}
+          <div class="reveal in-view" style="transition-delay: {{ forloop.index0 | times: 140 }}ms;">
+            <article class="group relative h-full rounded-4xl border border-line bg-paper p-8 transition-all duration-500 hover:-translate-y-1.5 hover:border-brand/40 hover:shadow-card lg:p-10">
+              <span class="absolute right-8 top-8 font-display text-5xl text-line transition-colors duration-500 group-hover:text-brand-mist">
+                0{{ forloop.index }}
+              </span>
+              <div class="relative inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-brand text-paper shadow-soft">
+                <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2v20"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+              </div>
+              <h3 class="mt-8 max-w-[24ch] font-display text-2xl leading-snug">
+                {{ block.settings.title }}
+              </h3>
+              <p class="mt-4 leading-relaxed text-muted">{{ block.settings.text }}</p>
+            </article>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom How It Works",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "LA MÉTHODE"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Comment ça marche"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Une méthode simple pour rééduquer votre posture au quotidien."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Etape 1"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Description de l'étape 1"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom How It Works",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Analysez votre posture",
+            "text": "Placez le capteur dans votre dos. Il calibre automatiquement votre posture idéale en temps réel."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Ressentez la vibration",
+            "text": "Dès que vous vous tenez mal, une légère vibration vous rappelle de vous redresser."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Musclez votre dos",
+            "text": "Jour après jour, vous développez la mémoire musculaire nécessaire pour vous tenir droit sans y penser."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

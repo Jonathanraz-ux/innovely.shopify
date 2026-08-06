@@ -1,0 +1,312 @@
+{%- assign first_color_hex = '#0a0a0a' -%}
+{%- assign first_color_name = 'Noir minuit' -%}
+{%- for block in section.blocks -%}
+  {%- if block.type == 'color' -%}
+    {%- assign first_color_hex = block.settings.hex -%}
+    {%- assign first_color_name = block.settings.name -%}
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}
+
+<section id="personnalisation" class="bg-ink text-paper grain">
+  <div class="relative mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-32">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0" style="background: radial-gradient(40rem 26rem at 90% 20%, #00a2ff26 0%, transparent 55%), radial-gradient(30rem 22rem at 5% 90%, #0052ff14 0%, transparent 55%)"></div>
+
+    <div class="relative grid items-center gap-14 lg:grid-cols-2 lg:gap-10">
+      <!-- options -->
+      <div>
+        <div class="reveal in-view">
+          <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+        </div>
+        <div class="reveal in-view" style="transition-delay: 80ms;">
+          <h2 class="mt-6 font-display text-4xl leading-[1.1] tracking-tight sm:text-5xl">
+            {{ section.settings.title }}
+          </h2>
+        </div>
+        <div class="reveal in-view" style="transition-delay: 160ms;">
+          <p class="mt-6 max-w-md text-lg leading-relaxed text-paper/70">{{ section.settings.subtitle }}</p>
+        </div>
+
+        <div class="reveal in-view" style="transition-delay: 220ms;">
+          <div class="mt-10">
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-paper/50">{{ section.settings.color_label }}</p>
+            <div class="mt-4 flex flex-wrap gap-3" data-personalization-colors>
+              {%- assign color_count = 0 -%}
+              {% for block in section.blocks %}
+                {% if block.type == 'color' %}
+                  {%- assign color_count = color_count | plus: 1 -%}
+                  <button
+                    type="button"
+                    class="persona-color flex items-center gap-2.5 rounded-full border px-4 py-2.5 text-sm transition-all duration-300 {% if color_count == 1 %}border-brand bg-brand/15 text-paper{% else %}border-paper/15 text-paper/70 hover:border-paper/40{% endif %}"
+                    data-hex="{{ block.settings.hex }}"
+                    data-name="{{ block.settings.name }}"
+                    aria-pressed="{% if color_count == 1 %}true{% else %}false{% endif %}"
+                  >
+                    <span class="inline-block h-4 w-4 rounded-full border border-paper/25" style="background-color: {{ block.settings.hex }};"></span>
+                    {{ block.settings.name }}
+                  </button>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal in-view" style="transition-delay: 280ms;">
+          <div class="mt-8">
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-paper/50">{{ section.settings.version_label }}</p>
+            <div class="mt-4 grid gap-3 sm:grid-cols-2">
+              {%- assign version_count = 0 -%}
+              {% for block in section.blocks %}
+                {% if block.type == 'version' %}
+                  {%- assign version_count = version_count | plus: 1 -%}
+                  <div class="rounded-2xl border p-5 text-left {% if version_count == 1 %}border-brand bg-brand/15{% else %}border-paper/15{% endif %}">
+                    <p class="font-display text-xl">{{ block.settings.label }}</p>
+                    <p class="mt-1 text-sm text-paper/60">{{ block.settings.note }}</p>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal in-view" style="transition-delay: 340ms;">
+          <button
+            type="button"
+            class="js-engraving-toggle mt-8 flex w-full items-start gap-4 rounded-2xl border border-paper/15 p-5 text-left transition-all duration-300 hover:border-paper/40"
+            aria-pressed="false"
+          >
+            <span class="js-engraving-check mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-paper/30 text-transparent transition-colors">
+              <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span>
+              <span class="block font-display text-xl">{{ section.settings.engraving_title }}</span>
+              <span class="mt-1 block text-sm leading-relaxed text-paper/60">{{ section.settings.engraving_text }}</span>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- live preview -->
+      <div class="reveal in-view" style="transition-delay: 200ms;">
+        <div class="relative mx-auto flex aspect-square max-w-md items-center justify-center lg:max-w-none">
+          <div aria-hidden="true" class="absolute inset-10 rounded-full" style="background: radial-gradient(circle, #00a2ff26 0%, transparent 65%);"></div>
+
+          {% if section.settings.image != blank %}
+            <div class="img-zoom absolute bottom-0 left-0 hidden w-40 -rotate-3 overflow-hidden rounded-3xl border-4 border-paper/10 shadow-card md:block lg:-left-6">
+              <img src="{{ section.settings.image | image_url: width: 400 }}" alt="{{ section.settings.image_tag }}" class="aspect-[4/5] w-full object-cover" loading="lazy" />
+              <span class="absolute bottom-2.5 left-2.5 rounded-full border border-paper/20 bg-ink/60 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.14em] text-paper backdrop-blur">{{ section.settings.image_tag }}</span>
+            </div>
+          {% endif %}
+
+          <div class="relative flex flex-col items-center gap-6">
+            <svg viewBox="0 0 220 140" class="w-full max-w-xs sm:max-w-sm" role="img" aria-label="{{ section.settings.preview_label }}">
+              <path d="M10 70c30-22 60-22 90-22s60 0 90 22c-30 22-60 22-90 22s-60 0-90-22z" fill="#26262a" opacity="0.85"></path>
+              <circle id="js-device-circle" cx="110" cy="70" r="44" fill="{{ first_color_hex }}" stroke="#ffffff1f" stroke-width="1.5"></circle>
+              <circle cx="110" cy="70" r="36" fill="#0a0a0a"></circle>
+              <path d="M90 58c13 11 27 11 40 0" fill="none" stroke="#f8f6f3" stroke-width="2.2" stroke-linecap="round"></path>
+              <circle cx="130" cy="58" r="3.4" fill="#f8f6f3"></circle>
+              <text id="js-engrave-text" x="110" y="90" text-anchor="middle" font-size="9" fill="#9c9a92" letter-spacing="3" font-family="Inter, sans-serif" style="opacity: 0;">{{ section.settings.engraving_short }}</text>
+            </svg>
+            <div class="mt-4 text-center">
+              <p id="js-color-name" class="font-display text-2xl text-paper">{{ first_color_name }}</p>
+              <p id="js-preview-text" class="mt-1 text-sm text-paper/60">{{ section.settings.preview_text }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const colorContainer = document.querySelector('[data-personalization-colors]');
+    const circle = document.getElementById('js-device-circle');
+    const colorName = document.getElementById('js-color-name');
+    if (!colorContainer || !circle || !colorName) return;
+
+    const colors = colorContainer.querySelectorAll('.persona-color');
+
+    const isLight = (hex) => {
+      const n = hex.replace('#', '');
+      const r = parseInt(n.substring(0, 2), 16);
+      const g = parseInt(n.substring(2, 4), 16);
+      const b = parseInt(n.substring(4, 6), 16);
+      return 0.299 * r + 0.587 * g + 0.114 * b > 150;
+    };
+
+    colors.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const hex = btn.getAttribute('data-hex');
+        const name = btn.getAttribute('data-name');
+        circle.setAttribute('fill', hex);
+        circle.setAttribute('stroke', isLight(hex) ? '#00000022' : '#ffffff1f');
+        colorName.textContent = name;
+
+        colors.forEach((other) => {
+          const active = other === btn;
+          other.setAttribute('aria-pressed', active ? 'true' : 'false');
+          other.classList.toggle('border-brand', active);
+          other.classList.toggle('bg-brand/15', active);
+          other.classList.toggle('text-paper', active);
+          other.classList.toggle('border-paper/15', !active);
+          other.classList.toggle('text-paper/70', !active);
+        });
+      });
+    });
+
+    const engravingToggle = document.querySelector('.js-engraving-toggle');
+    const engraveText = document.getElementById('js-engrave-text');
+    const engravingCheck = document.querySelector('.js-engraving-check');
+
+    if (engravingToggle && engraveText && engravingCheck) {
+      engravingToggle.addEventListener('click', () => {
+        const active = engravingToggle.getAttribute('aria-pressed') === 'true';
+        engravingToggle.setAttribute('aria-pressed', active ? 'false' : 'true');
+        engravingToggle.classList.toggle('border-brand', !active);
+        engravingToggle.classList.toggle('bg-brand/15', !active);
+        engravingToggle.classList.toggle('border-paper/15', active);
+
+        if (!active) {
+          engraveText.style.opacity = '1';
+          engravingCheck.classList.remove('border-paper/30', 'text-transparent');
+          engravingCheck.classList.add('border-brand', 'bg-brand', 'text-paper');
+        } else {
+          engraveText.style.opacity = '0';
+          engravingCheck.classList.add('border-paper/30', 'text-transparent');
+          engravingCheck.classList.remove('border-brand', 'bg-brand', 'text-paper');
+        }
+      });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Custom Personalization",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "À ton image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Fait pour toi, <em class=\"text-brand\">ou pour eux.</em>"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Choisis ta couleur, ta version, et grave un mot qui t'accompagne au quotidien. Innovely devient un objet qui te ressemble."
+    },
+    {
+      "type": "text",
+      "id": "color_label",
+      "label": "Color Label",
+      "default": "Couleur"
+    },
+    {
+      "type": "text",
+      "id": "version_label",
+      "label": "Version Label",
+      "default": "Version"
+    },
+    {
+      "type": "text",
+      "id": "engraving_title",
+      "label": "Engraving Title",
+      "default": "Gravure offerte"
+    },
+    {
+      "type": "textarea",
+      "id": "engraving_text",
+      "label": "Engraving Text",
+      "default": "Ton prénom, une initiale ou un mot qui compte, gravé au dos de ton capteur."
+    },
+    {
+      "type": "text",
+      "id": "engraving_short",
+      "label": "Engraving Short Text",
+      "default": "POUR MOI"
+    },
+    {
+      "type": "text",
+      "id": "preview_text",
+      "label": "Preview Text",
+      "default": "Version adulte"
+    },
+    {
+      "type": "text",
+      "id": "preview_label",
+      "label": "Preview Label (aria)",
+      "default": "Aperçu du capteur personnalisé"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Side Image"
+    },
+    {
+      "type": "text",
+      "id": "image_tag",
+      "label": "Side Image Tag",
+      "default": "Au travail"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "color",
+      "name": "Color",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Noir minuit"
+        },
+        {
+          "type": "color",
+          "id": "hex",
+          "label": "Hex",
+          "default": "#0a0a0a"
+        }
+      ]
+    },
+    {
+      "type": "version",
+      "name": "Version",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Adulte"
+        },
+        {
+          "type": "text",
+          "id": "note",
+          "label": "Note",
+          "default": "8 ans et +"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Personalization",
+      "blocks": [
+        { "type": "color", "settings": { "name": "Noir minuit", "hex": "#0a0a0a" } },
+        { "type": "color", "settings": { "name": "Blanc perle", "hex": "#efece5" } },
+        { "type": "color", "settings": { "name": "Vert émeraude", "hex": "#0f766e" } },
+        { "type": "color", "settings": { "name": "Sable", "hex": "#c9b79c" } },
+        { "type": "version", "settings": { "label": "Adulte", "note": "8 ans et +" } },
+        { "type": "version", "settings": { "label": "Enfant · Panda", "note": "avec accessoire amovible" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

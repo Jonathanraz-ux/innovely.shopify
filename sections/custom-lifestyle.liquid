@@ -1,0 +1,123 @@
+<section id="lifestyle" class="bg-paper">
+  <div class="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-32">
+    <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+      <div class="max-w-xl">
+        <div class="reveal in-view">
+          <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+        </div>
+        <div class="reveal in-view" style="transition-delay: 80ms;">
+          <h2 class="mt-6 font-display text-4xl leading-[1.1] tracking-tight sm:text-5xl">
+            {{ section.settings.title }}
+          </h2>
+        </div>
+      </div>
+      <div class="reveal in-view" style="transition-delay: 160ms;">
+        <p class="max-w-sm text-lg leading-relaxed text-muted">{{ section.settings.subtitle }}</p>
+      </div>
+    </div>
+
+    <div class="mt-16 grid gap-6 md:grid-cols-3">
+      {% for block in section.blocks %}
+        <div class="reveal in-view" style="transition-delay: {{ forloop.index0 | times: 130 }}ms;">
+          <article class="group relative flex h-full min-h-[420px] flex-col justify-end overflow-hidden rounded-4xl p-8 text-paper transition-transform duration-500 hover:-translate-y-1.5">
+            {% if block.settings.image != blank %}
+              <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title }}" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            {% else %}
+              {{ 'collection-1' | placeholder_svg_tag: 'absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 bg-gray-100' }}
+            {% endif %}
+            
+            <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/45 to-ink/10 transition-opacity duration-700 group-hover:opacity-90"></div>
+            
+            <div aria-hidden="true" class="absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100" style="background: radial-gradient(28rem 20rem at 85% 15%, rgb(0 162 255 / 0.45) 0%, transparent 60%)"></div>
+            
+            <svg class="relative h-10 w-10 text-paper/80 transition-transform duration-500 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              {% if forloop.index == 1 %}
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line>
+              {% elsif forloop.index == 2 %}
+                <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              {% else %}
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              {% endif %}
+            </svg>
+            
+            <p class="relative mt-10 text-[11px] font-semibold uppercase tracking-[0.2em] text-paper/60">
+              {{ block.settings.tag }}
+            </p>
+            <h3 class="relative mt-2 font-display text-2xl leading-snug">{{ block.settings.title }}</h3>
+            <p class="relative mt-3 max-w-[32ch] text-[15px] leading-relaxed text-paper/75">
+              {{ block.settings.text }}
+            </p>
+          </article>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom Lifestyle",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "INTÉGRATION PARFAITE"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Votre dos, toute la journée."
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Des moments clés où notre dispositif prend tout son sens."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "moment",
+      "name": "Moment",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Tag",
+          "default": "Au bureau"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "8h - Focus mode"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Fini la posture voûtée devant l'écran."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Lifestyle",
+      "blocks": [
+        { "type": "moment" },
+        { "type": "moment" },
+        { "type": "moment" }
+      ]
+    }
+  ]
+}
+{% endschema %}

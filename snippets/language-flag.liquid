@@ -1,0 +1,45 @@
+{%- comment -%}
+  Renders the current language's flag icon for localization trigger buttons.
+
+  Shopify does not expose a native flag for the `language` object (the
+  `image_url` filter only supports the `country` object), so we reuse the
+  official Shopify flags CDN — the same source used by the native country
+  flags rendered through `localization.country | image_url`.
+
+  Language to flag mapping:
+    - fr -> fr (France)
+    - en -> gb (United Kingdom)
+  Any other language falls back to the currently selected country's flag.
+
+  The span is purely decorative and hidden from assistive technologies.
+
+  @param {string} [shadow_size] - Shadow size in px used for the flag ring
+  @example
+  {% render 'language-flag' %}
+  {% render 'language-flag', shadow_size: 4 %}
+{%- endcomment -%}
+
+{%- liquid
+  assign flag_iso_code = ''
+
+  case localization.language.iso_code
+    when 'fr'
+      assign flag_iso_code = 'fr'
+    when 'en'
+      assign flag_iso_code = 'gb'
+    else
+      assign flag_iso_code = localization.country.iso_code | downcase
+  endcase
+-%}
+
+{%- if flag_iso_code != blank -%}
+  <span
+    class="icon-flag icon-flag--language"
+    aria-hidden="true"
+    style="
+      background-image: url('https://cdn.shopify.com/static/images/flags/{{ flag_iso_code }}.svg');
+      --size-shadow: {{ shadow_size | default: 2 }}px;
+      --color-shadow: rgb(var(--color-foreground-rgb) / var(--opacity-30-60));
+    "
+  ></span>
+{%- endif -%}

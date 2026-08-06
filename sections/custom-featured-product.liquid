@@ -1,0 +1,292 @@
+{% if section.settings.product != nil or request.design_mode %}
+<section id="produit" class="relative overflow-hidden bg-ink text-paper grain">
+  <style>
+    #product-form-custom .variant-chip { border: 1px solid var(--color-line); color: var(--color-ink-soft); }
+    #product-form-custom .variant-chip:hover { border-color: color-mix(in srgb, var(--color-brand) 60%, transparent); }
+    #product-form-custom .variant-chip.is-selected { border-color: var(--color-brand); background-color: var(--color-brand); color: var(--color-paper); }
+  </style>
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0" style="background: radial-gradient(50rem 30rem at 12% 0%, #00a2ff40 0%, transparent 55%), radial-gradient(40rem 28rem at 95% 100%, #0052ff33 0%, transparent 55%)"></div>
+
+  <div class="relative mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-32">
+    <!-- header -->
+    <div class="max-w-2xl">
+      <div class="reveal in-view">
+        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      </div>
+      <div class="reveal in-view" style="transition-delay: 80ms;">
+        <h2 class="mt-6 font-display text-4xl leading-[1.1] tracking-tight sm:text-5xl">
+          {{ section.settings.product.title | default: section.settings.title }}
+        </h2>
+      </div>
+      <div class="reveal in-view" style="transition-delay: 160ms;">
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-paper/70">
+          {{ section.settings.product.description | strip_html | truncatewords: 20 | default: section.settings.subtitle }}
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-16 grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
+      <!-- gallery -->
+      <div class="min-w-0">
+        <div class="reveal in-view">
+          <div class="img-zoom relative aspect-[4/3] overflow-hidden rounded-4xl border border-line-dark bg-ink-soft shadow-soft">
+            {% if section.settings.product.featured_media != blank %}
+              <img src="{{ section.settings.product.featured_media | image_url: width: 800 }}" alt="{{ section.settings.product.title }}" class="h-full w-full object-cover" loading="lazy" />
+            {% else %}
+              {{ 'product-1' | placeholder_svg_tag: 'h-full w-full object-cover bg-gray-100' }}
+            {% endif %}
+            <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- buy card -->
+      <div class="reveal in-view lg:sticky lg:top-28 lg:self-start" style="transition-delay: 220ms;">
+        <div class="flex flex-col rounded-4xl border border-line-dark bg-paper p-8 text-ink shadow-soft sm:p-10">
+          {%- if section.settings.product != nil -%}
+          {%- form 'product', section.settings.product, id: 'product-form-custom', class: 'form' -%}
+            <input type="hidden" name="id" value="{{ section.settings.product.selected_or_first_available_variant.id }}">
+
+            {%- unless section.settings.product.has_only_default_variant -%}
+              <div class="mt-6" style="display:flex;flex-direction:column;gap:1.25rem">
+                {%- for option in section.settings.product.options_with_values -%}
+                  {%- assign option_position = forloop.index -%}
+                  <div>
+                    <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted">{{ option.name }}</p>
+                    <div class="flex flex-wrap gap-2" role="radiogroup" aria-label="{{ option.name | escape }}">
+                      {%- for value in option.values -%}
+                        <input
+                          type="radio"
+                          id="CustomOption-{{ option_position }}-{{ forloop.index0 }}"
+                          name="option-{{ option_position }}-custom"
+                          value="{{ value | escape }}"
+                          data-option-index="{{ option_position }}"
+                          style="position:absolute;opacity:0;pointer-events:none"
+                          {% if value.selected %}checked{% endif %}
+                        >
+                        <label
+                          for="CustomOption-{{ option_position }}-{{ forloop.index0 }}"
+                          class="variant-chip cursor-pointer rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200"
+                          data-chip
+                        >
+                          {{- value -}}
+                        </label>
+                      {%- endfor -%}
+                    </div>
+                  </div>
+                {%- endfor -%}
+              </div>
+            {%- endunless -%}
+            
+            <div class="flex flex-wrap items-center gap-3">
+              <div class="flex items-center gap-1 text-brand">
+                {% for i in (1..5) %}
+                  <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                {% endfor %}
+              </div>
+              <p class="text-sm text-muted">
+                <span class="font-semibold text-ink">4.8/5</span> · {{ 'innovely.featured_product.verified_reviews' | t }}
+              </p>
+            </div>
+
+            <div class="mt-6 flex flex-wrap items-baseline gap-3">
+              <p class="font-display text-5xl tracking-tight" data-price>{{ section.settings.product.selected_or_first_available_variant.price | money }}</p>
+              {%- if section.settings.product.selected_or_first_available_variant.compare_at_price > section.settings.product.selected_or_first_available_variant.price -%}
+                <p class="text-base text-muted line-through" data-compare-price>{{ section.settings.product.selected_or_first_available_variant.compare_at_price | money }}</p>
+                <span class="rounded-full bg-brand-soft px-3 py-1 text-xs font-semibold text-brand" data-sale-badge>{{ 'content.product_badge_sale' | t }}</span>
+              {%- else -%}
+                <p class="text-base text-muted line-through" data-compare-price style="display:none"></p>
+                <span class="rounded-full bg-brand-soft px-3 py-1 text-xs font-semibold text-brand" data-sale-badge style="display:none">{{ 'content.product_badge_sale' | t }}</span>
+              {%- endif -%}
+            </div>
+
+            <div class="mt-8">
+              <label for="Quantity-custom" class="text-xs font-semibold uppercase tracking-[0.18em] text-muted mb-2 block">{{ 'products.product.quantity' | t }}</label>
+              <div class="mb-4 flex items-center justify-between rounded-full border border-line p-1.5 pl-5">
+                <span class="text-sm font-medium text-ink-soft">{{ 'products.product.quantity' | t }}</span>
+                <div class="flex items-center gap-1">
+                  <input type="number" id="Quantity-custom" name="quantity" value="1" min="1" class="w-12 text-center font-display text-lg bg-transparent outline-none">
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                name="add"
+                class="group flex w-full items-center justify-center gap-2.5 rounded-full bg-brand px-8 py-4 text-[15px] font-semibold text-paper transition-all duration-300 hover:bg-brand-deep hover:shadow-soft"
+                data-add-label="{{ 'products.product.add_to_cart' | t }}"
+                data-sold-out-label="{{ 'products.product.sold_out' | t }}"
+                {% if section.settings.product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+              >
+                <span data-add-label-text>
+                  {% if section.settings.product.selected_or_first_available_variant.available %}
+                    {{ 'products.product.add_to_cart' | t }}
+                  {% else %}
+                    {{ 'products.product.sold_out' | t }}
+                  {% endif %}
+                </span>
+                <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+              </button>
+            </div>
+            
+            {% if section.settings.show_dynamic_checkout %}
+              <div class="mt-3">
+                {{ form | payment_button }}
+              </div>
+            {% endif %}
+
+            {%- if section.settings.product != nil and section.settings.product.variants.size > 1 -%}
+              <script id="variant-data-custom" type="application/json">
+              {
+                "variants": [
+                  {%- for v in section.settings.product.variants -%}
+                    {
+                      "id": {{ v.id }},
+                      "options": {{ v.options | json }},
+                      "available": {{ v.available | json }},
+                      "price_html": {{ v.price | money | json }},
+                      "compare_at_html": {%- if v.compare_at_price -%}{{ v.compare_at_price | money | json }}{%- else -%}""{%- endif -%},
+                      "compare_at_price": {%- if v.compare_at_price -%}{{ v.compare_at_price | json }}{%- else -%}null{%- endif -%}
+                    }{%- unless forloop.last -%},{%- endunless -%}
+                  {%- endfor -%}
+                ]
+              }
+              </script>
+              <script>
+                (function () {
+                  var dataScript = document.getElementById('variant-data-custom');
+                  if (!dataScript) return;
+                  var data;
+                  try {
+                    data = JSON.parse(dataScript.textContent);
+                  } catch (e) {
+                    return;
+                  }
+                  var form = document.getElementById('product-form-custom');
+                  if (!form || !data.variants) return;
+                  var idInput = form.querySelector('input[name="id"]');
+                  var button = form.querySelector('button[name="add"]');
+                  var labelEl = form.querySelector('[data-add-label-text]');
+                  var priceEl = form.querySelector('[data-price]');
+                  var compareEl = form.querySelector('[data-compare-price]');
+                  var badgeEl = form.querySelector('[data-sale-badge]');
+                  var addLabel = button ? button.dataset.addLabel || '' : '';
+                  var soldOutLabel = button ? button.dataset.soldOutLabel || '' : '';
+
+                  function optionInputs() {
+                    return Array.prototype.slice.call(form.querySelectorAll('input[data-option-index]'));
+                  }
+
+                  function selectedOptions() {
+                    var selected = {};
+                    optionInputs().forEach(function (input) {
+                      if (input.checked) selected[input.dataset.optionIndex] = input.value;
+                    });
+                    return selected;
+                  }
+
+                  function findVariant() {
+                    var selected = selectedOptions();
+                    var keys = Object.keys(selected);
+                    if (keys.length === 0) return data.variants[0];
+                    return data.variants.find(function (variant) {
+                      return keys.every(function (k) {
+                        return variant.options[Number(k) - 1] === selected[k];
+                      });
+                    });
+                  }
+
+                  function syncChips() {
+                    optionInputs().forEach(function (input) {
+                      var chip = form.querySelector('label[for="' + input.id + '"]');
+                      if (chip) chip.classList.toggle('is-selected', input.checked);
+                    });
+                  }
+
+                  function update() {
+                    var variant = findVariant();
+                    if (!variant) {
+                      if (idInput) idInput.value = '';
+                      if (button) button.disabled = true;
+                      if (labelEl) labelEl.textContent = soldOutLabel;
+                      return;
+                    }
+                    if (idInput) idInput.value = variant.id;
+                    if (button) button.disabled = !variant.available;
+                    if (labelEl) labelEl.textContent = variant.available ? addLabel : soldOutLabel;
+                    if (priceEl) priceEl.textContent = variant.price_html;
+                    if (compareEl) {
+                      compareEl.textContent = variant.compare_at_html || '';
+                      compareEl.style.display = variant.compare_at_price ? '' : 'none';
+                    }
+                    if (badgeEl) badgeEl.style.display = variant.compare_at_price ? '' : 'none';
+                  }
+
+                  optionInputs().forEach(function (input) {
+                    input.addEventListener('change', function () {
+                      syncChips();
+                      update();
+                    });
+                  });
+                  syncChips();
+                  update();
+                })();
+              </script>
+            {%- endif -%}
+            
+          {%- endform -%}
+          {%- else -%}
+          <div class="rounded-xl border border-dashed border-brand/50 bg-brand-soft/60 p-5 text-sm">
+            {%- if request.design_mode -%}
+              <p class="font-semibold text-ink">{{ 'innovely.featured_product.no_product_selected' | t }}</p>
+              <p class="mt-1 text-muted">{{ 'innovely.featured_product.no_product_selected_instructions' | t }}</p>
+            {%- else -%}
+              <p class="text-muted">{{ 'innovely.featured_product.product_unavailable' | t }}</p>
+            {%- endif -%}
+          </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Custom Featured Product",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "LE DISPOSITIF"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title Fallback"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle Fallback"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dynamic_checkout",
+      "label": "Show dynamic checkout buttons",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Featured Product"
+    }
+  ]
+}
+{% endschema %}

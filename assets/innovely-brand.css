@@ -1,0 +1,145 @@
+/* ==========================================================================
+   INNOVELY — "MINIMAL LIGHT TECH" (brand override layer)
+   Source: "Charte Graphique Innovely — Police Unique & Fond Clair"
+   Loaded after innovely-design.css in layout/theme.liquid.
+   Overrides the compiled Tailwind v4 design tokens via unlayered :root
+   rules (unlayered author CSS wins over @layer declarations).
+   ========================================================================== */
+
+:root {
+  /* Titles & main structure — Night Blue (#060B16) */
+  --color-ink: #060b16;
+  --color-ink-soft: #16203a;
+  --color-ink-mute: #64748b;
+
+  /* Light background (#F8FAFC) */
+  --color-paper: #f8fafc;
+  --color-paper-deep: #edf2f9;
+
+  /* Conversion accent — Electric Cyan (#00A2FF) / Royal Blue (#0052FF) */
+  --color-brand: #00a2ff;
+  --color-brand-deep: #0052ff;
+  --color-brand-soft: #e8f4ff;
+  --color-brand-mist: #d6ecff;
+
+  /* Body text — Anthracite (#334155) */
+  --color-muted: #334155;
+
+  /* Cool borders */
+  --color-line: #dbe4ef;
+  --color-line-dark: #22304d;
+
+  /* Single font family: Inter */
+  --font-display: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+/* Display headings: Inter Bold (client: Grands Titres Bold/Black 700+) */
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+/* Eyebrow labels: Royal Blue for AA contrast on the light background
+   (pure Electric Cyan #00A2FF is unreadable at 11px on #F8FAFC) */
+.eyebrow {
+  color: #0052ff;
+}
+
+/* Primary conversion CTAs — hover shifts Cyan → Royal Blue (client gradient) */
+.bg-brand-deep {
+  background-color: #0052ff;
+}
+.hover\:bg-brand-deep:hover {
+  background-color: #0052ff;
+}
+.hover\:bg-brand:hover {
+  background-color: #0088d6;
+}
+
+/* Fallback for browsers without CSS cascade-layers support: the Tailwind
+   preflight (@layer base) is dropped there, so re-apply the essentials the
+   custom sections rely on. */
+ul.list-none {
+  list-style: none;
+}
+
+/* Fix Horizon grid collision: native base.css defines `.grid` with
+   `grid-template-areas:"column-0 … column-13"` (14 named columns), which
+   overrides the Tailwind `grid-cols-*` utilities of the custom sections
+   and breaks their layout. Neutralize the named areas only inside our
+   custom sections (their section wrapper id always contains `__custom_`),
+   leaving native Horizon grid sections untouched. */
+[id*="__custom_"] .grid {
+  grid-template-areas: none;
+}
+
+/* The FAQ accordion relies on a plain single-column grid (no grid-cols
+   utility), so also drop base.css's 14-column grid-template-columns
+   there, otherwise the answer text collapses into the 0px first track. */
+[id*="__custom_"] .faq-content {
+  grid-template-columns: none;
+}
+
+/* base.css's `.grid` also injects a 14-track grid-template-columns at
+   ≥750px. Our custom grids only declare their columns at lg (≥64rem) or
+   md (≥48rem), so the 750px→breakpoint band is squeezed into near-zero
+   tracks (text collapsing to one letter per line). Restore the single
+   column fallback exactly until each grid's own breakpoint applies —
+   above it, the Tailwind `lg:`/`md:` utilities take over again. */
+@media screen and (min-width: 750px) and (max-width: 63.999rem) {
+  #top .lg\:grid-cols-\[1\.05fr_0\.95fr\],
+  #produit .lg\:grid-cols-\[1\.05fr_0\.95fr\],
+  #probleme .lg\:grid-cols-\[1fr_0\.9fr\],
+  #methode .lg\:grid-cols-3,
+  #avis .lg\:grid-cols-3 {
+    grid-template-columns: none;
+  }
+}
+
+@media screen and (min-width: 750px) and (max-width: 47.999rem) {
+  #lifestyle .md\:grid-cols-3 {
+    grid-template-columns: none;
+  }
+}
+
+/* Utilities used by the custom sections but missing from the compiled
+   Tailwind build (they are not part of the prototype source tree). */
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.w-12 {
+  width: 3rem;
+}
+
+/* ==========================================================================
+   INNOVELY — HEADER PETROL GLOW
+   The dark #060B16 header carries a subtle petrol (blue/teal) glow bleeding
+   in from the left, so the logo's dark background blends without a hard edge.
+   Loaded last and ID-scoped, so these rules win over the section stylesheets.
+   ========================================================================== */
+
+/* Header underlays: keep the theme's own row gradient, layered under a soft
+   petrol glow on the left that visually continues into the hero below. */
+#header-component .header__underlay-closed {
+  background:
+    radial-gradient(34rem 14rem at 6% 50%, rgba(15, 118, 110, 0.28) 0%, transparent 70%),
+    radial-gradient(22rem 12rem at 14% 110%, rgba(13, 92, 99, 0.18) 0%, transparent 70%),
+    linear-gradient(
+      var(--color-background-top-row) 0 var(--top-row-height),
+      var(--color-background-bottom-row) var(--top-row-height) var(--header-height)
+    );
+}
+
+#header-component .header__underlay-open {
+  background:
+    radial-gradient(34rem 14rem at 6% 50%, rgba(15, 118, 110, 0.28) 0%, transparent 70%),
+    radial-gradient(22rem 12rem at 14% 110%, rgba(13, 92, 99, 0.18) 0%, transparent 70%),
+    linear-gradient(
+      var(--color-background-top-row) 0 var(--top-row-height),
+      var(--color-background-bottom-row) var(--top-row-height) var(--header-height),
+      var(--color-submenu) var(--header-height) 100%
+    );
+}
+
+

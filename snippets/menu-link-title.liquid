@@ -1,0 +1,30 @@
+{%- comment -%}
+  Renders a translated navigation link title.
+
+  Usage:
+    {% render 'menu-link-title', link: link %}
+
+  The title is converted to a slug and looked up as a translation key:
+    link.title = "Posture corrector"  ->  key "navigation.posture_corrector"
+
+  Add matching keys under "navigation" in locales/fr.json / locales/en.default.json:
+    "navigation": {
+      "home": "Accueil",
+      "posture_corrector": "Correcteur de posture",
+      "contact": "Contact"
+    }
+
+  Falls back to the raw link title when no translation exists, so an
+  untranslated link never renders "Translation missing".
+{%- endcomment -%}
+
+{%- liquid
+  assign slug = link.title | downcase | replace: ' ', '_'
+  assign translation_key = 'navigation.' | append: slug
+  assign link_label = translation_key | t
+
+  if link_label contains 'Translation missing' or link_label == translation_key
+    assign link_label = link.title
+  endif
+  echo link_label | escape
+-%}

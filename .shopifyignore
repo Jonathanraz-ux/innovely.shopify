@@ -1,0 +1,6 @@
+# Shopify CLI ignores: do not upload these to the shop
+pdf/
+.shopify/
+*.log
+node_modules/
+.github/
