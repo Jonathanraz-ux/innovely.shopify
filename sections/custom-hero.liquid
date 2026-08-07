@@ -36,7 +36,7 @@
             href="{{ section.settings.cta2_link }}"
             class="group inline-flex items-center justify-center gap-2.5 px-2 py-4 text-[15px] font-medium text-ink"
           >
-            {{ section.settings.cta2_label }}
+            {{ section.settings.cta2_label | default: 'innovely.how_it_works.title' | t }}
             <svg class="h-4 w-4 text-brand transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
           </a>
         </div>
