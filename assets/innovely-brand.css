@@ -217,4 +217,44 @@ ul.list-none {
   max-width: 62ch;
 }
 
+/* ==========================================================================
+   INNOVELY — PRODUCT PAGE (Dark premium surface)
+   The product template now runs on the brand's dark #060B16 surface. The
+   theme's contrast-override flips text/form colors automatically; these
+   rules add the brand's cyan glow + film grain (same treatment as the
+   homepage featured-product section) and polish dark-specific details.
+   ========================================================================== */
+
+/* Cyan glow bleeding in from the corners, behind the content */
+#shopify-section-main .product-information::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(50rem 30rem at 12% 0%, #00a2ff40 0%, transparent 55%),
+    radial-gradient(40rem 28rem at 95% 100%, #0052ff33 0%, transparent 55%);
+}
+
+/* Subtle film grain over the whole surface */
+#shopify-section-main .product-information {
+  position: relative;
+  isolation: isolate;
+}
+#shopify-section-main .product-information::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+/* Rounded media grid reads better against the dark surface */
+#shopify-section-main .product-information media-gallery img {
+  border-radius: var(--media-radius, 14px);
+  box-shadow: 0 20px 40px -20px rgb(0 0 0 / 0.5);
+}
+
 
