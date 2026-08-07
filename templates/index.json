@@ -53,15 +53,15 @@
     "custom_how_it_works_1": {
       "type": "custom-how-it-works",
       "blocks": {
-        "step1": { "type": "step", "settings": { "title": "Analysez votre posture", "text": "Placez le capteur dans votre dos. Il calibre automatiquement votre posture idéale en temps réel." } },
-        "step2": { "type": "step", "settings": { "title": "Ressentez la vibration", "text": "Dès que vous vous tenez mal, une légère vibration vous rappelle de vous redresser sans douleur." } },
-        "step3": { "type": "step", "settings": { "title": "Musclez votre dos", "text": "Jour après jour, vous développez la mémoire musculaire nécessaire pour vous tenir droit sans y penser." } }
+        "step1": { "type": "step", "settings": { "title": "", "text": "" } },
+        "step2": { "type": "step", "settings": { "title": "", "text": "" } },
+        "step3": { "type": "step", "settings": { "title": "", "text": "" } }
       },
       "block_order": ["step1", "step2", "step3"],
       "settings": {
-        "eyebrow": "LA MÉTHODE",
-        "title": "Comment ça marche",
-        "subtitle": "Une approche en 3 étapes pour rééduquer activement votre posture au quotidien."
+        "eyebrow": "",
+        "title": "",
+        "subtitle": ""
       }
     },
     "custom_featured_product_1": {
@@ -80,10 +80,9 @@
         "f1": { "type": "feature", "settings": { "label": "Rééducation autonome", "col1_val": "check", "col2_val": "cross", "col3_val": "partial", "col3_note": "Partiel" } },
         "f2": { "type": "feature", "settings": { "label": "Confort longue durée", "col1_val": "check", "col2_val": "cross", "col3_val": "check" } },
         "f3": { "type": "feature", "settings": { "label": "Vibration intelligente", "col1_val": "check", "col2_val": "cross", "col3_val": "cross" } },
-        "f4": { "type": "feature", "settings": { "label": "Invisible sous les vêtements", "col1_val": "check", "col2_val": "cross", "col3_val": "partial", "col3_note": "Selon modèle" } },
-        "f5": { "type": "feature", "settings": { "label": "Application mobile", "col1_val": "check", "col2_val": "cross", "col3_val": "partial", "col3_note": "Basique" } }
+        "f4": { "type": "feature", "settings": { "label": "Invisible sous les vêtements", "col1_val": "check", "col2_val": "cross", "col3_val": "partial", "col3_note": "Selon modèle" } }
       },
-      "block_order": ["f1", "f2", "f3", "f4", "f5"],
+      "block_order": ["f1", "f2", "f3", "f4"],
       "settings": {
         "eyebrow": "COMPARATIF",
         "title": "Pourquoi choisir Innovely ?",

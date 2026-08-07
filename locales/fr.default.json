@@ -23,6 +23,17 @@
     "social_proof": {
       "stars_aria": "5 étoiles",
       "view_more": "Voir plus"
+    },
+    "how_it_works": {
+      "eyebrow": "LA MÉTHODE",
+      "title": "Comment ça marche",
+      "subtitle": "Une approche en 3 étapes pour rééduquer activement votre posture au quotidien.",
+      "step1_title": "Analysez votre posture",
+      "step1_text": "Placez le capteur dans votre dos. Il calibre automatiquement votre posture idéale en temps réel.",
+      "step2_title": "Ressentez la vibration",
+      "step2_text": "Dès que vous vous tenez mal, une légère vibration vous rappelle de vous redresser sans douleur.",
+      "step3_title": "Musclez votre dos",
+      "step3_text": "Jour après jour, vous développez la mémoire musculaire nécessaire pour vous tenir droit sans y penser."
     }
   },
   "blocks": {

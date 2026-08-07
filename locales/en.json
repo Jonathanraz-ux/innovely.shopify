@@ -23,6 +23,17 @@
     "social_proof": {
       "stars_aria": "5 stars",
       "view_more": "View more"
+    },
+    "how_it_works": {
+      "eyebrow": "THE METHOD",
+      "title": "How it works",
+      "subtitle": "A 3-step approach to actively retrain your posture every day.",
+      "step1_title": "Analyze your posture",
+      "step1_text": "Place the sensor on your back. It automatically calibrates your ideal posture in real time.",
+      "step2_title": "Feel the vibration",
+      "step2_text": "As soon as you slouch, a gentle vibration reminds you to straighten up without any pain.",
+      "step3_title": "Strengthen your back",
+      "step3_text": "Day after day, you build the muscle memory needed to stand up straight without thinking about it."
     }
   },
   "accessibility": {

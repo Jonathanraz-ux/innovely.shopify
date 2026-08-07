@@ -33,10 +33,21 @@
   --font-display: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
-/* Display headings: Inter Bold (client: Grands Titres Bold/Black 700+) */
+/* Display headings base: Inter (client: Police Unique) */
 .font-display {
   font-family: var(--font-display);
+}
+
+/* H1: Grands Titres Bold/Black 700+, espacement étiré (+2px) */
+h1.font-display {
   font-weight: 700;
+  letter-spacing: 2px;
+}
+
+/* H2/H3: Sous-titres Medium 500 */
+h2.font-display,
+h3.font-display {
+  font-weight: 500;
 }
 
 /* Eyebrow labels: Royal Blue for AA contrast on the light background
@@ -140,6 +151,70 @@ ul.list-none {
       var(--color-background-bottom-row) var(--top-row-height) var(--header-height),
       var(--color-submenu) var(--header-height) 100%
     );
+}
+
+/* ==========================================================================
+   INNOVELY — PRODUCT PAGE (Premium layout refinements)
+   Scoped to the product template's main product-information section
+   (`#shopify-section-main` only exists as the sole section there).
+   Pure layout/typography polish — no text or content changes.
+   ========================================================================== */
+
+/* Consistent, taller buy box (quantity + CTA + express checkout align) */
+#shopify-section-main .product-information {
+  --height-buy-buttons: 54px;
+}
+
+/* Details column aligns flush with the media column top */
+#shopify-section-main .product-information .product-details {
+  align-self: start;
+}
+
+/* Product title — larger, tighter, balance-wrapped for premium hierarchy */
+#shopify-section-main .product-information .text-block--text_xrnftG h3 {
+  font-size: clamp(1.75rem, 1.35rem + 1.2vw, 2.35rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+/* Title → price rhythm inside the header group */
+#shopify-section-main .product-information .product-details > .group-block {
+  --gap: 16px;
+}
+
+/* Sale price — the second visual anchor after the title */
+#shopify-section-main
+  .product-information
+  product-price[data-block-id='price_tVjtKg']
+  .price-item--sale {
+  font-size: clamp(1.6rem, 1.35rem + 0.7vw, 2.1rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+#shopify-section-main
+  .product-information
+  product-price[data-block-id='price_tVjtKg']
+  .compare-at-price {
+  font-size: 0.75em;
+}
+
+/* Buy box — generous gaps between quantity, CTA and express checkout */
+#shopify-section-main .product-information .product-form-buttons {
+  gap: 12px;
+}
+
+/* Primary CTA — clearly the focal point of the column */
+#shopify-section-main .product-information .add-to-cart-button {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* Product description — comfortable reading width */
+#shopify-section-main .product-information .text-block--text_aEtTtq {
+  max-width: 62ch;
 }
 
 

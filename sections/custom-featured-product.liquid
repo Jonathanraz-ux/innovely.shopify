@@ -1,4 +1,13 @@
-{% if section.settings.product != nil or request.design_mode %}
+{%- liquid
+  assign featured_product = section.settings.product
+  if featured_product == nil
+    assign featured_product = all_products[section.settings.product_handle]
+  endif
+  if featured_product == nil
+    assign featured_product = products.first
+  endif
+-%}
+{% if featured_product != nil or request.design_mode %}
 <section id="produit" class="relative overflow-hidden bg-ink text-paper grain">
   <style>
     #product-form-custom .variant-chip { border: 1px solid var(--color-line); color: var(--color-ink-soft); }
@@ -18,12 +27,12 @@
       </div>
       <div class="reveal in-view" style="transition-delay: 80ms;">
         <h2 class="mt-6 font-display text-4xl leading-[1.1] tracking-tight sm:text-5xl">
-          {{ section.settings.product.title | default: section.settings.title }}
+          {{ featured_product.title | default: section.settings.title }}
         </h2>
       </div>
       <div class="reveal in-view" style="transition-delay: 160ms;">
         <p class="mt-6 max-w-xl text-lg leading-relaxed text-paper/70">
-          {{ section.settings.product.description | strip_html | truncatewords: 20 | default: section.settings.subtitle }}
+          {{ featured_product.description | strip_html | truncatewords: 20 | default: section.settings.subtitle }}
         </p>
       </div>
     </div>
@@ -33,8 +42,8 @@
       <div class="min-w-0">
         <div class="reveal in-view">
           <div class="img-zoom relative aspect-[4/3] overflow-hidden rounded-4xl border border-line-dark bg-ink-soft shadow-soft">
-            {% if section.settings.product.featured_media != blank %}
-              <img src="{{ section.settings.product.featured_media | image_url: width: 800 }}" alt="{{ section.settings.product.title }}" class="h-full w-full object-cover" loading="lazy" />
+            {% if featured_product.featured_media != blank %}
+              <img src="{{ featured_product.featured_media | image_url: width: 800 }}" alt="{{ featured_product.title }}" class="h-full w-full object-cover" loading="lazy" />
             {% else %}
               {{ 'product-1' | placeholder_svg_tag: 'h-full w-full object-cover bg-gray-100' }}
             {% endif %}
@@ -46,25 +55,25 @@
       <!-- buy card -->
       <div class="reveal in-view lg:sticky lg:top-28 lg:self-start" style="transition-delay: 220ms;">
         <div class="flex flex-col rounded-4xl border border-line-dark bg-paper p-8 text-ink shadow-soft sm:p-10">
-          {%- if section.settings.product != nil -%}
+          {%- if featured_product != nil -%}
           {%- liquid
-            assign product_variant_media = section.settings.product.selected_or_first_available_variant.featured_media.preview_image | image_url: width: 100
+            assign product_variant_media = featured_product.selected_or_first_available_variant.featured_media.preview_image | image_url: width: 100
             if product_variant_media == blank
-              assign product_variant_media = section.settings.product.featured_media.preview_image | image_url: width: 100
+              assign product_variant_media = featured_product.featured_media.preview_image | image_url: width: 100
             endif
           -%}
           <product-form-component
-            data-product-id="{{ section.settings.product.id }}"
+            data-product-id="{{ featured_product.id }}"
             data-quantity-default="1"
             on:submit="/handleSubmit"
           >
-          {%- form 'product', section.settings.product, id: 'product-form-custom', class: 'form' -%}
+          {%- form 'product', featured_product, id: 'product-form-custom', class: 'form' -%}
             <div class="visually-hidden" aria-live="assertive" role="status" aria-atomic="true" ref="liveRegion"></div>
-            <input type="hidden" name="id" ref="variantId" value="{{ section.settings.product.selected_or_first_available_variant.id }}">
+            <input type="hidden" name="id" ref="variantId" value="{{ featured_product.selected_or_first_available_variant.id }}">
 
-            {%- unless section.settings.product.has_only_default_variant -%}
+            {%- unless featured_product.has_only_default_variant -%}
               <div class="mt-6" style="display:flex;flex-direction:column;gap:1.25rem">
-                {%- for option in section.settings.product.options_with_values -%}
+                {%- for option in featured_product.options_with_values -%}
                   {%- assign option_position = forloop.index -%}
                   <div>
                     <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted">{{ option.name }}</p>
@@ -105,9 +114,9 @@
             </div>
 
             <div class="mt-6 flex flex-wrap items-baseline gap-3">
-              <p class="font-display text-5xl tracking-tight" data-price>{{ section.settings.product.selected_or_first_available_variant.price | money }}</p>
-              {%- if section.settings.product.selected_or_first_available_variant.compare_at_price > section.settings.product.selected_or_first_available_variant.price -%}
-                <p class="text-base text-muted line-through" data-compare-price>{{ section.settings.product.selected_or_first_available_variant.compare_at_price | money }}</p>
+              <p class="font-display text-5xl tracking-tight" data-price>{{ featured_product.selected_or_first_available_variant.price | money }}</p>
+              {%- if featured_product.selected_or_first_available_variant.compare_at_price > featured_product.selected_or_first_available_variant.price -%}
+                <p class="text-base text-muted line-through" data-compare-price>{{ featured_product.selected_or_first_available_variant.compare_at_price | money }}</p>
                 <span class="rounded-full bg-brand-soft px-3 py-1 text-xs font-semibold text-brand" data-sale-badge>{{ 'content.product_badge_sale' | t }}</span>
               {%- else -%}
                 <p class="text-base text-muted line-through" data-compare-price style="display:none"></p>
@@ -137,10 +146,10 @@
                   class="add-to-cart-button group flex w-full items-center justify-center gap-2.5 rounded-full bg-brand px-8 py-4 text-[15px] font-semibold text-paper transition-all duration-300 hover:bg-brand-deep hover:shadow-soft"
                   data-add-label="{{ 'products.product.add_to_cart' | t }}"
                   data-sold-out-label="{{ 'products.product.sold_out' | t }}"
-                  {% if section.settings.product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+                  {% if featured_product.selected_or_first_available_variant.available == false %}disabled{% endif %}
                 >
                   <span data-add-label-text>
-                    {% if section.settings.product.selected_or_first_available_variant.available %}
+                    {% if featured_product.selected_or_first_available_variant.available %}
                       {{ 'products.product.add_to_cart' | t }}
                     {% else %}
                       {{ 'products.product.sold_out' | t }}
@@ -158,11 +167,11 @@
               </div>
             {% endif %}
 
-            {%- if section.settings.product != nil and section.settings.product.variants.size > 1 -%}
+            {%- if featured_product != nil and featured_product.variants.size > 1 -%}
               <script id="variant-data-custom" type="application/json">
               {
                 "variants": [
-                  {%- for v in section.settings.product.variants -%}
+                  {%- for v in featured_product.variants -%}
                     {
                       "id": {{ v.id }},
                       "options": {{ v.options | json }},
@@ -284,6 +293,12 @@
       "type": "product",
       "id": "product",
       "label": "Product"
+    },
+    {
+      "type": "text",
+      "id": "product_handle",
+      "label": "Product handle (fallback)",
+      "default": "oem-adjustable-back-brace-straightening-detection-reminder-spine-vibrates-smart-posture-corrector"
     },
     {
       "type": "text",

@@ -2,15 +2,15 @@
   <div class="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-32">
     <div class="mx-auto max-w-2xl text-center">
       <div class="reveal in-view">
-        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+        <p class="eyebrow">{{ section.settings.eyebrow | default: 'innovely.how_it_works.eyebrow' | t }}</p>
       </div>
       <div class="reveal in-view" style="transition-delay: 80ms;">
         <h2 class="mt-6 font-display text-4xl leading-[1.1] tracking-tight sm:text-5xl">
-          {{ section.settings.title }}
+          {{ section.settings.title | default: 'innovely.how_it_works.title' | t }}
         </h2>
       </div>
       <div class="reveal in-view" style="transition-delay: 160ms;">
-        <p class="mt-6 text-lg leading-relaxed text-muted">{{ section.settings.subtitle }}</p>
+        <p class="mt-6 text-lg leading-relaxed text-muted">{{ section.settings.subtitle | default: 'innovely.how_it_works.subtitle' | t }}</p>
       </div>
     </div>
 
@@ -31,9 +31,9 @@
                 </svg>
               </div>
               <h3 class="mt-8 max-w-[24ch] font-display text-2xl leading-snug">
-                {{ block.settings.title }}
+                {{ block.settings.title | default: 'innovely.how_it_works.step' | append: forloop.index | append: '_title' | t }}
               </h3>
-              <p class="mt-4 leading-relaxed text-muted">{{ block.settings.text }}</p>
+              <p class="mt-4 leading-relaxed text-muted">{{ block.settings.text | default: 'innovely.how_it_works.step' | append: forloop.index | append: '_text' | t }}</p>
             </article>
           </div>
         {% endfor %}
