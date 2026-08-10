@@ -31,7 +31,7 @@
       "settings": {
         "speed": 5,
         "section_width": "page-width",
-        "background_color": "#060b16",
+        "background_color": "#050b18",
         "divider_width": 0,
         "padding-block-start": 10,
         "padding-block-end": 10
@@ -55,7 +55,7 @@
           "static": true,
           "settings": {
             "menu": "main-menu",
-            "background_color": "#060b16",
+            "background_color": "#050b18",
             "text_color": "#ffffff",
             "type_font_primary_size": "0.875rem",
             "menu_font_style": "inverse",
@@ -103,9 +103,9 @@
         "actions_font_size": "0.875rem",
         "actions_font": "body",
         "actions_text_case": "none",
-        "background_color_top": "#060b16",
+        "background_color_top": "#050b18",
         "text_color_top": "#ffffff",
-        "background_color_bottom": "",
+        "background_color_bottom": "#050b18",
         "text_color_bottom": "",
         "bubble_style": "default",
         "bubble_background_color": "",

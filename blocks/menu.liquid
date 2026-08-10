@@ -4,6 +4,14 @@
   assign block_settings = block.settings
   assign menu = block_settings.menu
   assign heading = block_settings.heading
+  if heading != blank
+    assign heading_key = 'menu_headings.' | append: heading | downcase | replace: ' ', '_'
+    assign translated_heading = heading_key | t
+    if translated_heading contains 'Translation missing' or translated_heading == heading_key
+      assign translated_heading = heading
+    endif
+    assign heading = translated_heading
+  endif
   assign show_as_accordion = block_settings.show_as_accordion
   if show_as_accordion == true and block_settings.accordion_dividers == true
     assign dividers_enabled = true

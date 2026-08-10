@@ -2,8 +2,9 @@
   <div class="animate-marquee flex w-max items-center gap-10 whitespace-nowrap">
     {% for i in (1..2) %}
       {% for block in section.blocks %}
+        {% assign m_key = 'innovely.marquee.m' | append: forloop.index | append: '_text' %}
         <span class="flex items-center gap-10">
-          <span class="text-sm font-medium uppercase tracking-[0.18em] text-muted">{{ block.settings.text }}</span>
+          <span class="text-sm font-medium uppercase tracking-[0.18em] text-muted">{{ m_key | t | default: block.settings.text }}</span>
           <span class="h-1.5 w-1.5 rounded-full bg-brand/50"></span>
         </span>
       {% endfor %}

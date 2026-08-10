@@ -70,7 +70,9 @@
       "block_order": [],
       "settings": {
         "product": "shopify://products/oem-adjustable-back-brace-straightening-detection-reminder-spine-vibrates-smart-posture-corrector",
-        "eyebrow": "LE DISPOSITIF",
+        "eyebrow": "DISPOSITIF BREVETÉ INNOVELY®",
+        "title": "Redressez votre dos. Libérez votre énergie.",
+        "subtitle": "Grâce à ses capteurs de précision, Innovely® détecte l'affaissement de votre colonne en temps réel et émet une discrète micro-vibration pour rééduquer votre posture naturellement.",
         "show_dynamic_checkout": true
       }
     },
@@ -119,25 +121,6 @@
         "ugc_title": "Partout avec vous."
       }
     },
-    "custom_personalization_1": {
-      "type": "custom-personalization",
-      "blocks": {
-        "c1": { "type": "color", "settings": { "name": "Noir minuit", "hex": "#0a0a0a" } },
-        "c2": { "type": "color", "settings": { "name": "Blanc perle", "hex": "#efece5" } },
-        "c3": { "type": "color", "settings": { "name": "Vert émeraude", "hex": "#0f766e" } },
-        "c4": { "type": "color", "settings": { "name": "Sable", "hex": "#c9b79c" } },
-        "v1": { "type": "version", "settings": { "label": "Adulte", "note": "8 ans et +" } },
-        "v2": { "type": "version", "settings": { "label": "Enfant · Panda", "note": "avec accessoire amovible" } }
-      },
-      "block_order": ["c1", "c2", "c3", "c4", "v1", "v2"],
-      "settings": {
-        "eyebrow": "À ton image",
-        "title": "Fait pour toi, <em class=\"text-brand\">ou pour eux.</em>",
-        "subtitle": "Choisis ta couleur, ta version, et grave un mot qui t'accompagne au quotidien. Innovely devient un objet qui te ressemble.",
-        "image": "shopify://shop_images/3.png",
-        "image_tag": "Au travail"
-      }
-    },
     "custom_lifestyle_1": {
       "type": "custom-lifestyle",
       "blocks": {
@@ -176,7 +159,6 @@
     "custom_featured_product_1",
     "custom_comparison_1",
     "custom_social_proof_1",
-    "custom_personalization_1",
     "custom_lifestyle_1",
     "custom_faq_1"
   ]

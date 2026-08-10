@@ -7,8 +7,8 @@
    ========================================================================== */
 
 :root {
-  /* Titles & main structure — Night Blue (#060B16) */
-  --color-ink: #060b16;
+  /* Titles & main structure — Night Blue (#050B18) */
+  --color-ink: #050b18;
   --color-ink-soft: #16203a;
   --color-ink-mute: #64748b;
 
@@ -124,54 +124,45 @@ ul.list-none {
 }
 
 /* ==========================================================================
-   INNOVELY — HEADER PETROL GLOW
-   The dark #060B16 header carries a subtle petrol (blue/teal) glow bleeding
-   in from the left, so the logo's dark background blends without a hard edge.
-   Loaded last and ID-scoped, so these rules win over the section stylesheets.
+   INNOVELY — HEADER UNDERLAYS & HARMONIZATION
+   The announcement bar and the main header navigation both share the exact same
+   night-blue #050B18 background, so the two bands read as one continuous header
+   without any color separation between them.
    ========================================================================== */
 
-/* Header underlays: keep the theme's own row gradient, layered under a soft
-   petrol glow on the left that visually continues into the hero below. */
-#header-component .header__underlay-closed {
-  background:
-    radial-gradient(34rem 14rem at 6% 50%, rgba(15, 118, 110, 0.28) 0%, transparent 70%),
-    radial-gradient(22rem 12rem at 14% 110%, rgba(13, 92, 99, 0.18) 0%, transparent 70%),
-    linear-gradient(
-      var(--color-background-top-row) 0 var(--top-row-height),
-      var(--color-background-bottom-row) var(--top-row-height) var(--header-height)
-    );
-}
-
+#header-group [id*="announcement"],
+#header-group .announcement-wrapper,
+#header-group .bg-ink,
+#header-component,
+#header-component .header__row,
+#header-component .header__underlay-closed,
 #header-component .header__underlay-open {
-  background:
-    radial-gradient(34rem 14rem at 6% 50%, rgba(15, 118, 110, 0.28) 0%, transparent 70%),
-    radial-gradient(22rem 12rem at 14% 110%, rgba(13, 92, 99, 0.18) 0%, transparent 70%),
-    linear-gradient(
-      var(--color-background-top-row) 0 var(--top-row-height),
-      var(--color-background-bottom-row) var(--top-row-height) var(--header-height),
-      var(--color-submenu) var(--header-height) 100%
-    );
+  background: var(--color-ink, #050b18) !important;
+  background-color: var(--color-ink, #050b18) !important;
 }
 
 /* ==========================================================================
    INNOVELY — PRODUCT PAGE (Premium layout refinements)
-   Scoped to the product template's main product-information section
-   (`#shopify-section-main` only exists as the sole section there).
+   Scoped to the product template via the <main> element that carries
+   data-template="product" (layout/theme.liquid). The section wrapper id is
+   shop-specific (`shopify-section-template--…__main`), so `main[data-template='product']`
+   would never match on the live shop; `main[data-template='product']` is the
+   stable, shop-agnostic anchor for the product page.
    Pure layout/typography polish — no text or content changes.
    ========================================================================== */
 
 /* Consistent, taller buy box (quantity + CTA + express checkout align) */
-#shopify-section-main .product-information {
+main[data-template='product'] .product-information {
   --height-buy-buttons: 54px;
 }
 
 /* Details column aligns flush with the media column top */
-#shopify-section-main .product-information .product-details {
+main[data-template='product'] .product-information .product-details {
   align-self: start;
 }
 
 /* Product title — larger, tighter, balance-wrapped for premium hierarchy */
-#shopify-section-main .product-information .text-block--text_xrnftG h3 {
+main[data-template='product'] .product-information .text-block--text_xrnftG h3 {
   font-size: clamp(1.75rem, 1.35rem + 1.2vw, 2.35rem);
   line-height: 1.12;
   letter-spacing: -0.02em;
@@ -180,12 +171,12 @@ ul.list-none {
 }
 
 /* Title → price rhythm inside the header group */
-#shopify-section-main .product-information .product-details > .group-block {
+main[data-template='product'] .product-information .product-details > .group-block {
   --gap: 16px;
 }
 
 /* Sale price — the second visual anchor after the title */
-#shopify-section-main
+main[data-template='product']
   .product-information
   product-price[data-block-id='price_tVjtKg']
   .price-item--sale {
@@ -194,7 +185,7 @@ ul.list-none {
   letter-spacing: -0.01em;
 }
 
-#shopify-section-main
+main[data-template='product']
   .product-information
   product-price[data-block-id='price_tVjtKg']
   .compare-at-price {
@@ -202,18 +193,18 @@ ul.list-none {
 }
 
 /* Buy box — generous gaps between quantity, CTA and express checkout */
-#shopify-section-main .product-information .product-form-buttons {
+main[data-template='product'] .product-information .product-form-buttons {
   gap: 12px;
 }
 
 /* Primary CTA — clearly the focal point of the column */
-#shopify-section-main .product-information .add-to-cart-button {
+main[data-template='product'] .product-information .add-to-cart-button {
   font-weight: 600;
   letter-spacing: 0.01em;
 }
 
 /* Product description — comfortable reading width */
-#shopify-section-main .product-information .text-block--text_aEtTtq {
+main[data-template='product'] .product-information .text-block--text_aEtTtq {
   max-width: 62ch;
 }
 
@@ -226,7 +217,7 @@ ul.list-none {
    ========================================================================== */
 
 /* Cyan glow bleeding in from the corners, behind the content */
-#shopify-section-main .product-information::before {
+main[data-template='product'] .product-information::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -238,11 +229,11 @@ ul.list-none {
 }
 
 /* Subtle film grain over the whole surface */
-#shopify-section-main .product-information {
+main[data-template='product'] .product-information {
   position: relative;
   isolation: isolate;
 }
-#shopify-section-main .product-information::after {
+main[data-template='product'] .product-information::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -252,9 +243,75 @@ ul.list-none {
 }
 
 /* Rounded media grid reads better against the dark surface */
-#shopify-section-main .product-information media-gallery img {
+main[data-template='product'] .product-information media-gallery img {
   border-radius: var(--media-radius, 14px);
   box-shadow: 0 20px 40px -20px rgb(0 0 0 / 0.5);
+}
+
+/* ==========================================================================
+   INNOVELY — PRODUCT PAGE (High-contrast typography, dark surface)
+   The product template runs on the brand's dark #060B16 / #050B18 surface and
+   the product description (closest.product.description) is rendered inside
+   `.innovely-product-layout`. These rules keep headings and body text crisp and
+   light ON THE DARK SURFACE ONLY.
+
+   SCOPE: the white/light recolors deliberately EXCLUDE the description's own
+   light-background components — the white cards of "Caractéristiques & Avantages"
+   (`.innovely-card`) and the light spec box (`.innovely-spec-box`) — via
+   `:not(.innovely-card *, .innovely-spec-box *)`. Those components keep their
+   dark text so nothing renders white-on-white. Visual hierarchy:
+     dark section → white section title → white card → black card title → gray text.
+   ========================================================================== */
+
+/* Base text colour on the dark product surface */
+main[data-template='product'] .product-information {
+  color: #e2e8f0;
+}
+
+/* Headings on the dark surface → crisp white (incl. child spans/strongs),
+   excluding the white cards and the light spec box */
+main[data-template='product'] .product-information :is(h1, h2, h3, h4, h5, h6):not(.innovely-card *, .innovely-spec-box *),
+main[data-template='product'] .product-information :is(.h1, .h2, .h3, .h4, .h5, .h6):not(.innovely-card *, .innovely-spec-box *),
+main[data-template='product'] .product-information :is(h1, h2, h3, h4, h5, h6):not(.innovely-card *, .innovely-spec-box *) :is(span, strong, b, a, em),
+main[data-template='product'] .product-information .disclosure-custom-button {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff;
+  opacity: 1;
+}
+
+/* Body text on the dark surface → light slate, excluding cards and spec box */
+main[data-template='product'] .product-information .rte :is(p, li, span, td, th):not(.innovely-card *, .innovely-spec-box *) {
+  color: #e2e8f0;
+}
+main[data-template='product'] .product-information .rte :is(p, li, span, td, th):not(.innovely-card *, .innovely-spec-box *) :is(span, strong, b, a) {
+  color: #e2e8f0;
+}
+
+/* Bold emphasis on the dark surface stays white (excludes cards + spec box) */
+main[data-template='product'] .product-information .rte :is(strong, b):not(.innovely-card *, .innovely-spec-box *) {
+  color: #ffffff !important;
+}
+
+main[data-template='product'] .product-information .rte hr {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* White cards of "Caractéristiques & Avantages" — the description's own
+   light-background components must keep dark, fully opaque text. Exact
+   Innovely palette: title #0b0f19 (near-black), body #334155 (anthracite).
+   No `!important`: these win over the description's embedded <style> by
+   specificity alone. */
+main[data-template='product'] .product-information .innovely-card :is(h1, h2, h3, h4, h5, h6),
+main[data-template='product'] .product-information .innovely-card :is(h1, h2, h3, h4, h5, h6) :is(span, strong, b, a, em) {
+  color: #0b0f19;
+  -webkit-text-fill-color: #0b0f19;
+  opacity: 1;
+}
+
+main[data-template='product'] .product-information .innovely-card :is(p, li, span, td, th),
+main[data-template='product'] .product-information .innovely-card :is(p, li, span, td, th) :is(span, strong, b, a) {
+  color: #334155;
+  opacity: 1;
 }
 
 

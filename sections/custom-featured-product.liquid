@@ -23,16 +23,16 @@
     <!-- header -->
     <div class="max-w-2xl">
       <div class="reveal in-view">
-        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+        <p class="eyebrow">{{ 'innovely.featured_product.eyebrow' | t | default: section.settings.eyebrow }}</p>
       </div>
       <div class="reveal in-view" style="transition-delay: 80ms;">
         <h2 class="mt-6 font-display text-4xl leading-[1.1] tracking-tight sm:text-5xl">
-          {{ featured_product.title | default: section.settings.title }}
+          {{ 'innovely.featured_product.title' | t | default: section.settings.title | default: featured_product.title }}
         </h2>
       </div>
       <div class="reveal in-view" style="transition-delay: 160ms;">
         <p class="mt-6 max-w-xl text-lg leading-relaxed text-paper/70">
-          {{ featured_product.description | strip_html | truncatewords: 20 | default: section.settings.subtitle }}
+          {{ 'innovely.featured_product.subtitle' | t | default: section.settings.subtitle | default: featured_product.description | strip_html | truncatewords: 25 }}
         </p>
       </div>
     </div>
@@ -304,17 +304,19 @@
       "type": "text",
       "id": "eyebrow",
       "label": "Eyebrow",
-      "default": "LE DISPOSITIF"
+      "default": "DISPOSITIF BREVETÉ INNOVELY®"
     },
     {
       "type": "text",
       "id": "title",
-      "label": "Title Fallback"
+      "label": "Title",
+      "default": "Redressez votre dos. Libérez votre énergie."
     },
     {
       "type": "textarea",
       "id": "subtitle",
-      "label": "Subtitle Fallback"
+      "label": "Subtitle",
+      "default": "Grâce à ses capteurs de précision, Innovely® détecte l'affaissement de votre colonne en temps réel et émet une discrète micro-vibration pour rééduquer votre posture naturellement."
     },
     {
       "type": "checkbox",

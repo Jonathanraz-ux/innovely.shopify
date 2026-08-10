@@ -2,22 +2,24 @@
   <div class="mx-auto max-w-3xl px-5 py-24 sm:px-8 lg:py-32">
     <div class="text-center">
       <div class="reveal in-view">
-        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+        <p class="eyebrow">{{ 'innovely.faq.eyebrow' | t | default: section.settings.eyebrow }}</p>
       </div>
       <div class="reveal in-view" style="transition-delay: 80ms;">
         <h2 class="mt-6 font-display text-4xl leading-[1.1] tracking-tight sm:text-5xl">
-          {{ section.settings.title }}
+          {{ 'innovely.faq.title' | t | default: section.settings.title }}
         </h2>
       </div>
     </div>
 
     <div class="mt-14 space-y-3 custom-faq-container">
       {% for block in section.blocks %}
+        {% assign q_key = 'innovely.faq.q' | append: forloop.index | append: '_question' %}
+        {% assign a_key = 'innovely.faq.q' | append: forloop.index | append: '_answer' %}
         <div class="reveal in-view" style="transition-delay: {{ forloop.index0 | times: 60 }}ms;">
           <div class="faq-item overflow-hidden rounded-3xl border border-line bg-paper transition-all duration-500">
             <button class="faq-trigger flex w-full items-center justify-between gap-6 px-7 py-6 text-left" aria-expanded="false">
               <span class="font-display text-lg leading-snug text-ink sm:text-xl">
-                {{ block.settings.question }}
+                {{ q_key | t | default: block.settings.question }}
               </span>
               <span class="faq-icon inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-line text-muted transition-all duration-300">
                 <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
@@ -25,7 +27,7 @@
             </button>
             <div class="faq-content grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]" style="grid-template-rows: 0fr;">
               <div class="overflow-hidden">
-                <p class="px-7 pb-7 leading-relaxed text-muted">{{ block.settings.answer }}</p>
+                <p class="px-7 pb-7 leading-relaxed text-muted">{{ a_key | t | default: block.settings.answer }}</p>
               </div>
             </div>
           </div>

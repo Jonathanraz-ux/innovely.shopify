@@ -10,17 +10,17 @@
     <!-- copy -->
     <div class="max-w-xl">
       <div class="reveal in-view">
-        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+        <p class="eyebrow">{{ 'innovely.hero.eyebrow' | t | default: section.settings.eyebrow }}</p>
       </div>
 
       <div class="reveal in-view" style="transition-delay: 90ms;">
         <h1 class="mt-6 font-display text-[42px] leading-[1.06] tracking-tight sm:text-6xl lg:text-[68px]">
-          {{ section.settings.title }}
+          {{ 'innovely.hero.title' | t | default: section.settings.title }}
         </h1>
       </div>
 
       <div class="reveal in-view" style="transition-delay: 180ms;">
-        <p class="mt-7 max-w-md text-lg leading-relaxed text-muted">{{ section.settings.subtitle }}</p>
+        <p class="mt-7 max-w-md text-lg leading-relaxed text-muted">{{ 'innovely.hero.subtitle' | t | default: section.settings.subtitle }}</p>
       </div>
 
       <div class="reveal in-view" style="transition-delay: 260ms;">
@@ -29,14 +29,14 @@
             href="{{ section.settings.cta1_link }}"
             class="group inline-flex items-center justify-center gap-2.5 rounded-full bg-brand px-8 py-4 text-[15px] font-semibold text-paper transition-all duration-300 hover:bg-brand-deep hover:shadow-soft"
           >
-            {{ section.settings.cta1_label }}
+            {{ 'innovely.hero.cta1_label' | t | default: section.settings.cta1_label }}
             <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
           </a>
           <a
             href="{{ section.settings.cta2_link }}"
             class="group inline-flex items-center justify-center gap-2.5 px-2 py-4 text-[15px] font-medium text-ink"
           >
-            {{ section.settings.cta2_label | default: 'innovely.how_it_works.title' | t }}
+            {{ 'innovely.hero.cta2_label' | t | default: section.settings.cta2_label }}
             <svg class="h-4 w-4 text-brand transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
           </a>
         </div>
@@ -72,9 +72,9 @@
           <div class="absolute bottom-5 left-5 right-5 flex items-center justify-between gap-4 rounded-3xl border border-paper/20 bg-ink/65 p-4 backdrop-blur-xl">
             <div>
               <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-paper/60">
-                {{ section.settings.chip_name }}
+                {{ 'innovely.hero.chip_name' | t | default: section.settings.chip_name }}
               </p>
-              <p class="mt-1 font-display text-lg text-paper">{{ section.settings.chip_tag }}</p>
+              <p class="mt-1 font-display text-lg text-paper">{{ 'innovely.hero.chip_tag' | t | default: section.settings.chip_tag }}</p>
             </div>
             <!-- icon device SVG -->
             <svg class="h-14 w-24 shrink-0 text-paper" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM11 19.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
@@ -83,9 +83,9 @@
           <!-- posture chip -->
           <div class="animate-floaty absolute left-4 top-4 rounded-2xl border border-paper/20 bg-paper/90 px-4 py-3 shadow-card backdrop-blur">
             <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">
-              {{ section.settings.posture_label }}
+              {{ 'innovely.hero.posture_label' | t | default: section.settings.posture_label }}
             </p>
-            <p class="font-display text-2xl text-ink">{{ section.settings.posture_value }}</p>
+            <p class="font-display text-2xl text-ink">{{ 'innovely.hero.posture_value' | t | default: section.settings.posture_value }}</p>
             <div class="mt-1.5 flex items-center gap-1 text-brand">
               {% for i in (1..5) %}
                 <svg class="h-3 w-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
@@ -99,9 +99,9 @@
             style="animation-delay: 0.7s;"
           >
             <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-paper/60">
-              {{ section.settings.result_label }}
+              {{ 'innovely.hero.result_label' | t | default: section.settings.result_label }}
             </p>
-            <p class="text-sm text-paper">{{ section.settings.result_value }}</p>
+            <p class="text-sm text-paper">{{ 'innovely.hero.result_value' | t | default: section.settings.result_value }}</p>
           </div>
         </div>
 

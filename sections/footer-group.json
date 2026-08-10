@@ -77,7 +77,7 @@
             "text_7AiDhq": {
               "type": "text",
               "settings": {
-                "text": "<h2>Inscrivez-vous à notre newsletter</h2>",
+                "text": "<h2>Sign up for our newsletter</h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -102,7 +102,7 @@
             "text_bwKk9K": {
               "type": "text",
               "settings": {
-                "text": "<p>Offres exclusives et accès anticipé aux nouveautés.</p>",
+                "text": "<p>Exclusive deals and early access to new products.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -152,7 +152,7 @@
             "custom_button_border": "{{ settings.color_palette.background }}",
             "link_text_color": "",
             "display_type": "text",
-            "label": "S'inscrire",
+            "label": "Sign up",
             "integrated_button": false,
             "button_type_preset": "paragraph",
             "padding-block-start": 0,
@@ -167,7 +167,7 @@
           "name": "t:names.menu",
           "settings": {
             "menu": "footer_menu2",
-            "heading": "Liens utiles",
+            "heading": "Useful Links",
             "menu_spacing": 12,
             "show_as_accordion": false,
             "accordion_icon": "caret",
@@ -188,7 +188,7 @@
           "name": "t:names.menu",
           "settings": {
             "menu": "footer",
-            "heading": "Assistance",
+            "heading": "Support",
             "menu_spacing": 12,
             "show_as_accordion": false,
             "accordion_icon": "caret",
