@@ -13,6 +13,7 @@
     "accueil": "Home",
     "posture_corrector": "Posture corrector",
     "le_produit": "The Product",
+    "the_product": "The Product",
     "contact": "Contact"
   },
   "menu_headings": {
@@ -20,8 +21,8 @@
     "support": "Support"
   },
   "text_translations": {
-    "sign_up_for_our_newsletter": "<h2>Sign up for our newsletter</h2>",
-    "exclusive_deals_and_early_access_to_new_products": "<p>Exclusive deals and early access to new products.</p>"
+    "sign_up_for_our_newsletter": "Subscribe to our newsletter",
+    "exclusive_deals_and_early_access_to_new_products": "Exclusive offers and early access to new products."
   },
   "innovely": {
     "announcement": {
