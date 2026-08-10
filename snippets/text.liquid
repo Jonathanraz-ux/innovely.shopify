@@ -17,10 +17,12 @@
   if translated_text contains 'Translation missing' or translated_text == text_translation_key
     assign translated_text = block_settings.text
   else
-    if plain_text | slice: 0, 1 == '<' and plain_text contains '>'
+    assign first_char = plain_text | slice: 0, 1
+    if first_char == '<' and plain_text contains '>'
       assign wrapper_tag = plain_text | split: '>' | first | remove: '<' | strip | split: ' ' | first
       assign close_tag = '</' | append: wrapper_tag | append: '>'
-      if wrapper_tag != '' and plain_text | split: close_tag | size == 2
+      assign close_count = plain_text | split: close_tag | size
+      if wrapper_tag != '' and close_count == 2
         assign translated_text = '<' | append: wrapper_tag | append: '>' | append: translated_text | append: close_tag
       endif
     endif
