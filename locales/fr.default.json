@@ -10,6 +10,7 @@
 {
   "navigation": {
     "home": "Accueil",
+    "accueil": "Accueil",
     "posture_corrector": "Correcteur de posture",
     "le_produit": "Le Produit",
     "contact": "Contact"
