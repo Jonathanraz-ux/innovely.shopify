@@ -241,17 +241,57 @@
       {% assign current_lang = localization.language.iso_code | downcase %}
       {% if current_lang == blank %}{% assign current_lang = 'en' %}{% endif %}
 
-      <div class="language-selector-pill inline-flex items-center gap-1 rounded-full border border-paper/20 bg-paper/10 p-1 backdrop-blur text-xs font-semibold uppercase tracking-wider text-paper">
+      <style>
+        .language-selector-pill {
+          display: inline-flex !important;
+          align-items: center !important;
+          gap: 4px !important;
+          border-radius: 9999px !important;
+          border: 1px solid rgba(15, 118, 110, 0.4) !important;
+          background: rgba(15, 118, 110, 0.1) !important;
+          padding: 3px !important;
+          margin-inline: 6px !important;
+          font-size: 12px !important;
+          font-weight: 600 !important;
+          text-transform: uppercase !important;
+          vertical-align: middle !important;
+        }
+        .language-selector-pill .lang-btn {
+          display: inline-flex !important;
+          align-items: center !important;
+          gap: 4px !important;
+          border-radius: 9999px !important;
+          padding: 4px 10px !important;
+          border: none !important;
+          background: transparent !important;
+          color: currentColor !important;
+          opacity: 0.75 !important;
+          cursor: pointer !important;
+          transition: all 0.2s ease !important;
+          line-height: 1 !important;
+        }
+        .language-selector-pill .lang-btn:hover {
+          opacity: 1 !important;
+        }
+        .language-selector-pill .lang-btn.active-lang {
+          background-color: #0f766e !important;
+          color: #ffffff !important;
+          opacity: 1 !important;
+          box-shadow: 0 2px 6px rgba(15, 118, 110, 0.35) !important;
+        }
+      </style>
+
+      <div class="language-selector-pill">
         <button
           type="button"
-          class="lang-btn inline-flex items-center gap-1 rounded-full px-3 py-1.5 transition-all duration-300 {% if current_lang == 'en' %}bg-brand text-paper shadow-sm{% else %}text-paper/70 hover:text-paper{% endif %}"
+          class="lang-btn {% if current_lang == 'en' %}active-lang{% endif %}"
           onclick="var f=this.closest('form'); if(f){ var inp=f.querySelector('input[name=language_code]'); if(inp){ inp.value='en'; f.submit(); } }"
         >
           <span>🇬🇧</span> EN
         </button>
         <button
           type="button"
-          class="lang-btn inline-flex items-center gap-1 rounded-full px-3 py-1.5 transition-all duration-300 {% if current_lang == 'fr' %}bg-brand text-paper shadow-sm{% else %}text-paper/70 hover:text-paper{% endif %}"
+          class="lang-btn {% if current_lang == 'fr' %}active-lang{% endif %}"
           onclick="var f=this.closest('form'); if(f){ var inp=f.querySelector('input[name=language_code]'); if(inp){ inp.value='fr'; f.submit(); } }"
         >
           <span>🇫🇷</span> FR
