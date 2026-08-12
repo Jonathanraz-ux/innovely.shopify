@@ -6,6 +6,8 @@
   if featured_product == nil
     assign featured_product = products.first
   endif
+  assign featured_title = section.settings.title | default: featured_product.title
+  assign featured_subtitle = section.settings.subtitle | default: featured_product.description | strip_html | truncatewords: 25
 -%}
 {% if featured_product != nil or request.design_mode %}
 <section id="produit" class="relative overflow-hidden bg-ink text-paper grain">
@@ -23,16 +25,16 @@
     <!-- header -->
     <div class="max-w-2xl">
       <div class="reveal in-view">
-        <p class="eyebrow">{{ 'innovely.featured_product.eyebrow' | t | default: section.settings.eyebrow }}</p>
+        <p class="eyebrow">{% render 'translate', key: 'innovely.featured_product.eyebrow', fallback: section.settings.eyebrow %}</p>
       </div>
       <div class="reveal in-view" style="transition-delay: 80ms;">
         <h2 class="mt-6 font-display text-4xl leading-[1.1] tracking-tight sm:text-5xl">
-          {{ 'innovely.featured_product.title' | t | default: section.settings.title | default: featured_product.title }}
+          {% render 'translate', key: 'innovely.featured_product.title', fallback: featured_title %}
         </h2>
       </div>
       <div class="reveal in-view" style="transition-delay: 160ms;">
         <p class="mt-6 max-w-xl text-lg leading-relaxed text-paper/70">
-          {{ 'innovely.featured_product.subtitle' | t | default: section.settings.subtitle | default: featured_product.description | strip_html | truncatewords: 25 }}
+          {% render 'translate', key: 'innovely.featured_product.subtitle', fallback: featured_subtitle %}
         </p>
       </div>
     </div>
@@ -109,7 +111,7 @@
                 {% endfor %}
               </div>
               <p class="text-sm text-muted">
-                <span class="font-semibold text-ink">4.8/5</span> · {{ 'innovely.featured_product.verified_reviews' | t }}
+                <span class="font-semibold text-ink">4.8/5</span> · {% render 'translate', key: 'innovely.featured_product.verified_reviews' %}
               </p>
             </div>
 
@@ -271,10 +273,10 @@
           {%- else -%}
           <div class="rounded-xl border border-dashed border-brand/50 bg-brand-soft/60 p-5 text-sm">
             {%- if request.design_mode -%}
-              <p class="font-semibold text-ink">{{ 'innovely.featured_product.no_product_selected' | t }}</p>
-              <p class="mt-1 text-muted">{{ 'innovely.featured_product.no_product_selected_instructions' | t }}</p>
+              <p class="font-semibold text-ink">{% render 'translate', key: 'innovely.featured_product.no_product_selected' %}</p>
+              <p class="mt-1 text-muted">{% render 'translate', key: 'innovely.featured_product.no_product_selected_instructions' %}</p>
             {%- else -%}
-              <p class="text-muted">{{ 'innovely.featured_product.product_unavailable' | t }}</p>
+              <p class="text-muted">{% render 'translate', key: 'innovely.featured_product.product_unavailable' %}</p>
             {%- endif -%}
           </div>
           {%- endif -%}
@@ -304,19 +306,19 @@
       "type": "text",
       "id": "eyebrow",
       "label": "Eyebrow",
-      "default": "DISPOSITIF BREVETÉ INNOVELY®"
+      "default": "PATENTED INNOVELY® DEVICE"
     },
     {
       "type": "text",
       "id": "title",
       "label": "Title",
-      "default": "Redressez votre dos. Libérez votre énergie."
+      "default": "Straighten your back. Free your energy."
     },
     {
       "type": "textarea",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "Grâce à ses capteurs de précision, Innovely® détecte l'affaissement de votre colonne en temps réel et émet une discrète micro-vibration pour rééduquer votre posture naturellement."
+      "default": "Using precision sensors, Innovely® detects your spinal slouching in real time and emits a subtle micro-vibration to naturally retrain your posture."
     },
     {
       "type": "checkbox",

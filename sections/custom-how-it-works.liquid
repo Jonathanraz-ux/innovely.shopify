@@ -2,15 +2,15 @@
   <div class="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-32">
     <div class="mx-auto max-w-2xl text-center">
       <div class="reveal in-view">
-        <p class="eyebrow">{{ 'innovely.how_it_works.eyebrow' | t | default: section.settings.eyebrow }}</p>
+        <p class="eyebrow">{% render 'translate', key: 'innovely.how_it_works.eyebrow', fallback: section.settings.eyebrow %}</p>
       </div>
       <div class="reveal in-view" style="transition-delay: 80ms;">
         <h2 class="mt-6 font-display text-4xl leading-[1.1] tracking-tight sm:text-5xl">
-          {{ 'innovely.how_it_works.title' | t | default: section.settings.title }}
+          {% render 'translate', key: 'innovely.how_it_works.title', fallback: section.settings.title %}
         </h2>
       </div>
       <div class="reveal in-view" style="transition-delay: 160ms;">
-        <p class="mt-6 text-lg leading-relaxed text-muted">{{ 'innovely.how_it_works.subtitle' | t | default: section.settings.subtitle }}</p>
+        <p class="mt-6 text-lg leading-relaxed text-muted">{% render 'translate', key: 'innovely.how_it_works.subtitle', fallback: section.settings.subtitle %}</p>
       </div>
     </div>
 
@@ -31,9 +31,21 @@
                 </svg>
               </div>
               <h3 class="mt-8 max-w-[24ch] font-display text-2xl leading-snug">
-                {{ block.settings.title | default: 'innovely.how_it_works.step' | append: forloop.index | append: '_title' | t }}
+                {%- assign step_title_key = 'innovely.how_it_works.step' | append: forloop.index | append: '_title' -%}
+                {%- if block.settings.title != blank -%}
+                  {{ block.settings.title }}
+                {%- else -%}
+                  {% render 'translate', key: step_title_key, fallback: block.settings.title %}
+                {%- endif -%}
               </h3>
-              <p class="mt-4 leading-relaxed text-muted">{{ block.settings.text | default: 'innovely.how_it_works.step' | append: forloop.index | append: '_text' | t }}</p>
+              <p class="mt-4 leading-relaxed text-muted">
+                {%- assign step_text_key = 'innovely.how_it_works.step' | append: forloop.index | append: '_text' -%}
+                {%- if block.settings.text != blank -%}
+                  {{ block.settings.text }}
+                {%- else -%}
+                  {% render 'translate', key: step_text_key, fallback: block.settings.text %}
+                {%- endif -%}
+              </p>
             </article>
           </div>
         {% endfor %}
@@ -50,19 +62,19 @@
       "type": "text",
       "id": "eyebrow",
       "label": "Eyebrow",
-      "default": "LA MÉTHODE"
+      "default": "THE METHOD"
     },
     {
       "type": "text",
       "id": "title",
       "label": "Title",
-      "default": "Comment ça marche"
+      "default": "How it works"
     },
     {
       "type": "textarea",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "Une méthode simple pour rééduquer votre posture au quotidien."
+      "default": "A simple method to retrain your posture every day."
     }
   ],
   "blocks": [
@@ -74,13 +86,13 @@
           "type": "text",
           "id": "title",
           "label": "Title",
-          "default": "Etape 1"
+          "default": "Step 1"
         },
         {
           "type": "textarea",
           "id": "text",
           "label": "Text",
-          "default": "Description de l'étape 1"
+          "default": "Description of step 1"
         }
       ]
     }
@@ -92,22 +104,22 @@
         {
           "type": "step",
           "settings": {
-            "title": "Analysez votre posture",
-            "text": "Placez le capteur dans votre dos. Il calibre automatiquement votre posture idéale en temps réel."
+            "title": "Analyze your posture",
+            "text": "Place the sensor on your back. It automatically calibrates your ideal posture in real time."
           }
         },
         {
           "type": "step",
           "settings": {
-            "title": "Ressentez la vibration",
-            "text": "Dès que vous vous tenez mal, une légère vibration vous rappelle de vous redresser."
+            "title": "Feel the vibration",
+            "text": "As soon as you slouch, a gentle vibration reminds you to straighten up without any pain."
           }
         },
         {
           "type": "step",
           "settings": {
-            "title": "Musclez votre dos",
-            "text": "Jour après jour, vous développez la mémoire musculaire nécessaire pour vous tenir droit sans y penser."
+            "title": "Strengthen your back",
+            "text": "Day after day, you build the muscle memory needed to stand up straight without thinking about it."
           }
         }
       ]

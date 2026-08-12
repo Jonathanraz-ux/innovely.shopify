@@ -3,16 +3,16 @@
     <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
       <div class="max-w-xl">
         <div class="reveal in-view">
-          <p class="eyebrow">{{ 'innovely.lifestyle.eyebrow' | t | default: section.settings.eyebrow }}</p>
+          <p class="eyebrow">{% render 'translate', key: 'innovely.lifestyle.eyebrow', fallback: section.settings.eyebrow %}</p>
         </div>
         <div class="reveal in-view" style="transition-delay: 80ms;">
           <h2 class="mt-6 font-display text-4xl leading-[1.1] tracking-tight sm:text-5xl">
-            {{ 'innovely.lifestyle.title' | t | default: section.settings.title }}
+            {% render 'translate', key: 'innovely.lifestyle.title', fallback: section.settings.title %}
           </h2>
         </div>
       </div>
       <div class="reveal in-view" style="transition-delay: 160ms;">
-        <p class="max-w-sm text-lg leading-relaxed text-muted">{{ 'innovely.lifestyle.subtitle' | t | default: section.settings.subtitle }}</p>
+        <p class="max-w-sm text-lg leading-relaxed text-muted">{% render 'translate', key: 'innovely.lifestyle.subtitle', fallback: section.settings.subtitle %}</p>
       </div>
     </div>
 
@@ -44,11 +44,11 @@
             {% assign title_key = 'innovely.lifestyle.b' | append: forloop.index | append: '_title' %}
             {% assign text_key = 'innovely.lifestyle.b' | append: forloop.index | append: '_text' %}
             <p class="relative mt-10 text-[11px] font-semibold uppercase tracking-[0.2em] text-paper/60">
-              {{ tag_key | t | default: block.settings.tag }}
+              {% render 'translate', key: tag_key, fallback: block.settings.tag %}
             </p>
-            <h3 class="relative mt-2 font-display text-2xl leading-snug">{{ title_key | t | default: block.settings.title }}</h3>
+            <h3 class="relative mt-2 font-display text-2xl leading-snug">{% render 'translate', key: title_key, fallback: block.settings.title %}</h3>
             <p class="relative mt-3 max-w-[32ch] text-[15px] leading-relaxed text-paper/75">
-              {{ text_key | t | default: block.settings.text }}
+              {% render 'translate', key: text_key, fallback: block.settings.text %}
             </p>
           </article>
         </div>
@@ -65,19 +65,19 @@
       "type": "text",
       "id": "eyebrow",
       "label": "Eyebrow",
-      "default": "INTÉGRATION PARFAITE"
+      "default": "PERFECT INTEGRATION"
     },
     {
       "type": "text",
       "id": "title",
       "label": "Title",
-      "default": "Votre dos, toute la journée."
+      "default": "Your back, all day long."
     },
     {
       "type": "textarea",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "Des moments clés où notre dispositif prend tout son sens."
+      "default": "Key moments where our device makes all the difference."
     }
   ],
   "blocks": [
@@ -95,19 +95,19 @@
           "type": "text",
           "id": "tag",
           "label": "Tag",
-          "default": "Au bureau"
+          "default": "At the office"
         },
         {
           "type": "text",
           "id": "title",
           "label": "Title",
-          "default": "8h - Focus mode"
+          "default": "8am - Focus mode"
         },
         {
           "type": "textarea",
           "id": "text",
           "label": "Text",
-          "default": "Fini la posture voûtée devant l'écran."
+          "default": "No more slouching in front of your screen."
         }
       ]
     }

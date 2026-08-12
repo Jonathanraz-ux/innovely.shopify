@@ -258,17 +258,39 @@
           ref="languageInput"
           on:change="/changeLanguage"
         >
-          {%- for language in localization.available_languages -%}
+          {%- assign avail_langs = localization.available_languages -%}
+          {%- if avail_langs.size > 1 -%}
+            {%- for language in avail_langs -%}
+              <option
+                value="{{ language.iso_code }}"
+                lang="{{ language.iso_code }}"
+                {% if language.iso_code == localization.language.iso_code %}
+                  selected
+                {% endif %}
+              >
+                {{ language.endonym_name | capitalize }}
+              </option>
+            {%- endfor -%}
+          {%- else -%}
             <option
-              value="{{ language.iso_code }}"
-              lang="{{ language.iso_code }}"
-              {% if language.iso_code == localization.language.iso_code %}
+              value="en"
+              lang="en"
+              {% if localization.language.iso_code == 'en' or localization.language.iso_code == blank %}
                 selected
               {% endif %}
             >
-              {{ language.endonym_name | capitalize }}
+              English (EN)
             </option>
-          {%- endfor -%}
+            <option
+              value="fr"
+              lang="fr"
+              {% if localization.language.iso_code == 'fr' %}
+                selected
+              {% endif %}
+            >
+              Français (FR)
+            </option>
+          {%- endif -%}
         </select>
         <span class="svg-wrapper icon-caret">
           {{- 'icon-caret.svg' | inline_asset_content -}}

@@ -3,16 +3,16 @@
     "custom_hero_1": {
       "type": "custom-hero",
       "blocks": {
-        "r1": { "type": "reassurance", "settings": { "text": "Invisible sous les vêtements" } },
-        "r2": { "type": "reassurance", "settings": { "text": "Confort garanti 30 jours" } },
-        "r3": { "type": "reassurance", "settings": { "text": "Livraison offerte" } }
+        "r1": { "type": "reassurance", "settings": { "text": "Invisible under clothing" } },
+        "r2": { "type": "reassurance", "settings": { "text": "Guaranteed comfort for 30 days" } },
+        "r3": { "type": "reassurance", "settings": { "text": "Free shipping" } }
       },
       "block_order": ["r1", "r2", "r3"],
       "settings": {
         "eyebrow": "SMART POSTURE CORRECTOR",
-        "title": "Retrouvez une posture parfaite.",
-        "subtitle": "Le premier correcteur de posture intelligent qui vous rééduque activement.",
-        "cta1_label": "Découvrir Innovely",
+        "title": "Achieve perfect posture.",
+        "subtitle": "The first smart posture corrector that actively retrains your muscles.",
+        "cta1_label": "Discover Innovely",
         "cta1_link": "#produit",
         "cta2_link": "#methode",
         "image_main": "shopify://shop_images/ChatGPT_Image_26_juil._2026_12_44_29_1.png"
@@ -21,14 +21,14 @@
     "custom_marquee_1": {
       "type": "custom-marquee",
       "blocks": {
-        "m1": { "type": "marquee_item", "settings": { "text": "Conçu avec soin" } },
-        "m2": { "type": "marquee_item", "settings": { "text": "Silicone médical" } },
-        "m3": { "type": "marquee_item", "settings": { "text": "Recharge USB-C" } },
-        "m4": { "type": "marquee_item", "settings": { "text": "Garantie 2 ans" } },
-        "m5": { "type": "marquee_item", "settings": { "text": "Discret et léger" } },
-        "m6": { "type": "marquee_item", "settings": { "text": "Adapté adultes & enfants" } },
-        "m7": { "type": "marquee_item", "settings": { "text": "Livraison offerte" } },
-        "m8": { "type": "marquee_item", "settings": { "text": "30 jours satisfait ou remboursé" } }
+        "m1": { "type": "marquee_item", "settings": { "text": "Thoughtfully Designed" } },
+        "m2": { "type": "marquee_item", "settings": { "text": "Medical-Grade Silicone" } },
+        "m3": { "type": "marquee_item", "settings": { "text": "USB-C Rechargeable" } },
+        "m4": { "type": "marquee_item", "settings": { "text": "2-Year Warranty" } },
+        "m5": { "type": "marquee_item", "settings": { "text": "Discreet & Lightweight" } },
+        "m6": { "type": "marquee_item", "settings": { "text": "For Adults & Kids" } },
+        "m7": { "type": "marquee_item", "settings": { "text": "Free Shipping" } },
+        "m8": { "type": "marquee_item", "settings": { "text": "30-Day Money-Back Guarantee" } }
       },
       "block_order": ["m1", "m2", "m3", "m4", "m5", "m6", "m7", "m8"],
       "settings": {}
@@ -36,18 +36,18 @@
     "custom_problem_1": {
       "type": "custom-problem",
       "blocks": {
-        "s1": { "type": "stat", "settings": { "value": "8h", "label": "passées en moyenne assis face aux écrans chaque jour" } },
-        "s2": { "type": "stat", "settings": { "value": "70%", "label": "des télétravailleurs souffrent de douleurs au dos ou au cou" } },
-        "s3": { "type": "stat", "settings": { "value": "2×", "label": "plus de tensions quand la tête penche de 15° vers l'avant" } }
+        "s1": { "type": "stat", "settings": { "value": "8h", "label": "spent on average sitting in front of screens every day" } },
+        "s2": { "type": "stat", "settings": { "value": "70%", "label": "of remote workers suffer from back or neck pain" } },
+        "s3": { "type": "stat", "settings": { "value": "2×", "label": "more tension when your head leans 15° forward" } }
       },
       "block_order": ["s1", "s2", "s3"],
       "settings": {
-        "eyebrow": "Le problème",
-        "title": "Tes écrans ruinent ta posture. <em class=\"text-brand\">Lentement, mais sûrement.</em>",
-        "text": "<p>On commence par « juste un cours », « un dernier mail », « un épisode de plus ». Huit heures plus tard, les épaules sont tombées, la tête avance, et le dos encaisse en silence.</p><p>Ce que tu ressens — fatigue, tensions, mal de dos — c'est ton corps qui te réclame une posture que personne ne t'a jamais apprise. Le pire ? On finit par s'y habituer. Jusqu'au jour où ça devient la norme.</p>",
+        "eyebrow": "The Problem",
+        "title": "Your screens are ruining your posture. <em class=\"text-brand\">Slowly, but surely.</em>",
+        "text": "<p>It starts with \u201cjust one more class,\u201d \u201cone last email,\u201d \u201cone more episode.\u201d Eight hours later, your shoulders have dropped, your head is forward, and your back is taking the hit in silence.</p><p>What you\u2019re feeling \u2014 fatigue, tension, back pain \u2014 is your body begging for a posture that no one ever taught you. The worst part? You get used to it. Until the day it becomes the norm.</p>",
         "image": "shopify://shop_images/Gemini_Generated_Image_pkz7mdpkz7mdpkz7.png",
-        "badge": "8h / jour",
-        "tip": "<span class=\"font-semibold text-ink\">Chaque centimètre</span> que ta tête avance ajoute jusqu'à <span class=\"font-semibold text-ink\">4 kg</span> de pression sur tes cervicales. Ton dos le porte pour toi. Chaque jour."
+        "badge": "8h / day",
+        "tip": "<span class=\"font-semibold text-ink\">Every centimeter</span> your head moves forward adds up to <span class=\"font-semibold text-ink\">4 kg</span> of pressure on your cervical spine. Your back carries it for you. Every single day."
       }
     },
     "custom_how_it_works_1": {
@@ -70,84 +70,84 @@
       "block_order": [],
       "settings": {
         "product": "shopify://products/oem-adjustable-back-brace-straightening-detection-reminder-spine-vibrates-smart-posture-corrector",
-        "eyebrow": "DISPOSITIF BREVETÉ INNOVELY®",
-        "title": "Redressez votre dos. Libérez votre énergie.",
-        "subtitle": "Grâce à ses capteurs de précision, Innovely® détecte l'affaissement de votre colonne en temps réel et émet une discrète micro-vibration pour rééduquer votre posture naturellement.",
+        "eyebrow": "PATENTED INNOVELY® DEVICE",
+        "title": "Straighten your back. Free your energy.",
+        "subtitle": "Using precision sensors, Innovely® detects your spinal slouching in real time and emits a subtle micro-vibration to naturally retrain your posture.",
         "show_dynamic_checkout": true
       }
     },
     "custom_comparison_1": {
       "type": "custom-comparison",
       "blocks": {
-        "f1": { "type": "feature", "settings": { "label": "Rééducation autonome", "col1_val": "check", "col2_val": "cross", "col3_val": "partial", "col3_note": "Partiel" } },
-        "f2": { "type": "feature", "settings": { "label": "Confort longue durée", "col1_val": "check", "col2_val": "cross", "col3_val": "check" } },
-        "f3": { "type": "feature", "settings": { "label": "Vibration intelligente", "col1_val": "check", "col2_val": "cross", "col3_val": "cross" } },
-        "f4": { "type": "feature", "settings": { "label": "Invisible sous les vêtements", "col1_val": "check", "col2_val": "cross", "col3_val": "partial", "col3_note": "Selon modèle" } }
+        "f1": { "type": "feature", "settings": { "label": "Autonomous Retraining", "col1_val": "check", "col2_val": "cross", "col3_val": "partial", "col3_note": "Partial" } },
+        "f2": { "type": "feature", "settings": { "label": "Long-lasting Comfort", "col1_val": "check", "col2_val": "cross", "col3_val": "check" } },
+        "f3": { "type": "feature", "settings": { "label": "Smart Vibration", "col1_val": "check", "col2_val": "cross", "col3_val": "cross" } },
+        "f4": { "type": "feature", "settings": { "label": "Invisible Under Clothing", "col1_val": "check", "col2_val": "cross", "col3_val": "partial", "col3_note": "Model dependent" } }
       },
       "block_order": ["f1", "f2", "f3", "f4"],
       "settings": {
-        "eyebrow": "COMPARATIF",
-        "title": "Pourquoi choisir Innovely ?",
+        "eyebrow": "COMPARISON",
+        "title": "Why choose Innovely?",
         "col1_title": "Innovely",
-        "col1_badge": "Recommandé",
-        "col2_title": "Redresse-dos classique",
-        "col3_title": "Autres capteurs"
+        "col1_badge": "Recommended",
+        "col2_title": "Classic Back Brace",
+        "col3_title": "Other Sensors"
       }
     },
     "custom_social_proof_1": {
       "type": "custom-social-proof",
       "blocks": {
-        "rev1": { "type": "review", "settings": { "name": "Camille M.", "meta": "Utilise Innovely depuis 3 mois", "text": "En 3 semaines, mes douleurs cervicales ont quasi disparu. Je ne peux plus m'en passer." } },
-        "rev2": { "type": "review", "settings": { "name": "Louis B.", "meta": "Développeur, télétravail depuis 2 ans", "text": "La vibration est tellement discrète qu'on l'oublie... jusqu'à ce qu'on réalise qu'on se tient mieux !" } },
-        "rev3": { "type": "review", "settings": { "name": "Sarah R.", "meta": "Coach sportive", "text": "Je le recommande à tous mes clients. Résultats visibles en moins d'un mois." } },
-        "u1": { "type": "ugc", "settings": { "image": "shopify://shop_images/Gemini_Generated_Image_3zz9383zz9383zz9.png", "tag": "Au bureau", "name": "@camille.m" } },
+        "rev1": { "type": "review", "settings": { "name": "Camille M.", "meta": "Using Innovely for 3 months", "text": "In 3 weeks, my neck pain almost completely disappeared. I can't live without it." } },
+        "rev2": { "type": "review", "settings": { "name": "Louis B.", "meta": "Developer, working remotely for 2 years", "text": "The vibration is so subtle you forget about it... until you realize you're standing straighter!" } },
+        "rev3": { "type": "review", "settings": { "name": "Sarah R.", "meta": "Sports coach", "text": "I recommend it to all my clients. Visible results in less than a month." } },
+        "u1": { "type": "ugc", "settings": { "image": "shopify://shop_images/Gemini_Generated_Image_3zz9383zz9383zz9.png", "tag": "At the office", "name": "@camille.m" } },
         "u2": { "type": "ugc", "settings": { "image": "shopify://shop_images/Gemini_Generated_Image_yo5m8wyo5m8wyo5m.png", "tag": "Focus mode", "name": "@thomas.dev" } },
-        "u3": { "type": "ugc", "settings": { "image": "shopify://shop_images/3.png", "tag": "En mouvement", "name": "@sarah.runs" } },
-        "u4": { "type": "ugc", "settings": { "image": "shopify://shop_images/6.jpg", "tag": "En famille", "name": "@les_durand" } },
-        "u5": { "type": "ugc", "settings": { "image": "shopify://shop_images/1.jpg", "tag": "En réunion", "name": "@lucie.agile" } },
-        "u6": { "type": "ugc", "settings": { "image": "shopify://shop_images/ChatGPT_Image_26_juil._2026_12_44_29_1.png", "tag": "Produit", "name": "@innovely.fr" } }
+        "u3": { "type": "ugc", "settings": { "image": "shopify://shop_images/3.png", "tag": "On the move", "name": "@sarah.runs" } },
+        "u4": { "type": "ugc", "settings": { "image": "shopify://shop_images/6.jpg", "tag": "With family", "name": "@les_durand" } },
+        "u5": { "type": "ugc", "settings": { "image": "shopify://shop_images/1.jpg", "tag": "In meetings", "name": "@lucie.agile" } },
+        "u6": { "type": "ugc", "settings": { "image": "shopify://shop_images/ChatGPT_Image_26_juil._2026_12_44_29_1.png", "tag": "Product", "name": "@innovely.fr" } }
       },
       "block_order": ["rev1", "rev2", "rev3", "u1", "u2", "u3", "u4", "u5", "u6"],
       "settings": {
-        "eyebrow": "NOTRE COMMUNAUTÉ",
-        "title": "Ils ont redressé la barre.",
+        "eyebrow": "OUR COMMUNITY",
+        "title": "They straightened up.",
         "stat1_val": "+50k",
-        "stat1_label": "utilisateurs actifs au quotidien",
+        "stat1_label": "active daily users",
         "stat2_val": "4.8",
-        "stat2_label": "note moyenne sur Trustpilot",
+        "stat2_label": "average rating on Trustpilot",
         "stat3_val": "92%",
-        "stat3_label": "ressentent moins de douleurs en 30 jours",
-        "ugc_eyebrow": "SUR INSTAGRAM",
-        "ugc_title": "Partout avec vous."
+        "stat3_label": "feel less pain within 30 days",
+        "ugc_eyebrow": "ON INSTAGRAM",
+        "ugc_title": "Everywhere with you."
       }
     },
     "custom_lifestyle_1": {
       "type": "custom-lifestyle",
       "blocks": {
-        "b1": { "type": "moment", "settings": { "image": "shopify://shop_images/3.png", "tag": "Au bureau", "title": "8h - Focus mode", "text": "Fini la posture voûtée devant l'écran. Innovely vous rappelle discrètement." } },
-        "b2": { "type": "moment", "settings": { "image": "shopify://shop_images/6.jpg", "tag": "En mouvement", "title": "12h - Actif", "text": "Lors de vos déplacements, maintenez une posture optimale en toutes circonstances." } },
-        "b3": { "type": "moment", "settings": { "image": "shopify://shop_images/1.jpg", "tag": "Le soir", "title": "19h - Récupération", "text": "Relâcher les tensions accumulées. Votre dos vous remerciera demain." } }
+        "b1": { "type": "moment", "settings": { "image": "shopify://shop_images/3.png", "tag": "At the office", "title": "8am - Focus mode", "text": "No more slouching in front of your screen. Innovely discreetly reminds you." } },
+        "b2": { "type": "moment", "settings": { "image": "shopify://shop_images/6.jpg", "tag": "On the move", "title": "12pm - Active", "text": "Maintain optimal posture wherever your day takes you." } },
+        "b3": { "type": "moment", "settings": { "image": "shopify://shop_images/1.jpg", "tag": "Evening", "title": "7pm - Recovery", "text": "Release accumulated tension. Your back will thank you tomorrow." } }
       },
       "block_order": ["b1", "b2", "b3"],
       "settings": {
-        "eyebrow": "INTEGRATION PARFAITE",
-        "title": "Votre dos, toute la journée.",
-        "subtitle": "Des moments clés où notre dispositif prend tout son sens, partout avec vous."
+        "eyebrow": "PERFECT INTEGRATION",
+        "title": "Your back, all day long.",
+        "subtitle": "Key moments where our device makes all the difference, everywhere with you."
       }
     },
     "custom_faq_1": {
       "type": "custom-faq",
       "blocks": {
-        "q1": { "type": "faq_item", "settings": { "question": "Comment fonctionne le capteur de posture Innovely ?", "answer": "Innovely utilise un gyroscope 6 axes qui détecte les micro-inclinaisons de votre colonne vertébrale en temps réel. Il émet une vibration douce dès que vous dépassez votre seuil de posture idéale." } },
-        "q2": { "type": "faq_item", "settings": { "question": "Est-ce visible sous les vêtements ?", "answer": "Non, Innovely fait 8mm d'épaisseur et se glisse directement sous votre t-shirt ou chemise. Il est totalement invisible." } },
-        "q3": { "type": "faq_item", "settings": { "question": "Combien de temps faut-il pour voir des résultats ?", "answer": "La plupart de nos utilisateurs rapportent une amélioration visible après 2 à 3 semaines d'utilisation régulière (30 min/jour minimum)." } },
-        "q4": { "type": "faq_item", "settings": { "question": "Quelle est l'autonomie de la batterie ?", "answer": "La batterie dure jusqu'à 7 jours en utilisation normale. La charge complète prend environ 1h30 via USB-C." } },
-        "q5": { "type": "faq_item", "settings": { "question": "Y a-t-il une garantie ?", "answer": "Oui, Innovely est garanti 2 ans. De plus, nous offrons 30 jours satisfait ou remboursé sans condition." } }
+        "q1": { "type": "faq_item", "settings": { "question": "How does the Innovely posture sensor work?", "answer": "Innovely uses a 6-axis gyroscope that detects micro-slouches of your spine in real time. It emits a gentle vibration as soon as you slouch past your ideal posture threshold." } },
+        "q2": { "type": "faq_item", "settings": { "question": "Is it visible under clothing?", "answer": "No, Innovely is only 8mm thick and slips discreetly under your t-shirt or shirt. It is completely invisible." } },
+        "q3": { "type": "faq_item", "settings": { "question": "How long does it take to see results?", "answer": "Most of our users report visible improvements after 2 to 3 weeks of regular use (at least 30 mins/day)." } },
+        "q4": { "type": "faq_item", "settings": { "question": "What is the battery life?", "answer": "The battery lasts up to 7 days under normal use. A full charge takes about 1 hour and 30 minutes via USB-C." } },
+        "q5": { "type": "faq_item", "settings": { "question": "Is there a warranty?", "answer": "Yes, Innovely comes with a 2-year warranty. In addition, we offer a 30-day risk-free money-back guarantee." } }
       },
       "block_order": ["q1", "q2", "q3", "q4", "q5"],
       "settings": {
         "eyebrow": "FAQ",
-        "title": "Questions fréquentes"
+        "title": "Frequently Asked Questions"
       }
     }
   },

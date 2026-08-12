@@ -29,16 +29,16 @@
   <div class="mx-auto grid max-w-7xl items-center gap-14 px-5 py-24 sm:px-8 lg:grid-cols-[1fr_0.9fr] lg:py-32">
     <div>
       <div class="reveal in-view">
-        <p class="eyebrow">{{ 'innovely.problem.eyebrow' | t | default: section.settings.eyebrow }}</p>
+        <p class="eyebrow">{% render 'translate', key: 'innovely.problem.eyebrow', fallback: section.settings.eyebrow %}</p>
       </div>
       <div class="reveal in-view" style="transition-delay: 80ms;">
         <h2 class="mt-6 font-display text-4xl leading-[1.1] tracking-tight sm:text-5xl">
-          {{ 'innovely.problem.title_html' | t | default: section.settings.title }}
+          {% render 'translate', key: 'innovely.problem.title_html', fallback: section.settings.title %}
         </h2>
       </div>
       <div class="reveal in-view" style="transition-delay: 160ms;">
         <div class="mt-7 space-y-5 text-lg leading-relaxed text-muted">
-          {{ 'innovely.problem.text_html' | t | default: section.settings.text }}
+          {% render 'translate', key: 'innovely.problem.text_html', fallback: section.settings.text %}
         </div>
       </div>
 
@@ -47,7 +47,7 @@
           {% assign stat_key = 'innovely.problem.stat_' | append: forloop.index | append: '_label' %}
           <div class="reveal in-view" style="transition-delay: {{ forloop.index0 | times: 100 }}ms;">
             <p class="font-display text-5xl text-ink">{{ block.settings.value }}</p>
-            <p class="mt-3 text-sm leading-relaxed text-muted">{{ stat_key | t | default: block.settings.label }}</p>
+            <p class="mt-3 text-sm leading-relaxed text-muted">{% render 'translate', key: stat_key, fallback: block.settings.label %}</p>
           </div>
         {% endfor %}
       </div>
@@ -67,12 +67,12 @@
               <span class="animate-pulse-ring absolute inline-flex h-full w-full rounded-full bg-brand/50"></span>
               <span class="relative inline-flex h-2 w-2 rounded-full bg-brand"></span>
             </span>
-            {{ 'innovely.problem.badge' | t | default: section.settings.badge }}
+            {% render 'translate', key: 'innovely.problem.badge', fallback: section.settings.badge %}
           </div>
         </div>
         <div class="flex items-start gap-3 rounded-2xl bg-brand-soft p-4">
           <span class="mt-0.5 text-lg">↗</span>
-          <p class="text-sm leading-relaxed text-ink-soft">{{ 'innovely.problem.tip_html' | t | default: section.settings.tip }}</p>
+          <p class="text-sm leading-relaxed text-ink-soft">{% render 'translate', key: 'innovely.problem.tip_html', fallback: section.settings.tip %}</p>
         </div>
       </div>
     </div>
@@ -87,19 +87,19 @@
       "type": "text",
       "id": "eyebrow",
       "label": "Eyebrow",
-      "default": "Le problème"
+      "default": "The Problem"
     },
     {
       "type": "html",
       "id": "title",
       "label": "Title (HTML)",
-      "default": "Tes écrans ruinent ta posture. <em class=\"text-brand\">Lentement, mais sûrement.</em>"
+      "default": "Your screens are ruining your posture. <em class=\"text-brand\">Slowly, but surely.</em>"
     },
     {
       "type": "richtext",
       "id": "text",
       "label": "Text",
-      "default": "<p>On commence par « juste un cours », « un dernier mail », « un épisode de plus ». Huit heures plus tard, les épaules sont tombées, la tête avance, et le dos encaisse en silence.</p><p>Ce que tu ressens — fatigue, tensions, mal de dos — c'est ton corps qui te réclame une posture que personne ne t'a jamais apprise. Le pire ? On finit par s'y habituer. Jusqu'au jour où ça devient la norme.</p>"
+      "default": "<p>It starts with \u201cjust one more class,\u201d \u201cone last email,\u201d \u201cone more episode.\u201d Eight hours later, your shoulders have dropped, your head is forward, and your back is taking the hit in silence.</p><p>What you\u2019re feeling \u2014 fatigue, tension, back pain \u2014 is your body begging for a posture that no one ever taught you. The worst part? You get used to it. Until the day it becomes the norm.</p>"
     },
     {
       "type": "image_picker",
@@ -110,13 +110,13 @@
       "type": "text",
       "id": "badge",
       "label": "Badge Text",
-      "default": "8h / jour"
+      "default": "8h / day"
     },
     {
       "type": "html",
       "id": "tip",
       "label": "Tip Text (HTML)",
-      "default": "<span class=\"font-semibold text-ink\">Chaque centimètre</span> que ta tête avance ajoute jusqu'à <span class=\"font-semibold text-ink\">4 kg</span> de pression sur tes cervicales. Ton dos le porte pour toi. Chaque jour."
+      "default": "<span class=\"font-semibold text-ink\">Every centimeter</span> your head moves forward adds up to <span class=\"font-semibold text-ink\">4 kg</span> of pressure on your cervical spine. Your back carries it for you. Every single day."
     }
   ],
   "blocks": [
@@ -135,7 +135,7 @@
           "type": "text",
           "id": "label",
           "label": "Label",
-          "default": "passées en moyenne assis face aux écrans chaque jour"
+          "default": "spent on average sitting in front of screens every day"
         }
       ]
     }

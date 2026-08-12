@@ -1,12 +1,4 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */{
+{
   "sections": {
     "cart-section": {
       "type": "main-cart",
@@ -15,7 +7,7 @@
           "type": "_cart-title",
           "static": true,
           "settings": {
-            "title": "Panier",
+            "title": "t:text_defaults.cart",
             "show_count": true,
             "type_preset": "h4",
             "alignment": "left",
@@ -101,7 +93,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h3>Vous pourriez aussi aimer</h3>",
+                "text": "<h3>You might also like</h3>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -125,7 +117,7 @@
               "type": "_product-list-button",
               "name": "t:names.product_list_button",
               "settings": {
-                "label": "Voir tout",
+                "label": "t:text_defaults.view_all_button_label",
                 "open_in_new_tab": false,
                 "style_class": "link",
                 "width": "fit-content",

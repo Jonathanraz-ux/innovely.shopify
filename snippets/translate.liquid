@@ -1,0 +1,19 @@
+{%- doc -%}
+  Renders a translation with a fallback value so that a missing translation
+  key never displays "Translation missing: ..." on the storefront.
+
+  @param {string} key - Translation key to look up
+  @param {string} [fallback] - Value rendered when the key is not found
+
+  @example
+  {% render 'translate', key: 'innovely.hero.eyebrow', fallback: section.settings.eyebrow %}
+{%- enddoc -%}
+
+{%- liquid
+  assign value = key | t
+  assign value_lower = value | downcase
+  if value_lower contains 'translation missing'
+    assign value = fallback
+  endif
+-%}
+{{- value -}}

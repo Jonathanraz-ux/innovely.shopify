@@ -4,7 +4,7 @@
       {% for block in section.blocks %}
         {% assign m_key = 'innovely.marquee.m' | append: forloop.index | append: '_text' %}
         <span class="flex items-center gap-10">
-          <span class="text-sm font-medium uppercase tracking-[0.18em] text-muted">{{ m_key | t | default: block.settings.text }}</span>
+          <span class="text-sm font-medium uppercase tracking-[0.18em] text-muted">{% render 'translate', key: m_key, fallback: block.settings.text %}</span>
           <span class="h-1.5 w-1.5 rounded-full bg-brand/50"></span>
         </span>
       {% endfor %}
@@ -25,7 +25,7 @@
           "type": "text",
           "id": "text",
           "label": "Text",
-          "default": "Conçu avec soin"
+          "default": "Thoughtfully Designed"
         }
       ]
     }
@@ -34,14 +34,14 @@
     {
       "name": "Custom Marquee",
       "blocks": [
-        { "type": "marquee_item", "settings": { "text": "Conçu avec soin" } },
-        { "type": "marquee_item", "settings": { "text": "Silicone médical" } },
-        { "type": "marquee_item", "settings": { "text": "Recharge USB-C" } },
-        { "type": "marquee_item", "settings": { "text": "Garantie 2 ans" } },
-        { "type": "marquee_item", "settings": { "text": "Discret et léger" } },
-        { "type": "marquee_item", "settings": { "text": "Adapté adultes & enfants" } },
-        { "type": "marquee_item", "settings": { "text": "Livraison offerte" } },
-        { "type": "marquee_item", "settings": { "text": "30 jours satisfait ou remboursé" } }
+        { "type": "marquee_item", "settings": { "text": "Thoughtfully Designed" } },
+        { "type": "marquee_item", "settings": { "text": "Medical-Grade Silicone" } },
+        { "type": "marquee_item", "settings": { "text": "USB-C Rechargeable" } },
+        { "type": "marquee_item", "settings": { "text": "2-Year Warranty" } },
+        { "type": "marquee_item", "settings": { "text": "Discreet & Lightweight" } },
+        { "type": "marquee_item", "settings": { "text": "For Adults & Kids" } },
+        { "type": "marquee_item", "settings": { "text": "Free Shipping" } },
+        { "type": "marquee_item", "settings": { "text": "30-Day Money-Back Guarantee" } }
       ]
     }
   ]
