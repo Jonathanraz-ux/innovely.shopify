@@ -238,63 +238,25 @@
     {% endif %}
 
     {% if show_language %}
-      <div class="language-selector{% if show_country %} top-shadow{% else %} language-selector--collapse-space{% endif %}{% if show_country == false and localization_style == 'drawer' %} h5{% endif %}">
-        <h2
-          class="visually-hidden"
-          id="{{ localization_style }}-LanguageLabel"
+      {% assign current_lang = localization.language.iso_code | downcase %}
+      {% if current_lang == blank %}{% assign current_lang = 'en' %}{% endif %}
+
+      <div class="language-selector-pill inline-flex items-center gap-1 rounded-full border border-paper/20 bg-paper/10 p-1 backdrop-blur text-xs font-semibold uppercase tracking-wider text-paper">
+        <button
+          type="button"
+          class="lang-btn inline-flex items-center gap-1 rounded-full px-3 py-1.5 transition-all duration-300 {% if current_lang == 'en' %}bg-brand text-paper shadow-sm{% else %}text-paper/70 hover:text-paper{% endif %}"
+          onclick="var f=this.closest('form'); if(f){ var inp=f.querySelector('input[name=language_code]'); if(inp){ inp.value='en'; f.submit(); } }"
         >
-          {{ 'content.language' | t }}
-        </h2>
-        {% if show_country == true %}
-          <span class="language-selector__label">{{ 'content.language' | t }}</span>
-        {% else %}
-          {%- render 'language-flag' -%}
-        {% endif %}
-        <select
-          id="{{ localization_style }}Select"
-          class="localization-form__select"
-          name="language_code"
-          aria-label="{{ 'content.language' | t }}"
-          ref="languageInput"
-          on:change="/changeLanguage"
+          <span>🇬🇧</span> EN
+        </button>
+        <button
+          type="button"
+          class="lang-btn inline-flex items-center gap-1 rounded-full px-3 py-1.5 transition-all duration-300 {% if current_lang == 'fr' %}bg-brand text-paper shadow-sm{% else %}text-paper/70 hover:text-paper{% endif %}"
+          onclick="var f=this.closest('form'); if(f){ var inp=f.querySelector('input[name=language_code]'); if(inp){ inp.value='fr'; f.submit(); } }"
         >
-          {%- assign avail_langs = localization.available_languages -%}
-          {%- if avail_langs.size > 1 -%}
-            {%- for language in avail_langs -%}
-              <option
-                value="{{ language.iso_code }}"
-                lang="{{ language.iso_code }}"
-                {% if language.iso_code == localization.language.iso_code %}
-                  selected
-                {% endif %}
-              >
-                {{ language.endonym_name | capitalize }}
-              </option>
-            {%- endfor -%}
-          {%- else -%}
-            <option
-              value="en"
-              lang="en"
-              {% if localization.language.iso_code == 'en' or localization.language.iso_code == blank %}
-                selected
-              {% endif %}
-            >
-              English (EN)
-            </option>
-            <option
-              value="fr"
-              lang="fr"
-              {% if localization.language.iso_code == 'fr' %}
-                selected
-              {% endif %}
-            >
-              Français (FR)
-            </option>
-          {%- endif -%}
-        </select>
-        <span class="svg-wrapper icon-caret">
-          {{- 'icon-caret.svg' | inline_asset_content -}}
-        </span>
+          <span>🇫🇷</span> FR
+        </button>
+        <input type="hidden" name="language_code" ref="languageInput" value="{{ current_lang }}">
       </div>
     {% endif %}
   {%- endform -%}
