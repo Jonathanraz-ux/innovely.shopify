@@ -1,6 +1,7 @@
 {%- assign first_color_hex = '#0a0a0a' -%}
 {%- assign first_color_name = 'innovely.personalization.color_1_name' | t -%}
-{%- if first_color_name | downcase contains 'translation missing' -%}
+{%- assign first_color_name_lower = first_color_name | downcase -%}
+{%- if first_color_name_lower contains 'translation missing' -%}
   {%- assign first_color_name = 'Midnight Black' -%}
 {%- endif -%}
 {%- assign color_index = 0 -%}
@@ -10,18 +11,21 @@
     {%- assign first_color_hex = block.settings.hex -%}
     {%- assign first_color_key = 'innovely.personalization.color_' | append: color_index | append: '_name' -%}
     {%- assign first_color_name = first_color_key | t -%}
-    {%- if first_color_name | downcase contains 'translation missing' -%}
+    {%- assign first_color_name_lower = first_color_name | downcase -%}
+    {%- if first_color_name_lower contains 'translation missing' -%}
       {%- assign first_color_name = block.settings.name -%}
     {%- endif -%}
     {%- break -%}
   {%- endif -%}
 {%- endfor -%}
 {%- assign personalization_image_tag = 'innovely.personalization.image_tag' | t -%}
-{%- if personalization_image_tag | downcase contains 'translation missing' -%}
+{%- assign personalization_image_tag_lower = personalization_image_tag | downcase -%}
+{%- if personalization_image_tag_lower contains 'translation missing' -%}
   {%- assign personalization_image_tag = section.settings.image_tag -%}
 {%- endif -%}
 {%- assign personalization_preview_label = 'innovely.personalization.preview_label' | t -%}
-{%- if personalization_preview_label | downcase contains 'translation missing' -%}
+{%- assign personalization_preview_label_lower = personalization_preview_label | downcase -%}
+{%- if personalization_preview_label_lower contains 'translation missing' -%}
   {%- assign personalization_preview_label = section.settings.preview_label -%}
 {%- endif -%}
 
@@ -54,7 +58,8 @@
                   {%- assign color_count = color_count | plus: 1 -%}
                   {%- assign color_key = 'innovely.personalization.color_' | append: color_count | append: '_name' -%}
                   {%- assign color_name = color_key | t -%}
-                  {%- if color_name | downcase contains 'translation missing' -%}
+                  {%- assign color_name_lower = color_name | downcase -%}
+                  {%- if color_name_lower contains 'translation missing' -%}
                     {%- assign color_name = block.settings.name -%}
                   {%- endif -%}
                   <button

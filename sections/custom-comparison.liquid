@@ -37,7 +37,8 @@
               {% assign label_key = 'innovely.comparison.f' | append: forloop.index | append: '_label' %}
               {% assign note_key = 'innovely.comparison.f' | append: forloop.index | append: '_note' %}
               {%- assign note_val = note_key | t -%}
-              {%- if note_val | downcase contains 'translation missing' -%}
+              {%- assign note_val_lower = note_val | downcase -%}
+              {%- if note_val_lower contains 'translation missing' -%}
                 {%- assign note_val = block.settings.col3_note -%}
               {%- endif -%}
               <div class="grid grid-cols-4 items-center gap-3">
