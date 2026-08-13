@@ -36,9 +36,13 @@
             {% for block in section.blocks %}
               {%- assign note_val = block.settings.col3_note -%}
               {%- if forloop.index == 1 -%}
-                {%- assign note_val = 'innovely.comparison.f1_note' | t | default: block.settings.col3_note -%}
+                {%- assign note_val = 'innovely.comparison.f1_note' | t -%}
               {%- elsif forloop.index == 4 -%}
-                {%- assign note_val = 'innovely.comparison.f4_note' | t | default: block.settings.col3_note -%}
+                {%- assign note_val = 'innovely.comparison.f4_note' | t -%}
+              {%- endif -%}
+              {%- assign note_val_lower = note_val | downcase -%}
+              {%- if note_val_lower contains 'translation missing' -%}
+                {%- assign note_val = block.settings.col3_note -%}
               {%- endif -%}
               <div class="grid grid-cols-4 items-center gap-3">
                 <p class="pr-4 text-[15px] font-medium leading-snug text-ink">

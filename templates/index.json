@@ -53,15 +53,15 @@
     "custom_how_it_works_1": {
       "type": "custom-how-it-works",
       "blocks": {
-        "step1": { "type": "step", "settings": { "title": "", "text": "" } },
-        "step2": { "type": "step", "settings": { "title": "", "text": "" } },
-        "step3": { "type": "step", "settings": { "title": "", "text": "" } }
+        "step1": { "type": "step", "settings": { "title": "Analyze your posture", "text": "Place the sensor on your back. It automatically calibrates your ideal posture in real time." } },
+        "step2": { "type": "step", "settings": { "title": "Feel the vibration", "text": "As soon as you slouch, a gentle vibration reminds you to straighten up without any pain." } },
+        "step3": { "type": "step", "settings": { "title": "Strengthen your back", "text": "Day after day, you build the muscle memory needed to stand up straight without thinking about it." } }
       },
       "block_order": ["step1", "step2", "step3"],
       "settings": {
-        "eyebrow": "",
-        "title": "",
-        "subtitle": ""
+        "eyebrow": "THE METHOD",
+        "title": "How it works",
+        "subtitle": "A simple method to retrain your posture every day."
       }
     },
     "custom_featured_product_1": {

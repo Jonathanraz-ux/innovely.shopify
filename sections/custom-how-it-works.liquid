@@ -31,33 +31,25 @@
                 </svg>
               </div>
               <h3 class="mt-8 max-w-[24ch] font-display text-2xl leading-snug">
-                {%- if block.settings.title != blank -%}
-                  {{ block.settings.title }}
+                {%- if forloop.index == 1 -%}
+                  {% render 'translate', key: 'innovely.how_it_works.step1_title', fallback: block.settings.title %}
+                {%- elsif forloop.index == 2 -%}
+                  {% render 'translate', key: 'innovely.how_it_works.step2_title', fallback: block.settings.title %}
+                {%- elsif forloop.index == 3 -%}
+                  {% render 'translate', key: 'innovely.how_it_works.step3_title', fallback: block.settings.title %}
                 {%- else -%}
-                  {%- if forloop.index == 1 -%}
-                    {% render 'translate', key: 'innovely.how_it_works.step1_title', fallback: block.settings.title %}
-                  {%- elsif forloop.index == 2 -%}
-                    {% render 'translate', key: 'innovely.how_it_works.step2_title', fallback: block.settings.title %}
-                  {%- elsif forloop.index == 3 -%}
-                    {% render 'translate', key: 'innovely.how_it_works.step3_title', fallback: block.settings.title %}
-                  {%- else -%}
-                    {{ block.settings.title }}
-                  {%- endif -%}
+                  {{ block.settings.title }}
                 {%- endif -%}
               </h3>
               <p class="mt-4 leading-relaxed text-muted">
-                {%- if block.settings.text != blank -%}
-                  {{ block.settings.text }}
+                {%- if forloop.index == 1 -%}
+                  {% render 'translate', key: 'innovely.how_it_works.step1_text', fallback: block.settings.text %}
+                {%- elsif forloop.index == 2 -%}
+                  {% render 'translate', key: 'innovely.how_it_works.step2_text', fallback: block.settings.text %}
+                {%- elsif forloop.index == 3 -%}
+                  {% render 'translate', key: 'innovely.how_it_works.step3_text', fallback: block.settings.text %}
                 {%- else -%}
-                  {%- if forloop.index == 1 -%}
-                    {% render 'translate', key: 'innovely.how_it_works.step1_text', fallback: block.settings.text %}
-                  {%- elsif forloop.index == 2 -%}
-                    {% render 'translate', key: 'innovely.how_it_works.step2_text', fallback: block.settings.text %}
-                  {%- elsif forloop.index == 3 -%}
-                    {% render 'translate', key: 'innovely.how_it_works.step3_text', fallback: block.settings.text %}
-                  {%- else -%}
-                    {{ block.settings.text }}
-                  {%- endif -%}
+                  {{ block.settings.text }}
                 {%- endif -%}
               </p>
             </article>

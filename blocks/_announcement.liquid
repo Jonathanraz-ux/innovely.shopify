@@ -6,7 +6,7 @@
 
 {%- unless plain_text == '' -%}
   <span {{ block.shopify_attributes }} class="inline-flex items-center gap-3 sm:gap-6">
-    <span>{{ 'innovely.announcement.text' | t | default: block.settings.text }}</span>
+    <span>{% render 'translate', key: 'innovely.announcement.text', fallback: block.settings.text %}</span>
     <span class="hidden text-paper/30 sm:inline last:hidden">•</span>
   </span>
 {%- endunless -%}

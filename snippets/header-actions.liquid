@@ -63,9 +63,20 @@
   {% endif %}
   {{- block.shopify_attributes -}}
 >
-  <div class="header-actions__action header-actions__localization">
-    {% render 'localization-form', show_language: true, show_country: false, localization_style: 'dropdown' %}
-  </div>
+  {% liquid
+    assign show_language = true
+    if localization.available_languages.size <= 1
+      assign show_language = false
+    endif
+    if section.settings.show_language == false
+      assign show_language = false
+    endif
+  %}
+  {% if show_language %}
+    <div class="header-actions__action header-actions__localization">
+      {% render 'localization-form', show_language: true, show_country: false, localization_style: 'dropdown' %}
+    </div>
+  {% endif %}
   {% if shop.customer_accounts_enabled %}
     {% liquid
       assign account_actions_style = ''
