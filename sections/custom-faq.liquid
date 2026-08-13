@@ -13,13 +13,23 @@
 
     <div class="mt-14 space-y-3 custom-faq-container">
       {% for block in section.blocks %}
-        {% assign q_key = 'innovely.faq.q' | append: forloop.index | append: '_question' %}
-        {% assign a_key = 'innovely.faq.q' | append: forloop.index | append: '_answer' %}
         <div class="reveal in-view" style="transition-delay: {{ forloop.index0 | times: 60 }}ms;">
           <div class="faq-item overflow-hidden rounded-3xl border border-line bg-paper transition-all duration-500">
             <button class="faq-trigger flex w-full items-center justify-between gap-6 px-7 py-6 text-left" aria-expanded="false">
               <span class="font-display text-lg leading-snug text-ink sm:text-xl">
-                {% render 'translate', key: q_key, fallback: block.settings.question %}
+                {%- if forloop.index == 1 -%}
+                  {% render 'translate', key: 'innovely.faq.q1_question', fallback: block.settings.question %}
+                {%- elsif forloop.index == 2 -%}
+                  {% render 'translate', key: 'innovely.faq.q2_question', fallback: block.settings.question %}
+                {%- elsif forloop.index == 3 -%}
+                  {% render 'translate', key: 'innovely.faq.q3_question', fallback: block.settings.question %}
+                {%- elsif forloop.index == 4 -%}
+                  {% render 'translate', key: 'innovely.faq.q4_question', fallback: block.settings.question %}
+                {%- elsif forloop.index == 5 -%}
+                  {% render 'translate', key: 'innovely.faq.q5_question', fallback: block.settings.question %}
+                {%- else -%}
+                  {{ block.settings.question }}
+                {%- endif -%}
               </span>
               <span class="faq-icon inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-line text-muted transition-all duration-300">
                 <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
@@ -27,7 +37,21 @@
             </button>
             <div class="faq-content grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]" style="grid-template-rows: 0fr;">
               <div class="overflow-hidden">
-                <p class="px-7 pb-7 leading-relaxed text-muted">{% render 'translate', key: a_key, fallback: block.settings.answer %}</p>
+                <p class="px-7 pb-7 leading-relaxed text-muted">
+                  {%- if forloop.index == 1 -%}
+                    {% render 'translate', key: 'innovely.faq.q1_answer', fallback: block.settings.answer %}
+                  {%- elsif forloop.index == 2 -%}
+                    {% render 'translate', key: 'innovely.faq.q2_answer', fallback: block.settings.answer %}
+                  {%- elsif forloop.index == 3 -%}
+                    {% render 'translate', key: 'innovely.faq.q3_answer', fallback: block.settings.answer %}
+                  {%- elsif forloop.index == 4 -%}
+                    {% render 'translate', key: 'innovely.faq.q4_answer', fallback: block.settings.answer %}
+                  {%- elsif forloop.index == 5 -%}
+                    {% render 'translate', key: 'innovely.faq.q5_answer', fallback: block.settings.answer %}
+                  {%- else -%}
+                    {{ block.settings.answer }}
+                  {%- endif -%}
+                </p>
               </div>
             </div>
           </div>

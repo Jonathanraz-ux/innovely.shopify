@@ -44,10 +44,19 @@
 
       <div class="mt-12 grid gap-10 border-t border-line pt-10 sm:grid-cols-3 sm:gap-6">
         {% for block in section.blocks %}
-          {% assign stat_key = 'innovely.problem.stat_' | append: forloop.index | append: '_label' %}
           <div class="reveal in-view" style="transition-delay: {{ forloop.index0 | times: 100 }}ms;">
             <p class="font-display text-5xl text-ink">{{ block.settings.value }}</p>
-            <p class="mt-3 text-sm leading-relaxed text-muted">{% render 'translate', key: stat_key, fallback: block.settings.label %}</p>
+            <p class="mt-3 text-sm leading-relaxed text-muted">
+              {%- if forloop.index == 1 -%}
+                {% render 'translate', key: 'innovely.problem.stat_1_label', fallback: block.settings.label %}
+              {%- elsif forloop.index == 2 -%}
+                {% render 'translate', key: 'innovely.problem.stat_2_label', fallback: block.settings.label %}
+              {%- elsif forloop.index == 3 -%}
+                {% render 'translate', key: 'innovely.problem.stat_3_label', fallback: block.settings.label %}
+              {%- else -%}
+                {{ block.settings.label }}
+              {%- endif -%}
+            </p>
           </div>
         {% endfor %}
       </div>

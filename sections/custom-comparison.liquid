@@ -34,15 +34,26 @@
           <!-- rows -->
           <div class="mt-3 space-y-3">
             {% for block in section.blocks %}
-              {% assign label_key = 'innovely.comparison.f' | append: forloop.index | append: '_label' %}
-              {% assign note_key = 'innovely.comparison.f' | append: forloop.index | append: '_note' %}
-              {%- assign note_val = note_key | t -%}
-              {%- assign note_val_lower = note_val | downcase -%}
-              {%- if note_val_lower contains 'translation missing' -%}
-                {%- assign note_val = block.settings.col3_note -%}
+              {%- assign note_val = block.settings.col3_note -%}
+              {%- if forloop.index == 1 -%}
+                {%- assign note_val = 'innovely.comparison.f1_note' | t | default: block.settings.col3_note -%}
+              {%- elsif forloop.index == 4 -%}
+                {%- assign note_val = 'innovely.comparison.f4_note' | t | default: block.settings.col3_note -%}
               {%- endif -%}
               <div class="grid grid-cols-4 items-center gap-3">
-                <p class="pr-4 text-[15px] font-medium leading-snug text-ink">{% render 'translate', key: label_key, fallback: block.settings.label %}</p>
+                <p class="pr-4 text-[15px] font-medium leading-snug text-ink">
+                  {%- if forloop.index == 1 -%}
+                    {% render 'translate', key: 'innovely.comparison.f1_label', fallback: block.settings.label %}
+                  {%- elsif forloop.index == 2 -%}
+                    {% render 'translate', key: 'innovely.comparison.f2_label', fallback: block.settings.label %}
+                  {%- elsif forloop.index == 3 -%}
+                    {% render 'translate', key: 'innovely.comparison.f3_label', fallback: block.settings.label %}
+                  {%- elsif forloop.index == 4 -%}
+                    {% render 'translate', key: 'innovely.comparison.f4_label', fallback: block.settings.label %}
+                  {%- else -%}
+                    {{ block.settings.label }}
+                  {%- endif -%}
+                </p>
                 <div class="flex justify-center rounded-2xl bg-brand-soft/60 py-3">
                   {% render 'comparison-cell', value: block.settings.col1_val, note: block.settings.col1_note %}
                 </div>

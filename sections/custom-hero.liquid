@@ -45,12 +45,19 @@
       <div class="reveal in-view" style="transition-delay: 340ms;">
         <ul class="mt-10 flex list-none flex-col gap-2.5 border-t border-line pt-6 text-sm text-muted sm:flex-row sm:gap-8">
           {% for block in section.blocks %}
-            {% assign r_key = 'innovely.hero.r' | append: forloop.index | append: '_text' %}
             <li class="flex items-center gap-2.5">
               <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-brand-soft text-brand">
                 <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
               </span>
-              {% render 'translate', key: r_key, fallback: block.settings.text %}
+              {%- if forloop.index == 1 -%}
+                {% render 'translate', key: 'innovely.hero.r1_text', fallback: block.settings.text %}
+              {%- elsif forloop.index == 2 -%}
+                {% render 'translate', key: 'innovely.hero.r2_text', fallback: block.settings.text %}
+              {%- elsif forloop.index == 3 -%}
+                {% render 'translate', key: 'innovely.hero.r3_text', fallback: block.settings.text %}
+              {%- else -%}
+                {{ block.settings.text }}
+              {%- endif -%}
             </li>
           {% endfor %}
         </ul>

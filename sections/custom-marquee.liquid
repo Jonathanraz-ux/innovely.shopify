@@ -2,9 +2,28 @@
   <div class="animate-marquee flex w-max items-center gap-10 whitespace-nowrap">
     {% for i in (1..2) %}
       {% for block in section.blocks %}
-        {% assign m_key = 'innovely.marquee.m' | append: forloop.index | append: '_text' %}
         <span class="flex items-center gap-10">
-          <span class="text-sm font-medium uppercase tracking-[0.18em] text-muted">{% render 'translate', key: m_key, fallback: block.settings.text %}</span>
+          <span class="text-sm font-medium uppercase tracking-[0.18em] text-muted">
+            {%- if forloop.index == 1 -%}
+              {% render 'translate', key: 'innovely.marquee.m1_text', fallback: block.settings.text %}
+            {%- elsif forloop.index == 2 -%}
+              {% render 'translate', key: 'innovely.marquee.m2_text', fallback: block.settings.text %}
+            {%- elsif forloop.index == 3 -%}
+              {% render 'translate', key: 'innovely.marquee.m3_text', fallback: block.settings.text %}
+            {%- elsif forloop.index == 4 -%}
+              {% render 'translate', key: 'innovely.marquee.m4_text', fallback: block.settings.text %}
+            {%- elsif forloop.index == 5 -%}
+              {% render 'translate', key: 'innovely.marquee.m5_text', fallback: block.settings.text %}
+            {%- elsif forloop.index == 6 -%}
+              {% render 'translate', key: 'innovely.marquee.m6_text', fallback: block.settings.text %}
+            {%- elsif forloop.index == 7 -%}
+              {% render 'translate', key: 'innovely.marquee.m7_text', fallback: block.settings.text %}
+            {%- elsif forloop.index == 8 -%}
+              {% render 'translate', key: 'innovely.marquee.m8_text', fallback: block.settings.text %}
+            {%- else -%}
+              {{ block.settings.text }}
+            {%- endif -%}
+          </span>
           <span class="h-1.5 w-1.5 rounded-full bg-brand/50"></span>
         </span>
       {% endfor %}

@@ -9,8 +9,7 @@
   {%- if block.type == 'color' -%}
     {%- assign color_index = color_index | plus: 1 -%}
     {%- assign first_color_hex = block.settings.hex -%}
-    {%- assign first_color_key = 'innovely.personalization.color_' | append: color_index | append: '_name' -%}
-    {%- assign first_color_name = first_color_key | t -%}
+    {%- assign first_color_name = 'innovely.personalization.color_1_name' | t -%}
     {%- assign first_color_name_lower = first_color_name | downcase -%}
     {%- if first_color_name_lower contains 'translation missing' -%}
       {%- assign first_color_name = block.settings.name -%}
@@ -52,16 +51,25 @@
           <div class="mt-10">
             <p class="text-xs font-semibold uppercase tracking-[0.18em] text-paper/50">{% render 'translate', key: 'innovely.personalization.color_label', fallback: section.settings.color_label %}</p>
             <div class="mt-4 flex flex-wrap gap-3" data-personalization-colors>
-              {%- assign color_count = 0 -%}
-              {% for block in section.blocks %}
-                {% if block.type == 'color' %}
-                  {%- assign color_count = color_count | plus: 1 -%}
-                  {%- assign color_key = 'innovely.personalization.color_' | append: color_count | append: '_name' -%}
-                  {%- assign color_name = color_key | t -%}
-                  {%- assign color_name_lower = color_name | downcase -%}
-                  {%- if color_name_lower contains 'translation missing' -%}
-                    {%- assign color_name = block.settings.name -%}
-                  {%- endif -%}
+                  {%- assign color_count = 0 -%}
+                  {% for block in section.blocks %}
+                    {% if block.type == 'color' %}
+                      {%- assign color_count = color_count | plus: 1 -%}
+                      {%- if color_count == 1 -%}
+                        {%- assign color_name = 'innovely.personalization.color_1_name' | t -%}
+                      {%- elsif color_count == 2 -%}
+                        {%- assign color_name = 'innovely.personalization.color_2_name' | t -%}
+                      {%- elsif color_count == 3 -%}
+                        {%- assign color_name = 'innovely.personalization.color_3_name' | t -%}
+                      {%- elsif color_count == 4 -%}
+                        {%- assign color_name = 'innovely.personalization.color_4_name' | t -%}
+                      {%- else -%}
+                        {%- assign color_name = block.settings.name -%}
+                      {%- endif -%}
+                      {%- assign color_name_lower = color_name | downcase -%}
+                      {%- if color_name_lower contains 'translation missing' -%}
+                        {%- assign color_name = block.settings.name -%}
+                      {%- endif -%}
                   <button
                     type="button"
                     class="persona-color flex items-center gap-2.5 rounded-full border px-4 py-2.5 text-sm transition-all duration-300 {% if color_count == 1 %}border-brand bg-brand/15 text-paper{% else %}border-paper/15 text-paper/70 hover:border-paper/40{% endif %}"
@@ -82,18 +90,34 @@
           <div class="mt-8">
             <p class="text-xs font-semibold uppercase tracking-[0.18em] text-paper/50">{% render 'translate', key: 'innovely.personalization.version_label', fallback: section.settings.version_label %}</p>
             <div class="mt-4 grid gap-3 sm:grid-cols-2">
-              {%- assign version_count = 0 -%}
-              {% for block in section.blocks %}
-                {% if block.type == 'version' %}
-                  {%- assign version_count = version_count | plus: 1 -%}
-                  {%- assign version_label_key = 'innovely.personalization.version_' | append: version_count | append: '_label' -%}
-                  {%- assign version_note_key = 'innovely.personalization.version_' | append: version_count | append: '_note' -%}
-                  <div class="rounded-2xl border p-5 text-left {% if version_count == 1 %}border-brand bg-brand/15{% else %}border-paper/15{% endif %}">
-                    <p class="font-display text-xl">{% render 'translate', key: version_label_key, fallback: block.settings.label %}</p>
-                    <p class="mt-1 text-sm text-paper/60">{% render 'translate', key: version_note_key, fallback: block.settings.note %}</p>
-                  </div>
-                {% endif %}
-              {% endfor %}
+                  {%- assign version_count = 0 -%}
+                  {% for block in section.blocks %}
+                    {% if block.type == 'version' %}
+                      {%- assign version_count = version_count | plus: 1 -%}
+                      {%- if version_count == 1 -%}
+                        {%- assign version_label = 'innovely.personalization.version_1_label' | t -%}
+                        {%- assign version_note = 'innovely.personalization.version_1_note' | t -%}
+                      {%- elsif version_count == 2 -%}
+                        {%- assign version_label = 'innovely.personalization.version_2_label' | t -%}
+                        {%- assign version_note = 'innovely.personalization.version_2_note' | t -%}
+                      {%- else -%}
+                        {%- assign version_label = block.settings.label -%}
+                        {%- assign version_note = block.settings.note -%}
+                      {%- endif -%}
+                      {%- assign version_label_lower = version_label | downcase -%}
+                      {%- if version_label_lower contains 'translation missing' -%}
+                        {%- assign version_label = block.settings.label -%}
+                      {%- endif -%}
+                      {%- assign version_note_lower = version_note | downcase -%}
+                      {%- if version_note_lower contains 'translation missing' -%}
+                        {%- assign version_note = block.settings.note -%}
+                      {%- endif -%}
+                      <div class="rounded-2xl border p-5 text-left {% if version_count == 1 %}border-brand bg-brand/15{% else %}border-paper/15{% endif %}">
+                        <p class="font-display text-xl">{{ version_label }}</p>
+                        <p class="mt-1 text-sm text-paper/60">{{ version_note }}</p>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
             </div>
           </div>
         </div>

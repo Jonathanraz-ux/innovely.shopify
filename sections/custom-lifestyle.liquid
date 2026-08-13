@@ -40,15 +40,38 @@
               {% endif %}
             </svg>
             
-            {% assign tag_key = 'innovely.lifestyle.b' | append: forloop.index | append: '_tag' %}
-            {% assign title_key = 'innovely.lifestyle.b' | append: forloop.index | append: '_title' %}
-            {% assign text_key = 'innovely.lifestyle.b' | append: forloop.index | append: '_text' %}
             <p class="relative mt-10 text-[11px] font-semibold uppercase tracking-[0.2em] text-paper/60">
-              {% render 'translate', key: tag_key, fallback: block.settings.tag %}
+              {%- if forloop.index == 1 -%}
+                {% render 'translate', key: 'innovely.lifestyle.b1_tag', fallback: block.settings.tag %}
+              {%- elsif forloop.index == 2 -%}
+                {% render 'translate', key: 'innovely.lifestyle.b2_tag', fallback: block.settings.tag %}
+              {%- elsif forloop.index == 3 -%}
+                {% render 'translate', key: 'innovely.lifestyle.b3_tag', fallback: block.settings.tag %}
+              {%- else -%}
+                {{ block.settings.tag }}
+              {%- endif -%}
             </p>
-            <h3 class="relative mt-2 font-display text-2xl leading-snug">{% render 'translate', key: title_key, fallback: block.settings.title %}</h3>
+            <h3 class="relative mt-2 font-display text-2xl leading-snug">
+              {%- if forloop.index == 1 -%}
+                {% render 'translate', key: 'innovely.lifestyle.b1_title', fallback: block.settings.title %}
+              {%- elsif forloop.index == 2 -%}
+                {% render 'translate', key: 'innovely.lifestyle.b2_title', fallback: block.settings.title %}
+              {%- elsif forloop.index == 3 -%}
+                {% render 'translate', key: 'innovely.lifestyle.b3_title', fallback: block.settings.title %}
+              {%- else -%}
+                {{ block.settings.title }}
+              {%- endif -%}
+            </h3>
             <p class="relative mt-3 max-w-[32ch] text-[15px] leading-relaxed text-paper/75">
-              {% render 'translate', key: text_key, fallback: block.settings.text %}
+              {%- if forloop.index == 1 -%}
+                {% render 'translate', key: 'innovely.lifestyle.b1_text', fallback: block.settings.text %}
+              {%- elsif forloop.index == 2 -%}
+                {% render 'translate', key: 'innovely.lifestyle.b2_text', fallback: block.settings.text %}
+              {%- elsif forloop.index == 3 -%}
+                {% render 'translate', key: 'innovely.lifestyle.b3_text', fallback: block.settings.text %}
+              {%- else -%}
+                {{ block.settings.text }}
+              {%- endif -%}
             </p>
           </article>
         </div>
