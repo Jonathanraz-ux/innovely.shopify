@@ -1,4 +1,4 @@
 {{ 'overflow-list.css' | asset_url | preload_tag: as: 'style' }}
 {{ 'base.css' | asset_url | stylesheet_tag: preload: true }}
 {{ 'innovely-design.css' | asset_url | stylesheet_tag: preload: true }}
-{{ 'innovely-brand.css' | asset_url | stylesheet_tag: preload: true }}
+<style>{{ 'innovely-brand.css' | asset_content }}</style>

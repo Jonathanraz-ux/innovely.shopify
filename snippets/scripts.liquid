@@ -53,9 +53,6 @@
 <script
   src="{{ 'view-transitions.js' | asset_url }}"
   async
-  {% if settings.page_transition_enabled or settings.transition_to_main_product %}
-    blocking="render"
-  {% endif %}
 ></script>
 
 <link rel="modulepreload" href="{{ 'utilities.js' | asset_url }}" fetchpriority="low">
@@ -63,14 +60,13 @@
 <link rel="modulepreload" href="{{ 'section-renderer.js' | asset_url }}" fetchpriority="low">
 <link rel="modulepreload" href="{{ 'section-hydration.js' | asset_url }}" fetchpriority="low">
 <link rel="modulepreload" href="{{ 'morph.js' | asset_url }}" fetchpriority="low">
+<link rel="modulepreload" href="{{ 'focus.js' | asset_url }}" fetchpriority="low">
+<link rel="modulepreload" href="{{ 'events.js' | asset_url }}" fetchpriority="low">
 
 {% if template.name == 'collection' or template.name == 'search' %}
   <link rel="modulepreload" href="{{ 'paginated-list-aspect-ratio.js' | asset_url }}" fetchpriority="low">
   <link rel="modulepreload" href="{{ 'paginated-list.js' | asset_url }}" fetchpriority="low">
 {% endif %}
-
-<link rel="modulepreload" href="{{ 'focus.js' | asset_url }}" fetchpriority="low">
-<link rel="modulepreload" href="{{ 'events.js' | asset_url }}" fetchpriority="low">
 
 <script>
   if (!HTMLElement.prototype.hasOwnProperty('popover')) {
@@ -82,12 +78,15 @@
 </script>
 <script src="{{ 'overflow-list.js' | asset_url }}" type="module" fetchpriority="low"></script>
 <script src="{{ 'dialog.js' | asset_url }}" type="module" fetchpriority="low"></script>
-<script src="{{ 'variant-picker.js' | asset_url }}" type="module" fetchpriority="low"></script>
 <script src="{{ 'product-form.js' | asset_url }}" type="module" fetchpriority="low"></script>
 <script src="{{ 'fly-to-cart.js' | asset_url }}" type="module" fetchpriority="low"></script>
-<script src="{{ 'accordion-custom.js' | asset_url }}" type="module" fetchpriority="low"></script>
 {% if settings.show_add_discount_code %}
   <script src="{{ 'cart-discount.js' | asset_url }}" type="module" fetchpriority="low"></script>
+{% endif %}
+
+{% if template.name == 'collection' or template.name == 'search' or template.name == 'product' %}
+  <script src="{{ 'variant-picker.js' | asset_url }}" type="module" fetchpriority="low"></script>
+  <script src="{{ 'accordion-custom.js' | asset_url }}" type="module" fetchpriority="low"></script>
 {% endif %}
 
 {% if template.name == 'collection' or template.name == 'search' %}
