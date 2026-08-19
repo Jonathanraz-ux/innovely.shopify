@@ -1,4 +1,4 @@
-<section id="avis" class="bg-[#0066FF] text-white">
+<section id="avis" class="bg-[#0035cc] text-white">
   <div class="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-32">
     <div class="mx-auto max-w-2xl text-center">
       <div class="reveal in-view">
@@ -18,8 +18,8 @@
           {% assign stat_val = 'stat' | append: i | append: '_val' %}
           {% assign stat_label = 'stat' | append: i | append: '_label' %}
           <div class="bg-white px-8 py-10 text-center">
-            <p class="font-display text-5xl tracking-tight text-[#0066FF]">{{ section.settings[stat_val] }}</p>
-            <p class="mx-auto mt-3 max-w-[26ch] text-sm leading-relaxed text-[#0066FF]">
+            <p class="font-display text-5xl tracking-tight text-[#0035cc]">{{ section.settings[stat_val] }}</p>
+            <p class="mx-auto mt-3 max-w-[26ch] text-sm leading-relaxed text-[#0035cc]">
               {%- if i == 1 -%}
                 {% render 'translate', key: 'innovely.social_proof.stat1_label', fallback: section.settings[stat_label] %}
               {%- elsif i == 2 -%}

@@ -325,6 +325,7 @@ main[data-template='product'] .product-information .innovely-card :is(p, li, spa
 
 /* ---- White color utilities ---- */
 .text-white { color: #ffffff; }
+.\!text-white { color: #ffffff !important; }
 .\!text-white\/70 { color: rgba(255, 255, 255, 0.70) !important; }
 .bg-white { background-color: #ffffff; }
 .bg-white\/20 { background-color: rgba(255, 255, 255, 0.20); }
@@ -342,3 +343,11 @@ main[data-template='product'] .product-information .innovely-card :is(p, li, spa
 
 /* ---- Off-white section backgrounds ---- */
 .bg-paper-deep { background-color: var(--color-paper-deep); }
+
+/* ---- Fix email-signup button contrast (#00a2ff background → #0052ff) ---- */
+.email-signup__button:not(.button-unstyled):not(.button-secondary) {
+  background-color: var(--color-brand) !important;
+}
+
+/* ---- Fix social-proof section blue background contrast ---- */
+.bg-\[\#0066FF\] { background-color: #0035cc; }
