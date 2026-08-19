@@ -14,6 +14,10 @@
       >
     {%- endif -%}
 
+    {% if template.name == 'index' %}
+      <link rel="preload" as="image" href="{{ 'hero-posture-before-after.jpg' | asset_url }}" fetchpriority="high" width="750" height="939">
+    {% endif %}
+
     {% comment %} This a way to wait for main content to load when navigating to a new page so that the view transitions can work consistently {% endcomment %}
     {% if settings.transition_to_main_product or settings.page_transition_enabled %}
       <link

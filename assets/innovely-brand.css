@@ -131,6 +131,13 @@ ul.list-none {
    without any color separation between them.
    ========================================================================== */
 
+/* LCP optimization: skip reveal animation for hero section above the fold */
+#top .reveal {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
 #header-group [id*="announcement"],
 #header-group .announcement-wrapper,
 #header-group .bg-ink,
@@ -347,6 +354,29 @@ main[data-template='product'] .product-information .innovely-card :is(p, li, spa
 /* ---- Fix email-signup button contrast (#00a2ff background → #0052ff) ---- */
 .email-signup__button:not(.button-unstyled):not(.button-secondary) {
   background-color: var(--color-brand) !important;
+}
+
+/* ---- Override Tailwind compiled bg-brand (#00a2ff → #0052ff) ---- */
+.bg-brand {
+  background-color: #0052ff !important;
+}
+.text-brand {
+  color: #0052ff !important;
+}
+.bg-brand-soft {
+  background-color: #e8f4ff !important;
+}
+.bg-brand-mist {
+  background-color: #d6ecff !important;
+}
+.border-brand {
+  border-color: #0052ff !important;
+}
+.\!text-white\/70 {
+  color: rgba(255, 255, 255, 0.70) !important;
+}
+.hover\:bg-brand:hover {
+  background-color: #0088d6 !important;
 }
 
 /* ---- Fix social-proof section blue background contrast ---- */
