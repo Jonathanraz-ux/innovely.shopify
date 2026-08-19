@@ -79,12 +79,12 @@
 <script src="{{ 'overflow-list.js' | asset_url }}" type="module" fetchpriority="low"></script>
 <script src="{{ 'dialog.js' | asset_url }}" type="module" fetchpriority="low"></script>
 <script src="{{ 'product-form.js' | asset_url }}" type="module" fetchpriority="low"></script>
-<script src="{{ 'fly-to-cart.js' | asset_url }}" type="module" fetchpriority="low"></script>
 {% if settings.show_add_discount_code %}
   <script src="{{ 'cart-discount.js' | asset_url }}" type="module" fetchpriority="low"></script>
 {% endif %}
 
 {% if template.name == 'collection' or template.name == 'search' or template.name == 'product' %}
+  <script src="{{ 'fly-to-cart.js' | asset_url }}" type="module" fetchpriority="low"></script>
   <script src="{{ 'variant-picker.js' | asset_url }}" type="module" fetchpriority="low"></script>
   <script src="{{ 'accordion-custom.js' | asset_url }}" type="module" fetchpriority="low"></script>
 {% endif %}
