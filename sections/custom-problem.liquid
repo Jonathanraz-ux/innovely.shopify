@@ -68,7 +68,7 @@
           {% if section.settings.image != blank %}
             <img src="{{ section.settings.image | image_url: width: 800 }}" alt="{{ section.settings.title | strip_html | escape }}" class="h-full w-full object-cover" loading="lazy" />
           {% else %}
-            {{ 'lifestyle-1' | placeholder_svg_tag: 'h-full w-full object-cover bg-gray-100' }}
+            <img src="{{ 'product-hand-close-up.jpg' | asset_url }}" alt="Smart Posture Corrector close up" class="h-full w-full object-cover" loading="lazy" />
           {% endif %}
           <div class="absolute inset-0 bg-gradient-to-t from-ink/55 via-transparent to-transparent"></div>
           <div class="absolute left-5 top-5 flex items-center gap-2 rounded-full border border-line bg-paper/90 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink backdrop-blur">
@@ -96,19 +96,19 @@
       "type": "text",
       "id": "eyebrow",
       "label": "Eyebrow",
-      "default": "The Problem"
+      "default": "Le problème"
     },
     {
       "type": "html",
       "id": "title",
       "label": "Title (HTML)",
-      "default": "Your screens are ruining your posture. <em class=\"text-brand\">Slowly, but surely.</em>"
+      "default": "Vos écrans ruinent votre posture. <em class=\"text-brand\">Lentement, mais sûrement.</em>"
     },
     {
       "type": "richtext",
       "id": "text",
       "label": "Text",
-      "default": "<p>It starts with \u201cjust one more class,\u201d \u201cone last email,\u201d \u201cone more episode.\u201d Eight hours later, your shoulders have dropped, your head is forward, and your back is taking the hit in silence.</p><p>What you\u2019re feeling \u2014 fatigue, tension, back pain \u2014 is your body begging for a posture that no one ever taught you. The worst part? You get used to it. Until the day it becomes the norm.</p>"
+      "default": "<p>On commence par « juste un cours », « un dernier mail », « un épisode de plus ». Huit heures plus tard, les épaules sont tombées, la tête avance, et le dos encaisse en silence.</p><p>Ce que vous ressentez — fatigue, tensions, mal de dos — c'est votre corps qui vous réclame une posture que personne ne vous a jamais apprise. Le pire ? On finit par s'y habituer. Jusqu'au jour où ça devient la norme.</p>"
     },
     {
       "type": "image_picker",
@@ -119,13 +119,13 @@
       "type": "text",
       "id": "badge",
       "label": "Badge Text",
-      "default": "8h / day"
+      "default": "8h / jour"
     },
     {
       "type": "html",
       "id": "tip",
       "label": "Tip Text (HTML)",
-      "default": "<span class=\"font-semibold text-ink\">Every centimeter</span> your head moves forward adds up to <span class=\"font-semibold text-ink\">4 kg</span> of pressure on your cervical spine. Your back carries it for you. Every single day."
+      "default": "<span class=\"font-semibold text-ink\">Chaque centimètre</span> que votre tête avance ajoute jusqu'à <span class=\"font-semibold text-ink\">4 kg</span> de pression sur vos cervicales. Votre dos le porte pour vous. Chaque jour."
     }
   ],
   "blocks": [
@@ -144,7 +144,7 @@
           "type": "text",
           "id": "label",
           "label": "Label",
-          "default": "spent on average sitting in front of screens every day"
+          "default": "passées en moyenne assis face aux écrans chaque jour"
         }
       ]
     }

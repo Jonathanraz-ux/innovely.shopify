@@ -1,4 +1,4 @@
-<section id="faq" class="bg-paper-deep/60">
+<section id="faq" data-section-id="{{ section.id }}" style="background-color: #FFFFFF;">
   <div class="mx-auto max-w-3xl px-5 py-24 sm:px-8 lg:py-32">
     <div class="text-center">
       <div class="reveal in-view">
@@ -15,7 +15,7 @@
       {% for block in section.blocks %}
         <div class="reveal in-view" style="transition-delay: {{ forloop.index0 | times: 60 }}ms;">
           <div class="faq-item overflow-hidden rounded-3xl border border-line bg-paper transition-all duration-500">
-            <button class="faq-trigger flex w-full items-center justify-between gap-6 px-7 py-6 text-left" aria-expanded="false">
+            <button id="faq-trigger-{{ section.id }}-{{ forloop.index }}" class="faq-trigger flex w-full items-center justify-between gap-6 px-7 py-6 text-left" aria-expanded="false" aria-controls="faq-content-{{ section.id }}-{{ forloop.index }}">
               <span class="font-display text-lg leading-snug text-ink sm:text-xl">
                 {%- if forloop.index == 1 -%}
                   {% render 'translate', key: 'innovely.faq.q1_question', fallback: block.settings.question %}
@@ -35,7 +35,7 @@
                 <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
               </span>
             </button>
-            <div class="faq-content grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]" style="grid-template-rows: 0fr;">
+            <div id="faq-content-{{ section.id }}-{{ forloop.index }}" class="faq-content grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]" role="region" aria-labelledby="faq-trigger-{{ section.id }}-{{ forloop.index }}" style="grid-template-rows: 0fr;">
               <div class="overflow-hidden">
                 <p class="px-7 pb-7 leading-relaxed text-muted">
                   {%- if forloop.index == 1 -%}
@@ -63,9 +63,11 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const faqContainer = document.querySelector('.custom-faq-container');
+    const sectionEl = document.querySelector('[data-section-id="{{ section.id }}"]');
+    if (!sectionEl) return;
+    const faqContainer = sectionEl.querySelector('.custom-faq-container');
     if (!faqContainer) return;
-    
+
     const items = faqContainer.querySelectorAll('.faq-item');
     
     items.forEach(item => {
@@ -117,7 +119,7 @@
       "type": "text",
       "id": "title",
       "label": "Title",
-      "default": "Frequently Asked Questions"
+      "default": "Questions fréquentes"
     }
   ],
   "blocks": [
@@ -129,13 +131,13 @@
           "type": "text",
           "id": "question",
           "label": "Question",
-          "default": "How does it work?"
+          "default": "Comment ça marche ?"
         },
         {
           "type": "textarea",
           "id": "answer",
           "label": "Answer",
-          "default": "Here is the answer."
+          "default": "Voici la réponse."
         }
       ]
     }

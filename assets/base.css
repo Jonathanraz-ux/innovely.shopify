@@ -4017,27 +4017,6 @@ main > .shopify-section:first-child .section:not(.disable-section-top-offset) {
 }
 
 
-/*header svg,
-header .header__icon svg,
-header search-button svg,
-header button svg {
-  color: #ffffff !important;
-}
-.header__menu-item > a:hover,
-.header__menu-item > button:hover,
-.menu-drawer__menu-item:hover,
-header-menu a:hover {
-  background-color: transparent !important;
-  box-shadow: none !important;
-}
-header a:hover,
-header button:hover,
-header li:hover,
-header li a:hover {
-  background-color: transparent !important;
-  background: transparent !important;
-}*/
-
 /* Product page full width override */
 .template-product .page-width {
   max-width: 100% !important;
@@ -4066,23 +4045,20 @@ body{
 
 /* Footer background force */
 .footer,
-.footer-utilities,
-[class*="footer"] {
+.footer-utilities {
   background-color: #060B16 !important;
   color: #ffffff !important;
 }
 
 /* Footer links */
 .footer a,
-.footer-utilities a,
-[class*="footer"] a {
+.footer-utilities a {
   color: #ffffff !important;
   text-decoration: none;
 }
 
 .footer a:hover,
-.footer-utilities a:hover,
-[class*="footer"] a:hover {
+.footer-utilities a:hover {
   color: #00BFFF !important; /* cyan accent hover */
   text-decoration: underline;
 }
@@ -4094,20 +4070,16 @@ body{
 .footer h4,
 .footer h5,
 .footer h6,
-[class*="footer"] h1,
-[class*="footer"] h2,
-[class*="footer"] h3,
-[class*="footer"] h4,
-[class*="footer"] h5,
-[class*="footer"] h6 {
+.footer-utilities h1,
+.footer-utilities h2,
+.footer-utilities h3,
+.footer-utilities h4,
+.footer-utilities h5,
+.footer-utilities h6 {
   color: #ffffff !important;
 }
 
-/* Footer background force 060B16 */
-#shopify-section-sections--18876274016315__divider_PwNwX3 {
-  background-color: #060B16 !important;
-}
-.footer *{
+.footer * {
   color: #ffffff !important;
 }
 

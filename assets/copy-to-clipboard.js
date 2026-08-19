@@ -11,7 +11,7 @@ class CopyToClipboardComponent extends Component {
 
     if (!copyContent) return;
 
-    navigator.clipboard.writeText(copyContent);
+    navigator.clipboard.writeText(copyContent).catch(() => {});
 
     const copySuccessMessage = this.refs.copySuccessMessage;
 

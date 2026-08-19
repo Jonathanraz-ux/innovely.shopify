@@ -36,8 +36,6 @@
     {% endif %}
 
     {{ content_for_header }}
-    {{ 'innovely-design.css' | asset_url | stylesheet_tag }}
-    {{ 'innovely-brand.css' | asset_url | stylesheet_tag }}
   </head>
 
   <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
@@ -53,7 +51,7 @@
       <script>
         // Inline header height and menu style calculations to prevent layout shift
         // Note: Updates in calculateHeaderGroupHeight(), updateTransparentHeaderOffset() and setHeaderMenuStyle() utilities.js should be kept in sync with this function
-        (function setHeaderHeighCustomProperties() {
+        (function setHeaderHeightCustomProperties() {
           /*
            * Header calculation functions for maintaining CSS variables
            * Mimic calculateHeaderGroupHeight() in utilities.js

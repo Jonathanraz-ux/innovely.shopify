@@ -70,9 +70,9 @@
         <!-- main photo -->
         <div class="img-zoom relative aspect-[4/5] overflow-hidden rounded-4xl border border-line shadow-soft sm:aspect-[5/5.4]">
           {% if section.settings.image_main != blank %}
-            {{ section.settings.image_main | image_url: width: 1000 | image_tag: class: 'h-full w-full object-cover', loading: 'eager' }}
-          {% elsif request.design_mode %}
-            {{ 'image' | placeholder_svg_tag: 'h-full w-full object-cover bg-gray-100' }}
+            {{ section.settings.image_main | image_url: width: 1000 | image_tag: class: 'h-full w-full object-cover', loading: 'eager', fetchpriority: 'high' }}
+          {% else %}
+            <img src="{{ 'hero-posture-before-after.jpg' | asset_url }}" alt="Smart Posture Corrector" class="h-full w-full object-cover" loading="eager" fetchpriority="high" />
           {% endif %}
           <div class="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/10 to-transparent"></div>
 
@@ -134,25 +134,25 @@
       "type": "text",
       "id": "eyebrow",
       "label": "Eyebrow",
-      "default": "DAILY SUPPORT"
+      "default": "CORRECTEUR DE POSTURE INTELLIGENT"
     },
     {
       "type": "text",
       "id": "title",
       "label": "Title",
-      "default": "Straighten your posture. Naturally."
+      "default": "Retrouvez une posture parfaite."
     },
     {
       "type": "textarea",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "A minimalist approach to relieve tension and restore your natural balance."
+      "default": "Le premier correcteur de posture intelligent qui vous rééduque activement."
     },
     {
       "type": "text",
       "id": "cta1_label",
       "label": "CTA 1 Label",
-      "default": "Discover Innovely"
+      "default": "Découvrir le correcteur de posture intelligent"
     },
     {
       "type": "url",
@@ -163,7 +163,7 @@
       "type": "text",
       "id": "cta2_label",
       "label": "CTA 2 Label",
-      "default": "How it works"
+      "default": "Comment ça marche"
     },
     {
       "type": "url",
@@ -184,13 +184,13 @@
       "type": "text",
       "id": "chip_name",
       "label": "Chip Name",
-      "default": "SMART DEVICE"
+      "default": "DISPOSITIF INTELLIGENT"
     },
     {
       "type": "text",
       "id": "chip_tag",
       "label": "Chip Tag",
-      "default": "Innovely One"
+      "default": "Correcteur de posture intelligent"
     },
     {
       "type": "text",
@@ -208,13 +208,13 @@
       "type": "text",
       "id": "result_label",
       "label": "Result Label",
-      "default": "RESULTS"
+      "default": "RÉSULTATS"
     },
     {
       "type": "text",
       "id": "result_value",
       "label": "Result Value",
-      "default": "From 14 days"
+      "default": "Dès 14 jours"
     }
   ],
   "blocks": [
@@ -237,13 +237,13 @@
         {
           "type": "reassurance",
           "settings": {
-            "text": "Invisible under clothing"
+            "text": "Invisible sous les vêtements"
           }
         },
         {
           "type": "reassurance",
           "settings": {
-            "text": "Guaranteed comfort"
+            "text": "Confort garanti 30 jours"
           }
         }
       ]

@@ -123,11 +123,14 @@
   href="{{ 'events.js' | asset_url }}"
   fetchpriority="low"
 >
-<script
-  src="{{ 'popover-polyfill.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
+<script>
+  if (!HTMLElement.prototype.hasOwnProperty('popover')) {
+    const script = document.createElement('script');
+    script.src = "{{ 'popover-polyfill.js' | asset_url }}";
+    script.type = 'module';
+    document.head.appendChild(script);
+  }
+</script>
 <script
   src="{{ 'overflow-list.js' | asset_url }}"
   type="module"

@@ -3,6 +3,9 @@
     "home": "Home",
     "accueil": "Home",
     "posture_corrector": "Posture corrector",
+    "correcteur_de_posture": "Posture corrector",
+    "correcteur_posture": "Posture corrector",
+    "smart_posture_corrector": "Posture corrector",
     "le_produit": "The Product",
     "the_product": "The Product",
     "contact": "Contact"
@@ -18,7 +21,7 @@
   },
   "innovely": {
     "announcement": {
-      "text": "FREE SHIPPING IN 48-72H | 30-DAY MONEY-BACK GUARANTEE | 2-YEAR WARRANTY"
+      "text": "MONEY-BACK GUARANTEE | 2-YEAR WARRANTY"
     },
     "product": {
       "disclosures_heading": "Product details"
@@ -27,10 +30,10 @@
       "eyebrow": "SMART POSTURE CORRECTOR",
       "title": "Achieve perfect posture.",
       "subtitle": "The first smart posture corrector that actively retrains your muscles.",
-      "cta1_label": "Discover Innovely",
+      "cta1_label": "Discover the Smart Posture Corrector",
       "cta2_label": "How it works",
       "chip_name": "SMART DEVICE",
-      "chip_tag": "Innovely One",
+      "chip_tag": "Smart Posture Corrector",
       "posture_label": "POSTURE",
       "posture_value": "98%",
       "result_label": "RESULTS",
@@ -40,10 +43,11 @@
       "r3_text": "Free shipping"
     },
     "featured_product": {
-      "eyebrow": "PATENTED INNOVELY® DEVICE",
+      "eyebrow": "PATENTED SMART POSTURE CORRECTOR",
       "title": "Straighten your back. Free your energy.",
-      "subtitle": "Using precision sensors, Innovely® detects your spinal slouching in real time and emits a subtle micro-vibration to naturally retrain your posture.",
+      "subtitle": "Using precision sensors, the Smart Posture Corrector detects your spinal slouching in real time and emits a subtle micro-vibration to naturally retrain your posture.",
       "verified_reviews": "Verified reviews",
+      "low_stock_urgency": "Limited stock: only few left in stock!",
       "no_product_selected": "No product selected",
       "no_product_selected_instructions": "Open this section's settings and choose a product in the theme editor. The purchase card only displays when a product is assigned.",
       "product_unavailable": "This product is no longer available."
@@ -60,8 +64,8 @@
     },
     "comparison": {
       "eyebrow": "COMPARISON",
-      "title": "Why choose Innovely?",
-      "col1_title": "Innovely",
+      "title": "Why choose the Smart Posture Corrector?",
+      "col1_title": "Smart Posture Corrector",
       "col1_badge": "Recommended",
       "col2_title": "Classic Back Brace",
       "col3_title": "Other Sensors",
@@ -78,7 +82,7 @@
       "stat1_label": "active daily users",
       "stat2_label": "average rating on Trustpilot",
       "stat3_label": "feel less pain within 30 days",
-      "rev1_meta": "Using Innovely for 3 months",
+      "rev1_meta": "Using the Smart Posture Corrector for 3 months",
       "rev1_text": "In 3 weeks, my neck pain almost completely disappeared. I can't live without it.",
       "rev2_meta": "Developer, working remotely for 2 years",
       "rev2_text": "The vibration is so subtle you forget about it... until you realize you're standing straighter!",
@@ -101,7 +105,7 @@
       "subtitle": "Key moments where our device makes all the difference, everywhere with you.",
       "b1_tag": "At the office",
       "b1_title": "8am - Focus mode",
-      "b1_text": "No more slouching in front of your screen. Innovely discreetly reminds you.",
+      "b1_text": "No more slouching in front of your screen. This device discreetly reminds you.",
       "b2_tag": "On the move",
       "b2_title": "12pm - Active",
       "b2_text": "Maintain optimal posture wherever your day takes you.",
@@ -122,16 +126,16 @@
     "faq": {
       "eyebrow": "FAQ",
       "title": "Frequently Asked Questions",
-      "q1_question": "How does the Innovely posture sensor work?",
-      "q1_answer": "Innovely uses a 6-axis gyroscope that detects micro-slouches of your spine in real time. It emits a gentle vibration as soon as you slouch past your ideal posture threshold.",
+      "q1_question": "How does the Smart Posture Corrector work?",
+      "q1_answer": "It uses a 6-axis gyroscope that detects micro-slouches of your spine in real time. It emits a gentle vibration as soon as you slouch past your ideal posture threshold.",
       "q2_question": "Is it visible under clothing?",
-      "q2_answer": "No, Innovely is only 8mm thick and slips discreetly under your t-shirt or shirt. It is completely invisible.",
+      "q2_answer": "No, it is only 8mm thick and slips discreetly under your t-shirt or shirt. It is completely invisible.",
       "q3_question": "How long does it take to see results?",
       "q3_answer": "Most of our users report visible improvements after 2 to 3 weeks of regular use (at least 30 mins/day).",
       "q4_question": "What is the battery life?",
       "q4_answer": "The battery lasts up to 7 days under normal use. A full charge takes about 1 hour and 30 minutes via USB-C.",
       "q5_question": "Is there a warranty?",
-      "q5_answer": "Yes, Innovely comes with a 2-year warranty. In addition, we offer a 30-day risk-free money-back guarantee."
+      "q5_answer": "Yes, the Smart Posture Corrector comes with a 2-year warranty. In addition, we offer a 30-day risk-free money-back guarantee."
     },
     "how_it_works": {
       "eyebrow": "THE METHOD",
@@ -147,7 +151,7 @@
     "personalization": {
       "eyebrow": "Made in your image",
       "title": "Made for you, <em class=\"text-brand\">or for them.</em>",
-      "subtitle": "Choose your color, your version, and engrave a word that stays with you every day. Innovely becomes an object that looks like you.",
+      "subtitle": "Choose your color, your version, and engrave a word that stays with you every day. This device becomes an object that looks like you.",
       "color_label": "Color",
       "version_label": "Version",
       "engraving_title": "Free engraving",
@@ -499,6 +503,14 @@
     "blog_post_description": "An excerpt of your blog post's content"
   },
   "products": {
+    "posture_corrector": {
+      "title": "Smart Posture Corrector",
+      "subtitle": "Straighten your posture with smart technology.",
+      "smart_vibration": "Smart Vibration Reminder",
+      "color_black": "Black",
+      "color_pink": "Pink",
+      "color_blue": "Blue"
+    },
     "product": {
       "add_to_cart": "Add to cart",
       "adding_to_cart": "Adding...",

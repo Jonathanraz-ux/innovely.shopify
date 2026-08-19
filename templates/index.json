@@ -12,10 +12,10 @@
         "eyebrow": "SMART POSTURE CORRECTOR",
         "title": "Achieve perfect posture.",
         "subtitle": "The first smart posture corrector that actively retrains your muscles.",
-        "cta1_label": "Discover Innovely",
+        "cta1_label": "Discover the Smart Posture Corrector",
         "cta1_link": "#produit",
         "cta2_link": "#methode",
-        "image_main": "shopify://shop_images/ChatGPT_Image_26_juil._2026_12_44_29_1.png"
+        "image_main": ""
       }
     },
     "custom_marquee_1": {
@@ -44,8 +44,8 @@
       "settings": {
         "eyebrow": "The Problem",
         "title": "Your screens are ruining your posture. <em class=\"text-brand\">Slowly, but surely.</em>",
-        "text": "<p>It starts with \u201cjust one more class,\u201d \u201cone last email,\u201d \u201cone more episode.\u201d Eight hours later, your shoulders have dropped, your head is forward, and your back is taking the hit in silence.</p><p>What you\u2019re feeling \u2014 fatigue, tension, back pain \u2014 is your body begging for a posture that no one ever taught you. The worst part? You get used to it. Until the day it becomes the norm.</p>",
-        "image": "shopify://shop_images/Gemini_Generated_Image_pkz7mdpkz7mdpkz7.png",
+        "text": "<p>It starts with “just one more class,” “one last email,” “one more episode.” Eight hours later, your shoulders have dropped, your head is forward, and your back is taking the hit in silence.</p><p>What you’re feeling — fatigue, tension, back pain — is your body begging for a posture that no one ever taught you. The worst part? You get used to it. Until the day it becomes the norm.</p>",
+        "image": "",
         "badge": "8h / day",
         "tip": "<span class=\"font-semibold text-ink\">Every centimeter</span> your head moves forward adds up to <span class=\"font-semibold text-ink\">4 kg</span> of pressure on your cervical spine. Your back carries it for you. Every single day."
       }
@@ -70,9 +70,9 @@
       "block_order": [],
       "settings": {
         "product": "shopify://products/oem-adjustable-back-brace-straightening-detection-reminder-spine-vibrates-smart-posture-corrector",
-        "eyebrow": "PATENTED INNOVELY® DEVICE",
+        "eyebrow": "PATENTED SMART POSTURE CORRECTOR",
         "title": "Straighten your back. Free your energy.",
-        "subtitle": "Using precision sensors, Innovely® detects your spinal slouching in real time and emits a subtle micro-vibration to naturally retrain your posture.",
+        "subtitle": "Using precision sensors, the Smart Posture Corrector detects your spinal slouching in real time and emits a subtle micro-vibration to naturally retrain your posture.",
         "show_dynamic_checkout": true
       }
     },
@@ -87,8 +87,8 @@
       "block_order": ["f1", "f2", "f3", "f4"],
       "settings": {
         "eyebrow": "COMPARISON",
-        "title": "Why choose Innovely?",
-        "col1_title": "Innovely",
+        "title": "Why choose the Smart Posture Corrector?",
+        "col1_title": "Smart Posture Corrector",
         "col1_badge": "Recommended",
         "col2_title": "Classic Back Brace",
         "col3_title": "Other Sensors"
@@ -97,7 +97,7 @@
     "custom_social_proof_1": {
       "type": "custom-social-proof",
       "blocks": {
-        "rev1": { "type": "review", "settings": { "name": "Camille M.", "meta": "Using Innovely for 3 months", "text": "In 3 weeks, my neck pain almost completely disappeared. I can't live without it." } },
+        "rev1": { "type": "review", "settings": { "name": "Camille M.", "meta": "Using the Smart Posture Corrector for 3 months", "text": "In 3 weeks, my neck pain almost completely disappeared. I can't live without it." } },
         "rev2": { "type": "review", "settings": { "name": "Louis B.", "meta": "Developer, working remotely for 2 years", "text": "The vibration is so subtle you forget about it... until you realize you're standing straighter!" } },
         "rev3": { "type": "review", "settings": { "name": "Sarah R.", "meta": "Sports coach", "text": "I recommend it to all my clients. Visible results in less than a month." } },
         "u1": { "type": "ugc", "settings": { "image": "shopify://shop_images/Gemini_Generated_Image_3zz9383zz9383zz9.png", "tag": "At the office", "name": "@camille.m" } },
@@ -124,7 +124,7 @@
     "custom_lifestyle_1": {
       "type": "custom-lifestyle",
       "blocks": {
-        "b1": { "type": "moment", "settings": { "image": "shopify://shop_images/3.png", "tag": "At the office", "title": "8am - Focus mode", "text": "No more slouching in front of your screen. Innovely discreetly reminds you." } },
+        "b1": { "type": "moment", "settings": { "image": "shopify://shop_images/3.png", "tag": "At the office", "title": "8am - Focus mode", "text": "No more slouching in front of your screen. This device discreetly reminds you." } },
         "b2": { "type": "moment", "settings": { "image": "shopify://shop_images/6.jpg", "tag": "On the move", "title": "12pm - Active", "text": "Maintain optimal posture wherever your day takes you." } },
         "b3": { "type": "moment", "settings": { "image": "shopify://shop_images/1.jpg", "tag": "Evening", "title": "7pm - Recovery", "text": "Release accumulated tension. Your back will thank you tomorrow." } }
       },
@@ -138,11 +138,11 @@
     "custom_faq_1": {
       "type": "custom-faq",
       "blocks": {
-        "q1": { "type": "faq_item", "settings": { "question": "How does the Innovely posture sensor work?", "answer": "Innovely uses a 6-axis gyroscope that detects micro-slouches of your spine in real time. It emits a gentle vibration as soon as you slouch past your ideal posture threshold." } },
-        "q2": { "type": "faq_item", "settings": { "question": "Is it visible under clothing?", "answer": "No, Innovely is only 8mm thick and slips discreetly under your t-shirt or shirt. It is completely invisible." } },
+        "q1": { "type": "faq_item", "settings": { "question": "How does the Smart Posture Corrector work?", "answer": "It uses a 6-axis gyroscope that detects micro-slouches of your spine in real time. It emits a gentle vibration as soon as you slouch past your ideal posture threshold." } },
+        "q2": { "type": "faq_item", "settings": { "question": "Is it visible under clothing?", "answer": "No, it is only 8mm thick and slips discreetly under your t-shirt or shirt. It is completely invisible." } },
         "q3": { "type": "faq_item", "settings": { "question": "How long does it take to see results?", "answer": "Most of our users report visible improvements after 2 to 3 weeks of regular use (at least 30 mins/day)." } },
         "q4": { "type": "faq_item", "settings": { "question": "What is the battery life?", "answer": "The battery lasts up to 7 days under normal use. A full charge takes about 1 hour and 30 minutes via USB-C." } },
-        "q5": { "type": "faq_item", "settings": { "question": "Is there a warranty?", "answer": "Yes, Innovely comes with a 2-year warranty. In addition, we offer a 30-day risk-free money-back guarantee." } }
+        "q5": { "type": "faq_item", "settings": { "question": "Is there a warranty?", "answer": "Yes, the Smart Posture Corrector comes with a 2-year warranty. In addition, we offer a 30-day risk-free money-back guarantee." } }
       },
       "block_order": ["q1", "q2", "q3", "q4", "q5"],
       "settings": {

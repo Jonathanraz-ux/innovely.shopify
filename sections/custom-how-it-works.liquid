@@ -1,4 +1,4 @@
-<section id="methode" class="bg-paper">
+<section id="methode" style="background-color: #F8FAFC;">
   <div class="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-32">
     <div class="mx-auto max-w-2xl text-center">
       <div class="reveal in-view">
@@ -22,13 +22,34 @@
         {% for block in section.blocks %}
           <div class="reveal in-view" style="transition-delay: {{ forloop.index0 | times: 140 }}ms;">
             <article class="group relative h-full rounded-4xl border border-line bg-paper p-8 transition-all duration-500 hover:-translate-y-1.5 hover:border-brand/40 hover:shadow-card lg:p-10">
-              <span class="absolute right-8 top-8 font-display text-5xl text-line transition-colors duration-500 group-hover:text-brand-mist">
+              <span class="absolute right-8 top-8 font-display text-5xl text-muted/80 transition-colors duration-500 group-hover:text-brand-mist">
                 0{{ forloop.index }}
               </span>
               <div class="relative inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-brand text-paper shadow-soft">
-                <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 2v20"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                </svg>
+                {%- if forloop.index == 1 -%}
+                  <!-- Sensor/Scan/Target -->
+                  <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M12 2v4M12 18v4M2 12h4M18 12h4"></path>
+                  </svg>
+                {%- elsif forloop.index == 2 -%}
+                  <!-- Vibration/Waves/Bell -->
+                  <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.94 1.94 0 0 0 3.4 0M4 4c-.7.7-1.5 1.6-1.9 2.6M20 4c.7.7 1.5 1.6 1.9 2.6"></path>
+                  </svg>
+                {%- elsif forloop.index == 3 -%}
+                  <!-- Muscle/Shield/Success -->
+                  <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    <path d="m9 11 2 2 4-4"></path>
+                  </svg>
+                {%- else -%}
+                  <!-- Fallback: generic activity icon -->
+                  <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                  </svg>
+                {%- endif -%}
               </div>
               <h3 class="mt-8 max-w-[24ch] font-display text-2xl leading-snug">
                 {%- if forloop.index == 1 -%}
@@ -68,19 +89,19 @@
       "type": "text",
       "id": "eyebrow",
       "label": "Eyebrow",
-      "default": "THE METHOD"
+      "default": "LA MÉTHODE"
     },
     {
       "type": "text",
       "id": "title",
       "label": "Title",
-      "default": "How it works"
+      "default": "Comment ça marche"
     },
     {
       "type": "textarea",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "A simple method to retrain your posture every day."
+      "default": "Une approche en 3 étapes pour rééduquer activement votre posture au quotidien."
     }
   ],
   "blocks": [
@@ -92,13 +113,13 @@
           "type": "text",
           "id": "title",
           "label": "Title",
-          "default": "Step 1"
+          "default": "Étape 1"
         },
         {
           "type": "textarea",
           "id": "text",
           "label": "Text",
-          "default": "Description of step 1"
+          "default": "Description de l'étape 1"
         }
       ]
     }
@@ -110,22 +131,22 @@
         {
           "type": "step",
           "settings": {
-            "title": "Analyze your posture",
-            "text": "Place the sensor on your back. It automatically calibrates your ideal posture in real time."
+            "title": "Analysez votre posture",
+            "text": "Placez le capteur dans votre dos. Il calibre automatiquement votre posture idéale en temps réel."
           }
         },
         {
           "type": "step",
           "settings": {
-            "title": "Feel the vibration",
-            "text": "As soon as you slouch, a gentle vibration reminds you to straighten up without any pain."
+            "title": "Ressentez la vibration",
+            "text": "Dès que vous vous tenez mal, une légère vibration vous rappelle de vous redresser sans douleur."
           }
         },
         {
           "type": "step",
           "settings": {
-            "title": "Strengthen your back",
-            "text": "Day after day, you build the muscle memory needed to stand up straight without thinking about it."
+            "title": "Musclez votre dos",
+            "text": "Jour après jour, vous développez la mémoire musculaire nécessaire pour vous tenir droit sans y penser."
           }
         }
       ]

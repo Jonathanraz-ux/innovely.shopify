@@ -28,7 +28,7 @@
   {%- assign personalization_preview_label = section.settings.preview_label -%}
 {%- endif -%}
 
-<section id="personnalisation" class="bg-ink text-paper grain">
+<section id="personnalisation" data-section-id="{{ section.id }}" class="bg-ink text-paper grain">
   <div class="relative mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-32">
     <div aria-hidden="true" class="pointer-events-none absolute inset-0" style="background: radial-gradient(40rem 26rem at 90% 20%, #00a2ff26 0%, transparent 55%), radial-gradient(30rem 22rem at 5% 90%, #0052ff14 0%, transparent 55%)"></div>
 
@@ -154,15 +154,15 @@
           <div class="relative flex flex-col items-center gap-6">
             <svg viewBox="0 0 220 140" class="w-full max-w-xs sm:max-w-sm" role="img" aria-label="{{ personalization_preview_label }}">
               <path d="M10 70c30-22 60-22 90-22s60 0 90 22c-30 22-60 22-90 22s-60 0-90-22z" fill="#26262a" opacity="0.85"></path>
-              <circle id="js-device-circle" cx="110" cy="70" r="44" fill="{{ first_color_hex }}" stroke="#ffffff1f" stroke-width="1.5"></circle>
+              <circle id="js-device-circle-{{ section.id }}" cx="110" cy="70" r="44" fill="{{ first_color_hex }}" stroke="#ffffff1f" stroke-width="1.5"></circle>
               <circle cx="110" cy="70" r="36" fill="#0a0a0a"></circle>
               <path d="M90 58c13 11 27 11 40 0" fill="none" stroke="#f8f6f3" stroke-width="2.2" stroke-linecap="round"></path>
               <circle cx="130" cy="58" r="3.4" fill="#f8f6f3"></circle>
-              <text id="js-engrave-text" x="110" y="90" text-anchor="middle" font-size="9" fill="#9c9a92" letter-spacing="3" font-family="Inter, sans-serif" style="opacity: 0;">{% render 'translate', key: 'innovely.personalization.engraving_short', fallback: section.settings.engraving_short %}</text>
+              <text id="js-engrave-text-{{ section.id }}" x="110" y="90" text-anchor="middle" font-size="9" fill="#9c9a92" letter-spacing="3" font-family="Inter, sans-serif" style="opacity: 0;">{% render 'translate', key: 'innovely.personalization.engraving_short', fallback: section.settings.engraving_short %}</text>
             </svg>
             <div class="mt-4 text-center">
-              <p id="js-color-name" class="font-display text-2xl text-paper">{{ first_color_name }}</p>
-              <p id="js-preview-text" class="mt-1 text-sm text-paper/60">{% render 'translate', key: 'innovely.personalization.preview_text', fallback: section.settings.preview_text %}</p>
+              <p id="js-color-name-{{ section.id }}" class="font-display text-2xl text-paper">{{ first_color_name }}</p>
+              <p id="js-preview-text-{{ section.id }}" class="mt-1 text-sm text-paper/60">{% render 'translate', key: 'innovely.personalization.preview_text', fallback: section.settings.preview_text %}</p>
             </div>
           </div>
         </div>
@@ -173,9 +173,11 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const colorContainer = document.querySelector('[data-personalization-colors]');
-    const circle = document.getElementById('js-device-circle');
-    const colorName = document.getElementById('js-color-name');
+    const sectionEl = document.querySelector('[data-section-id="{{ section.id }}"]');
+    if (!sectionEl) return;
+    const colorContainer = sectionEl.querySelector('[data-personalization-colors]');
+    const circle = document.getElementById('js-device-circle-{{ section.id }}');
+    const colorName = document.getElementById('js-color-name-{{ section.id }}');
     if (!colorContainer || !circle || !colorName) return;
 
     const colors = colorContainer.querySelectorAll('.persona-color');
@@ -208,9 +210,9 @@
       });
     });
 
-    const engravingToggle = document.querySelector('.js-engraving-toggle');
-    const engraveText = document.getElementById('js-engrave-text');
-    const engravingCheck = document.querySelector('.js-engraving-check');
+    const engravingToggle = sectionEl.querySelector('.js-engraving-toggle');
+    const engraveText = document.getElementById('js-engrave-text-{{ section.id }}');
+    const engravingCheck = sectionEl.querySelector('.js-engraving-check');
 
     if (engravingToggle && engraveText && engravingCheck) {
       engravingToggle.addEventListener('click', () => {
@@ -242,25 +244,25 @@
       "type": "text",
       "id": "eyebrow",
       "label": "Eyebrow",
-      "default": "Made in your image"
+      "default": "À votre image"
     },
     {
       "type": "text",
       "id": "title",
       "label": "Title",
-      "default": "Made for you, <em class=\"text-brand\">or for them.</em>"
+      "default": "Fait pour vous, <em class=\"text-brand\">ou pour eux.</em>"
     },
     {
       "type": "textarea",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "Choose your color, your version, and engrave a word that stays with you every day. Innovely becomes an object that looks like you."
+      "default": "Choisissez votre couleur, votre version, et gravez un mot qui vous accompagne au quotidien. Ce dispositif devient un objet qui vous ressemble."
     },
     {
       "type": "text",
       "id": "color_label",
       "label": "Color Label",
-      "default": "Color"
+      "default": "Couleur"
     },
     {
       "type": "text",
@@ -272,31 +274,31 @@
       "type": "text",
       "id": "engraving_title",
       "label": "Engraving Title",
-      "default": "Free engraving"
+      "default": "Gravure offerte"
     },
     {
       "type": "textarea",
       "id": "engraving_text",
       "label": "Engraving Text",
-      "default": "Your first name, an initial or a word that matters, engraved on the back of your sensor."
+      "default": "Votre prénom, une initiale ou un mot qui compte, gravé au dos de votre capteur."
     },
     {
       "type": "text",
       "id": "engraving_short",
       "label": "Engraving Short Text",
-      "default": "FOR ME"
+      "default": "POUR MOI"
     },
     {
       "type": "text",
       "id": "preview_text",
       "label": "Preview Text",
-      "default": "Adult version"
+      "default": "Version adulte"
     },
     {
       "type": "text",
       "id": "preview_label",
       "label": "Preview Label (aria)",
-      "default": "Preview of the personalized sensor"
+      "default": "Aperçu du capteur personnalisé"
     },
     {
       "type": "image_picker",
@@ -307,7 +309,7 @@
       "type": "text",
       "id": "image_tag",
       "label": "Side Image Tag",
-      "default": "At work"
+      "default": "Au travail"
     }
   ],
   "blocks": [
@@ -319,7 +321,7 @@
           "type": "text",
           "id": "name",
           "label": "Name",
-          "default": "Midnight Black"
+          "default": "Noir minuit"
         },
         {
           "type": "color",
@@ -337,13 +339,13 @@
           "type": "text",
           "id": "label",
           "label": "Label",
-          "default": "Adult"
+          "default": "Adulte"
         },
         {
           "type": "text",
           "id": "note",
           "label": "Note",
-          "default": "8 years and up"
+          "default": "8 ans et +"
         }
       ]
     }
@@ -352,12 +354,12 @@
     {
       "name": "Custom Personalization",
       "blocks": [
-        { "type": "color", "settings": { "name": "Midnight Black", "hex": "#0a0a0a" } },
-        { "type": "color", "settings": { "name": "Pearl White", "hex": "#efece5" } },
-        { "type": "color", "settings": { "name": "Emerald Green", "hex": "#0f766e" } },
-        { "type": "color", "settings": { "name": "Sand", "hex": "#c9b79c" } },
-        { "type": "version", "settings": { "label": "Adult", "note": "8 years and up" } },
-        { "type": "version", "settings": { "label": "Child · Panda", "note": "with removable accessory" } }
+        { "type": "color", "settings": { "name": "Noir minuit", "hex": "#0a0a0a" } },
+        { "type": "color", "settings": { "name": "Blanc perle", "hex": "#efece5" } },
+        { "type": "color", "settings": { "name": "Vert émeraude", "hex": "#0d655f" } },
+        { "type": "color", "settings": { "name": "Sable", "hex": "#c9b79c" } },
+        { "type": "version", "settings": { "label": "Adulte", "note": "8 ans et +" } },
+        { "type": "version", "settings": { "label": "Enfant · Panda", "note": "avec accessoire amovible" } }
       ]
     }
   ]

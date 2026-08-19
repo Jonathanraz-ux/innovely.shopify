@@ -315,3 +315,29 @@ main[data-template='product'] .product-information .innovely-card :is(p, li, spa
 }
 
 
+/* ==========================================================================
+   INNOVELY — MISSING UTILITY CLASSES (Social Proof & Section Backgrounds)
+   The compiled Tailwind v4 build does not include arbitrary-value utilities
+   or white-color classes. Define them here so the custom sections render
+   correctly without needing a Tailwind rebuild.
+   ========================================================================== */
+
+/* ---- White color utilities ---- */
+.text-white { color: #ffffff; }
+.\!text-white\/70 { color: rgba(255, 255, 255, 0.70) !important; }
+.bg-white { background-color: #ffffff; }
+.bg-white\/20 { background-color: rgba(255, 255, 255, 0.20); }
+.border-white\/20 { border-color: rgba(255, 255, 255, 0.20); }
+.bg-gray-100 { background-color: #f3f4f6; }
+
+@media (hover: hover) {
+  .hover\:text-white\/80:hover { color: rgba(255, 255, 255, 0.80); }
+}
+
+/* ---- Electric blue (#0066FF) — Social Proof section ---- */
+.bg-\[\#0066FF\] { background-color: #0066FF; }
+.text-\[\#0066FF\] { color: #0066FF; }
+.text-\[\#0066FF\]\/70 { color: rgba(0, 102, 255, 0.70); }
+
+/* ---- Off-white section backgrounds ---- */
+.bg-paper-deep { background-color: var(--color-paper-deep); }

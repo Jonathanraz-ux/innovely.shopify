@@ -413,7 +413,7 @@ export default class VariantPicker extends Component {
       .catch((error) => {
         deferredEventPromise.reject(error);
         if (error.name === 'AbortError') {
-          console.warn('Fetch aborted by user');
+          // Intentional abort from rapid variant changes — no action needed
         } else {
           console.error(error);
         }

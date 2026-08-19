@@ -218,7 +218,7 @@
         "payment_icons_hW3mxA"
       ],
       "custom_css": [
-        ".footer,.footer-utilities,[class*=\"footer\"] {background-color: #000519 !important; color: #fff !important;}"
+        ".footer { background-color: #000519 !important; color: #fff !important; }"
       ],
       "name": "t:names.footer",
       "settings": {
@@ -279,7 +279,7 @@
         "footer_policy_list_YXCQCJ"
       ],
       "custom_css": [
-        ".footer,.footer-utilities,[class*=\"footer\"] {background-color: #000519 !important; color: #fff !important;}"
+        ".footer-utilities { background-color: #000519 !important; color: #fff !important; }"
       ],
       "name": "t:names.utilities",
       "settings": {

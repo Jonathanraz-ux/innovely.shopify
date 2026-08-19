@@ -92,23 +92,11 @@
               endif
           endcase
         %}
-        {% style %}
-          [data-blog-index="{{ section.id }}-{{ forloop.index }}"] {
-            --col-span: {{ col_span }};
-            --blog-post-card-scale: {{ scale }};
-          }
-
-          @media screen and (max-width: 749px) {
-            [data-blog-index="{{ section.id }}-{{ forloop.index }}"] {
-              --col-span: 6;
-              --blog-post-card-scale: 0.5;
-            }
-          }
-        {% endstyle %}
         <div
           class="blog-post-item{% if is_horizontal %} blog-post-item--horizontal{% endif %}"
           data-testid="blog-post-item"
           data-blog-index="{{ section.id }}-{{ forloop.index }}"
+          style="--col-span: {{ col_span }}; --blog-post-card-scale: {{ scale }};"
         >
           {% content_for 'block', id: 'static-blog-post-card', type: '_blog-post-card', article: article %}
         </div>
@@ -158,6 +146,13 @@
   .blog-post-item:has(.blog-post-card__image-container) {
     border: none;
     padding: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .blog-post-item {
+      --col-span: 6;
+      --blog-post-card-scale: 0.5;
+    }
   }
 {% endstylesheet %}
 

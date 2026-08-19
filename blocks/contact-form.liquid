@@ -38,6 +38,7 @@
         class="contact-form__error"
         tabindex="-1"
         autofocus
+        aria-live="polite"
       >
         {{- 'icon-error.svg' | inline_asset_content -}}
 
@@ -51,6 +52,7 @@
         class="contact-form__success"
         tabindex="-1"
         autofocus
+        aria-live="polite"
       >
         {{- 'icon-checkmark.svg' | inline_asset_content -}}
         {{- 'blocks.contact_form.post_success' | t -}}
@@ -111,7 +113,7 @@
       class="contact-form__input"
       autocomplete="tel"
       name="contact[phone]"
-      pattern="[0-9\-]*"
+      pattern="[0-9\-\+\s\(\)]*"
       value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
       placeholder="{{ 'blocks.contact_form.phone' | t }}"
     >
@@ -129,7 +131,7 @@
       name="contact[body]"
       placeholder="{{ 'blocks.contact_form.comment' | t }}"
     >
-      {{- form.body -}}
+      {{- form.body | escape -}}
     </textarea>
 
     {{ submit_button }}

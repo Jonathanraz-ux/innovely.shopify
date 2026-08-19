@@ -19,7 +19,7 @@
 {%- endcomment -%}
 
 {%- liquid
-  assign slug = link.title | downcase | replace: ' ', '_'
+  assign slug = link.title | downcase | replace: '-', '_' | replace: ' ', '_'
   assign translation_key = 'navigation.' | append: slug
   assign link_label = translation_key | t
 
