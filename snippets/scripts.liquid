@@ -39,15 +39,10 @@
   }
 </script>
 
-{%- comment -%}
-  Registers Horizon's cart-drawer behaviour against the standard-actions
-  bundle (loaded separately into <head>). Module scripts execute in
-  document order, so this runs after the bundle regardless of where it
-  lands in <head>.
-{%- endcomment -%}
 <script
   src="{{ 'standard-actions-override.js' | asset_url }}"
   type="module"
+  defer
 ></script>
 
 <script
@@ -64,65 +59,15 @@
   {% endif %}
 ></script>
 
-<link
-  rel="modulepreload"
-  href="{{ 'utilities.js' | asset_url }}"
-  fetchpriority="low"
->
-<link
-  rel="modulepreload"
-  href="{{ 'component.js' | asset_url }}"
-  fetchpriority="low"
->
-<link
-  rel="modulepreload"
-  href="{{ 'section-renderer.js' | asset_url }}"
-  fetchpriority="low"
->
-<link
-  rel="modulepreload"
-  href="{{ 'section-hydration.js' | asset_url }}"
-  fetchpriority="low"
->
-<link
-  rel="modulepreload"
-  href="{{ 'morph.js' | asset_url }}"
-  fetchpriority="low"
->
+<link rel="modulepreload" href="{{ 'component.js' | asset_url }}" fetchpriority="low">
+<link rel="modulepreload" href="{{ 'section-renderer.js' | asset_url }}" fetchpriority="low">
+<link rel="modulepreload" href="{{ 'section-hydration.js' | asset_url }}" fetchpriority="low">
 
 {% if template.name == 'collection' or template.name == 'search' %}
-  <link
-    rel="modulepreload"
-    href="{{ 'paginated-list-aspect-ratio.js' | asset_url }}"
-    fetchpriority="low"
-  >
-  <link
-    rel="modulepreload"
-    href="{{ 'paginated-list.js' | asset_url }}"
-    fetchpriority="low"
-  >
+  <link rel="modulepreload" href="{{ 'paginated-list-aspect-ratio.js' | asset_url }}" fetchpriority="low">
+  <link rel="modulepreload" href="{{ 'paginated-list.js' | asset_url }}" fetchpriority="low">
 {% endif %}
 
-<link
-  rel="modulepreload"
-  href="{{ 'focus.js' | asset_url }}"
-  fetchpriority="low"
->
-<link
-  rel="modulepreload"
-  href="{{ 'recently-viewed-products.js' | asset_url }}"
-  fetchpriority="low"
->
-<link
-  rel="modulepreload"
-  href="{{ 'scrolling.js' | asset_url }}"
-  fetchpriority="low"
->
-<link
-  rel="modulepreload"
-  href="{{ 'events.js' | asset_url }}"
-  fetchpriority="low"
->
 <script>
   if (!HTMLElement.prototype.hasOwnProperty('popover')) {
     const script = document.createElement('script');
@@ -131,159 +76,60 @@
     document.head.appendChild(script);
   }
 </script>
-<script
-  src="{{ 'overflow-list.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'quick-add.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
+
+<script src="{{ 'overflow-list.js' | asset_url }}" type="module" defer></script>
+<script src="{{ 'dialog.js' | asset_url }}" type="module" defer></script>
+<script src="{{ 'variant-picker.js' | asset_url }}" type="module" defer></script>
+<script src="{{ 'accordion-custom.js' | asset_url }}" type="module" defer></script>
+<script src="{{ 'media.js' | asset_url }}" type="module" defer></script>
+<script src="{{ 'auto-close-details.js' | asset_url }}" defer="defer"></script>
+
 {% if settings.show_add_discount_code %}
-  <script
-    src="{{ 'cart-discount.js' | asset_url }}"
-    type="module"
-    fetchpriority="low"
-  ></script>
-{% endif %}
-
-<script
-  src="{{ 'dialog.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'variant-picker.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'product-card.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'product-form.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'fly-to-cart.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'accordion-custom.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'media.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'product-price.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'product-sku.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'product-inventory.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'show-more.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'slideshow.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'layered-slideshow.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'anchored-popover.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'floating-panel.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'video-background.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'component-quantity-selector.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'media-gallery.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'rte-formatter.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'volume-pricing.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'price-per-item.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'volume-pricing-info.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-
-{% if localization.available_countries.size > 1 or localization.available_languages.size > 1 %}
-  <script
-    src="{{ 'localization.js' | asset_url }}"
-    type="module"
-    fetchpriority="low"
-  ></script>
+  <script src="{{ 'cart-discount.js' | asset_url }}" type="module" defer></script>
 {% endif %}
 
 {% if template == 'product' or template.name == 'product' or request.page_type == 'product' %}
-  <script
-    src="{{ 'sticky-add-to-cart.js' | asset_url }}"
-    type="module"
-    fetchpriority="low"
-  ></script>
+  <link rel="modulepreload" href="{{ 'utilities.js' | asset_url }}" fetchpriority="low">
+  <link rel="modulepreload" href="{{ 'focus.js' | asset_url }}" fetchpriority="low">
+  <link rel="modulepreload" href="{{ 'morph.js' | asset_url }}" fetchpriority="low">
+  <link rel="modulepreload" href="{{ 'recently-viewed-products.js' | asset_url }}" fetchpriority="low">
+  <link rel="modulepreload" href="{{ 'scrolling.js' | asset_url }}" fetchpriority="low">
+  <link rel="modulepreload" href="{{ 'events.js' | asset_url }}" fetchpriority="low">
+  <script src="{{ 'quick-add.js' | asset_url }}" type="module" defer></script>
+  <script src="{{ 'product-card.js' | asset_url }}" type="module" defer></script>
+  <script src="{{ 'product-form.js' | asset_url }}" type="module" defer></script>
+  <script src="{{ 'fly-to-cart.js' | asset_url }}" type="module" defer></script>
+  <script src="{{ 'product-price.js' | asset_url }}" type="module" defer></script>
+  <script src="{{ 'product-sku.js' | asset_url }}" type="module" defer></script>
+  <script src="{{ 'product-inventory.js' | asset_url }}" type="module" defer></script>
+  <script src="{{ 'show-more.js' | asset_url }}" type="module" defer></script>
+  <script src="{{ 'component-quantity-selector.js' | asset_url }}" type="module" defer></script>
+  <script src="{{ 'media-gallery.js' | asset_url }}" type="module" defer></script>
+  <script src="{{ 'rte-formatter.js' | asset_url }}" type="module" defer></script>
+  <script src="{{ 'volume-pricing.js' | asset_url }}" type="module" defer></script>
+  <script src="{{ 'price-per-item.js' | asset_url }}" type="module" defer></script>
+  <script src="{{ 'volume-pricing-info.js' | asset_url }}" type="module" defer></script>
+  <script src="{{ 'sticky-add-to-cart.js' | asset_url }}" type="module" defer></script>
   <script type="module">
     import { RecentlyViewed } from '@theme/recently-viewed-products';
     RecentlyViewed.addProduct('{{ product.id }}');
   </script>
+{% else %}
+  <script src="{{ 'utilities.js' | asset_url }}" type="module" defer></script>
+  <script src="{{ 'quick-add.js' | asset_url }}" type="module" defer></script>
+  <script src="{{ 'product-card.js' | asset_url }}" type="module" defer></script>
+  <script src="{{ 'product-form.js' | asset_url }}" type="module" defer></script>
+  <script src="{{ 'fly-to-cart.js' | asset_url }}" type="module" defer></script>
 {% endif %}
 
-<script
-  src="{{ 'auto-close-details.js' | asset_url }}"
-  defer="defer"
-></script>
+{% if template.name == 'collection' or template.name == 'search' %}
+  <script src="{{ 'slideshow.js' | asset_url }}" type="module" defer></script>
+  <script src="{{ 'layered-slideshow.js' | asset_url }}" type="module" defer></script>
+{% endif %}
+
+{% if localization.available_countries.size > 1 or localization.available_languages.size > 1 %}
+  <script src="{{ 'localization.js' | asset_url }}" type="module" defer></script>
+{% endif %}
 
 <script>
   const Theme = {
@@ -298,7 +144,7 @@
       cart_count: `{{ 'accessibility.cart_count' | t }}`,
     },
     routes: {
-      cart_add_url: '{{ routes.cart_add_url | append: '.js' }}',
+      cart_add_url: '{{ routes.cart_add_url | append: ".js" }}',
       cart_change_url: '{{ routes.cart_change_url }}',
       cart_update_url: '{{ routes.cart_update_url }}',
       cart_url: '{{ routes.cart_url }}',

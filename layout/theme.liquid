@@ -49,69 +49,42 @@
       </div>
 
       <script>
-        // Inline header height and menu style calculations to prevent layout shift
-        // Note: Updates in calculateHeaderGroupHeight(), updateTransparentHeaderOffset() and setHeaderMenuStyle() utilities.js should be kept in sync with this function
         (function setHeaderHeightCustomProperties() {
-          /*
-           * Header calculation functions for maintaining CSS variables
-           * Mimic calculateHeaderGroupHeight() in utilities.js
-           */
           const header = document.querySelector('header-component');
           const headerGroup = document.querySelector('#header-group');
-          const hasHeaderSection = headerGroup?.querySelector('.header-section');
-
           if (!header || !headerGroup) return;
-
+          const hasHeaderSection = headerGroup.querySelector('.header-section');
           const headerTopRow = header.querySelector('.header__row--top');
-          const headerHeight = header.offsetHeight;
-
-          // Calculate the total height of the header group
+          const hRect = header.getBoundingClientRect();
+          const headerHeight = hRect.height;
           let headerGroupHeight = 0;
           const children = headerGroup.children;
           for (let i = 0; i < children.length; i++) {
-            const element = children[i];
-            if (element === header || !(element instanceof HTMLElement)) continue;
-            headerGroupHeight += element.offsetHeight;
+            const el = children[i];
+            if (el === header || !(el instanceof HTMLElement)) continue;
+            headerGroupHeight += el.getBoundingClientRect().height;
           }
-
-          // Check for transparent header special case
           if (header.hasAttribute('transparent') && header.parentElement?.nextElementSibling) {
             headerGroupHeight += headerHeight;
           }
-
-          // Set CSS variables
-          document.body.style.setProperty('--header-height', `${headerHeight}px`);
-          document.body.style.setProperty('--header-group-height', `${headerGroupHeight}px`);
-
+          const s = document.body.style;
+          s.setProperty('--header-height', headerHeight + 'px');
+          s.setProperty('--header-group-height', headerGroupHeight + 'px');
           if (headerTopRow) {
-            window.requestAnimationFrame(function () {
-              document.body.style.setProperty('--top-row-height', `${headerTopRow.offsetHeight}px`);
-            });
+            s.setProperty('--top-row-height', headerTopRow.getBoundingClientRect().height + 'px');
           }
-
-          /**
-           * Updates CSS custom properties for transparent header offset calculation
-           * Mimic updateTransparentHeaderOffset() in utilities.js
-           */
-
-          if (!hasHeaderSection || !header?.hasAttribute('transparent')) {
-            document.body.style.setProperty('--transparent-header-offset-boolean', '0');
+          if (!hasHeaderSection || !header.hasAttribute('transparent')) {
+            s.setProperty('--transparent-header-offset-boolean', '0');
             return;
           }
-
-          const hasImmediateSection = hasHeaderSection.nextElementSibling?.classList.contains('shopify-section');
-
-          const shouldApplyOffset = !hasImmediateSection ? '1' : '0';
-          document.body.style.setProperty('--transparent-header-offset-boolean', shouldApplyOffset);
+          s.setProperty('--transparent-header-offset-boolean', hasHeaderSection.nextElementSibling?.classList.contains('shopify-section') ? '0' : '1');
         })();
-
-        (function setHeaderMenuStyle() {
-          const headerComponent = document.querySelector('#header-component');
-          if (headerComponent) {
-            const isTouchDevice = 'ontouchstart' in window && navigator.maxTouchPoints > 0;
-            const overflowList = headerComponent?.querySelector('overflow-list');
-            const hasReachedMinimum = overflowList && overflowList.hasAttribute('minimum-reached');
-            headerComponent.dataset.menuStyle = isTouchDevice || hasReachedMinimum ? 'drawer' : 'menu';
+        (function() {
+          var h = document.querySelector('#header-component');
+          if (h) {
+            var t = 'ontouchstart' in window && navigator.maxTouchPoints > 0;
+            var o = h.querySelector('overflow-list');
+            h.dataset.menuStyle = t || (o && o.hasAttribute('minimum-reached')) ? 'drawer' : 'menu';
           }
         })();
       </script>

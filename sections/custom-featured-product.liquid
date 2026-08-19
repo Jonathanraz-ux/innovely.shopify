@@ -66,7 +66,7 @@
                 endif
               endif
             -%}
-            <img id="custom-featured-product-image" src="{{ initial_media_url }}" alt="{{ featured_product.title }}" class="max-h-full max-w-full object-contain transition-all duration-300" style="{% if is_sel_black %}transform: scale(0.62);{% endif %}" loading="lazy" />
+            <img id="custom-featured-product-image" src="{{ initial_media_url }}" alt="{{ featured_product.title }}" width="800" height="600" class="max-h-full max-w-full object-contain transition-all duration-300" style="{% if is_sel_black %}transform: scale(0.62);{% endif %}" loading="lazy" />
             <div class="absolute inset-0 pointer-events-none bg-gradient-to-t from-ink/70 via-transparent to-transparent"></div>
           </div>
         </div>
@@ -192,7 +192,7 @@
               </add-to-cart-component>
             </div>
             
-            {% if section.settings.show_dynamic_checkout %}
+            {% if section.settings.show_dynamic_checkout and template.name == 'product' %}
               <div class="mt-3">
                 {{ form | payment_button }}
               </div>

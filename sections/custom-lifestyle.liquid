@@ -21,7 +21,7 @@
         <div class="reveal in-view" style="transition-delay: {{ forloop.index0 | times: 130 }}ms;">
           <article class="group relative flex h-full min-h-[420px] flex-col justify-end overflow-hidden rounded-4xl p-8 text-paper transition-transform duration-500 hover:-translate-y-1.5">
             {% if block.settings.image != blank %}
-              <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title }}" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+              <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title }}" width="600" height="800" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
             {% else %}
               {{ 'collection-1' | placeholder_svg_tag: 'absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 bg-gray-100' }}
             {% endif %}

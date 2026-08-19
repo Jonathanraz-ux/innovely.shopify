@@ -66,9 +66,9 @@
       <div class="flex flex-col gap-5">
         <div class="img-zoom relative aspect-[4/3] overflow-hidden rounded-4xl border border-line shadow-card">
           {% if section.settings.image != blank %}
-            <img src="{{ section.settings.image | image_url: width: 800 }}" alt="{{ section.settings.title | strip_html | escape }}" class="h-full w-full object-cover" loading="lazy" />
+            <img src="{{ section.settings.image | image_url: width: 800 }}" alt="{{ section.settings.title | strip_html | escape }}" width="800" height="600" class="h-full w-full object-cover" loading="lazy" />
           {% else %}
-            <img src="{{ 'product-hand-close-up.jpg' | asset_url }}" alt="Smart Posture Corrector close up" class="h-full w-full object-cover" loading="lazy" />
+            <img src="{{ 'product-hand-close-up.jpg' | asset_url }}" alt="Smart Posture Corrector close up" width="800" height="600" class="h-full w-full object-cover" loading="lazy" />
           {% endif %}
           <div class="absolute inset-0 bg-gradient-to-t from-ink/55 via-transparent to-transparent"></div>
           <div class="absolute left-5 top-5 flex items-center gap-2 rounded-full border border-line bg-paper/90 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink backdrop-blur">

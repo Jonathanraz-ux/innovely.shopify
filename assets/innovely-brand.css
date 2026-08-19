@@ -16,9 +16,10 @@
   --color-paper: #f8fafc;
   --color-paper-deep: #edf2f9;
 
-  /* Conversion accent — Electric Cyan (#00A2FF) / Royal Blue (#0052FF) */
-  --color-brand: #00a2ff;
-  --color-brand-deep: #0052ff;
+  /* Conversion accent — Royal Blue (#0052FF) primary (7:1 contrast on #F8FAFC),
+     Electric Cyan (#00A2FF) reserved for decorative accents only */
+  --color-brand: #0052ff;
+  --color-brand-deep: #0035cc;
   --color-brand-soft: #e8f4ff;
   --color-brand-mist: #d6ecff;
 
