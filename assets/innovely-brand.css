@@ -343,10 +343,11 @@ main[data-template='product'] .product-information .innovely-card :is(p, li, spa
   .hover\:text-white\/80:hover { color: rgba(255, 255, 255, 0.80); }
 }
 
-/* ---- Electric blue (#0066FF) — Social Proof section ---- */
-.bg-\[\#0066FF\] { background-color: #0066FF; }
-.text-\[\#0066FF\] { color: #0066FF; }
-.text-\[\#0066FF\]\/70 { color: rgba(0, 102, 255, 0.70); }
+/* ---- Electric blue (#0035cc) — Social Proof section ---- */
+.bg-\[\#0066FF\] { background-color: #0035cc; }
+.text-\[\#0066FF\] { color: #0035cc; }
+.text-\[\#0066FF\]\/70 { color: rgba(0, 53, 204, 0.70); }
+.text-\[\#0035cc\] { color: #0035cc; }
 
 /* ---- Off-white section backgrounds ---- */
 .bg-paper-deep { background-color: var(--color-paper-deep); }
@@ -378,6 +379,3 @@ main[data-template='product'] .product-information .innovely-card :is(p, li, spa
 .hover\:bg-brand:hover {
   background-color: #0088d6 !important;
 }
-
-/* ---- Fix social-proof section blue background contrast ---- */
-.bg-\[\#0066FF\] { background-color: #0035cc; }
