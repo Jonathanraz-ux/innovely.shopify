@@ -16,10 +16,9 @@
   --color-paper: #f8fafc;
   --color-paper-deep: #edf2f9;
 
-  /* Conversion accent — Royal Blue (#0052FF) primary (7:1 contrast on #F8FAFC),
-     Electric Cyan (#00A2FF) reserved for decorative accents only */
-  --color-brand: #0052ff;
-  --color-brand-deep: #0035cc;
+  /* Conversion accent — Electric Cyan (#00A2FF) / Royal Blue (#0052FF) */
+  --color-brand: #00a2ff;
+  --color-brand-deep: #0052ff;
   --color-brand-soft: #e8f4ff;
   --color-brand-mist: #d6ecff;
 
@@ -131,13 +130,6 @@ ul.list-none {
    without any color separation between them.
    ========================================================================== */
 
-/* LCP optimization: skip reveal animation for hero section above the fold */
-#top .reveal {
-  opacity: 1 !important;
-  transform: none !important;
-  transition: none !important;
-}
-
 #header-group [id*="announcement"],
 #header-group .announcement-wrapper,
 #header-group .bg-ink,
@@ -184,20 +176,21 @@ main[data-template='product'] .product-information .product-details > .group-blo
 }
 
 /* Sale price — the second visual anchor after the title */
-main[data-template='product']
-  .product-information
-  product-price[data-block-id='price_tVjtKg']
-  .price-item--sale {
+.product-information product-price .price-item--sale,
+product-price .price-item--sale {
   font-size: clamp(1.6rem, 1.35rem + 0.7vw, 2.1rem);
   font-weight: 700;
   letter-spacing: -0.01em;
 }
 
-main[data-template='product']
-  .product-information
-  product-price[data-block-id='price_tVjtKg']
-  .compare-at-price {
-  font-size: 0.75em;
+.product-information product-price .compare-at-price,
+product-price .compare-at-price {
+  font-size: 0.68em;
+  font-weight: 400;
+  text-decoration-line: line-through;
+  text-decoration-thickness: 1.5px;
+  text-decoration-color: currentColor;
+  opacity: 0.75;
 }
 
 /* Buy box — generous gaps between quantity, CTA and express checkout */
@@ -322,60 +315,27 @@ main[data-template='product'] .product-information .innovely-card :is(p, li, spa
   opacity: 1;
 }
 
-
 /* ==========================================================================
-   INNOVELY — MISSING UTILITY CLASSES (Social Proof & Section Backgrounds)
-   The compiled Tailwind v4 build does not include arbitrary-value utilities
-   or white-color classes. Define them here so the custom sections render
-   correctly without needing a Tailwind rebuild.
+   INNOVELY — MISSING UTILITY CLASSES
+   The compiled Tailwind v4 build does not include these utilities.
+   They are required by the custom sections (social-proof, etc.).
    ========================================================================== */
 
-/* ---- White color utilities ---- */
+/* White color utilities */
 .text-white { color: #ffffff; }
 .\!text-white { color: #ffffff !important; }
-.\!text-white\/70 { color: rgba(255, 255, 255, 0.70) !important; }
 .bg-white { background-color: #ffffff; }
 .bg-white\/20 { background-color: rgba(255, 255, 255, 0.20); }
 .border-white\/20 { border-color: rgba(255, 255, 255, 0.20); }
 .bg-gray-100 { background-color: #f3f4f6; }
 
-@media (hover: hover) {
-  .hover\:text-white\/80:hover { color: rgba(255, 255, 255, 0.80); }
-}
-
-/* ---- Electric blue (#0035cc) — Social Proof section ---- */
-.bg-\[\#0066FF\] { background-color: #0035cc; }
-.text-\[\#0066FF\] { color: #0035cc; }
-.text-\[\#0066FF\]\/70 { color: rgba(0, 53, 204, 0.70); }
+/* Social-proof stat text colors */
 .text-\[\#0035cc\] { color: #0035cc; }
 
-/* ---- Off-white section backgrounds ---- */
+/* Off-white section backgrounds */
 .bg-paper-deep { background-color: var(--color-paper-deep); }
 
-/* ---- Fix email-signup button contrast (#00a2ff background → #0052ff) ---- */
+/* Fix email-signup button contrast */
 .email-signup__button:not(.button-unstyled):not(.button-secondary) {
   background-color: var(--color-brand) !important;
-}
-
-/* ---- Override Tailwind compiled bg-brand (#00a2ff → #0052ff) ---- */
-.bg-brand {
-  background-color: #0052ff !important;
-}
-.text-brand {
-  color: #0052ff !important;
-}
-.bg-brand-soft {
-  background-color: #e8f4ff !important;
-}
-.bg-brand-mist {
-  background-color: #d6ecff !important;
-}
-.border-brand {
-  border-color: #0052ff !important;
-}
-.\!text-white\/70 {
-  color: rgba(255, 255, 255, 0.70) !important;
-}
-.hover\:bg-brand:hover {
-  background-color: #0088d6 !important;
 }

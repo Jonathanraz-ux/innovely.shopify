@@ -79,6 +79,14 @@
         {% endif %}
       >
         {% if menu %}
+          {% assign has_track_link = false %}
+          {% for link in menu.links %}
+            {% assign link_url_lower = link.url | downcase %}
+            {% assign link_title_lower = link.title | downcase %}
+            {% if link_url_lower contains 'track' or link_url_lower contains 'suivi' or link_title_lower contains 'track' or link_title_lower contains 'suivi' %}
+              {% assign has_track_link = true %}
+            {% endif %}
+          {% endfor %}
           <ul class="list-unstyled">
             {% for link in menu.links %}
               <li class="menu__item {{ block_settings.link_preset }}">
@@ -87,6 +95,16 @@
                 </a>
               </li>
             {% endfor %}
+            {% unless has_track_link %}
+              {% assign heading_lower = heading | downcase %}
+              {% if menu.handle == 'footer_menu2' or heading_lower contains 'useful' or heading_lower contains 'utile' %}
+                <li class="menu__item {{ block_settings.link_preset }}">
+                  <a href="/apps/track123">
+                    {% render 'translate', key: 'innovely.footer.track_order', fallback: 'Track Your Order' %}
+                  </a>
+                </li>
+              {% endif %}
+            {% endunless %}
           </ul>
         {% endif %}
       </nav>

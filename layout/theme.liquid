@@ -14,8 +14,14 @@
       >
     {%- endif -%}
 
-    {% if template.name == 'index' %}
-      <link rel="preload" as="image" href="{{ 'hero-posture-before-after.jpg' | asset_url }}" fetchpriority="high" width="750" height="939">
+    {% comment %} This a way to wait for main content to load when navigating to a new page so that the view transitions can work consistently {% endcomment %}
+    {% if settings.transition_to_main_product or settings.page_transition_enabled %}
+      <link
+        rel="expect"
+        href="#MainContent"
+        blocking="render"
+        id="view-transition-render-blocker"
+      >
     {% endif %}
 
     {%- render 'meta-tags' -%}
@@ -30,6 +36,8 @@
     {% endif %}
 
     {{ content_for_header }}
+    {{ 'innovely-design.css' | asset_url | stylesheet_tag }}
+    {{ 'innovely-brand.css' | asset_url | stylesheet_tag }}
   </head>
 
   <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
@@ -43,42 +51,64 @@
       </div>
 
       <script>
-        (function setHeaderHeightCustomProperties() {
+        // Inline header height and menu style calculations to prevent layout shift
+        // Note: Updates in calculateHeaderGroupHeight(), updateTransparentHeaderOffset() and setHeaderMenuStyle() utilities.js should be kept in sync with this function
+        (function setHeaderHeighCustomProperties() {
+          /*
+           * Header calculation functions for maintaining CSS variables
+           * Mimic calculateHeaderGroupHeight() in utilities.js
+           */
           const header = document.querySelector('header-component');
           const headerGroup = document.querySelector('#header-group');
+          const hasHeaderSection = headerGroup?.querySelector('.header-section');
+
           if (!header || !headerGroup) return;
-          const hasHeaderSection = headerGroup.querySelector('.header-section');
+
           const headerTopRow = header.querySelector('.header__row--top');
-          const hRect = header.getBoundingClientRect();
-          const headerHeight = hRect.height;
+          const headerHeight = header.offsetHeight;
+
+          // Calculate the total height of the header group
           let headerGroupHeight = 0;
           const children = headerGroup.children;
           for (let i = 0; i < children.length; i++) {
-            const el = children[i];
-            if (el === header || !(el instanceof HTMLElement)) continue;
-            headerGroupHeight += el.getBoundingClientRect().height;
+            const element = children[i];
+            if (element === header || !(element instanceof HTMLElement)) continue;
+            headerGroupHeight += element.offsetHeight;
           }
+
+          // Check for transparent header special case
           if (header.hasAttribute('transparent') && header.parentElement?.nextElementSibling) {
             headerGroupHeight += headerHeight;
           }
-          const s = document.body.style;
-          s.setProperty('--header-height', headerHeight + 'px');
-          s.setProperty('--header-group-height', headerGroupHeight + 'px');
+
+          // Set CSS variables
+          document.body.style.setProperty('--header-height', `${headerHeight}px`);
+          document.body.style.setProperty('--header-group-height', `${headerGroupHeight}px`);
+
           if (headerTopRow) {
-            s.setProperty('--top-row-height', headerTopRow.getBoundingClientRect().height + 'px');
+            window.requestAnimationFrame(function () {
+              document.body.style.setProperty('--top-row-height', `${headerTopRow.offsetHeight}px`);
+            });
           }
-          if (!hasHeaderSection || !header.hasAttribute('transparent')) {
-            s.setProperty('--transparent-header-offset-boolean', '0');
+
+          if (!hasHeaderSection || !header?.hasAttribute('transparent')) {
+            document.body.style.setProperty('--transparent-header-offset-boolean', '0');
             return;
           }
-          s.setProperty('--transparent-header-offset-boolean', hasHeaderSection.nextElementSibling?.classList.contains('shopify-section') ? '0' : '1');
+
+          const hasImmediateSection = hasHeaderSection.nextElementSibling?.classList.contains('shopify-section');
+
+          const shouldApplyOffset = !hasImmediateSection ? '1' : '0';
+          document.body.style.setProperty('--transparent-header-offset-boolean', shouldApplyOffset);
         })();
-        (function() {
-          var h = document.querySelector('#header-component');
-          if (h) {
-            var t = 'ontouchstart' in window && navigator.maxTouchPoints > 0;
-            var o = h.querySelector('overflow-list');
-            h.dataset.menuStyle = t || (o && o.hasAttribute('minimum-reached')) ? 'drawer' : 'menu';
+
+        (function setHeaderMenuStyle() {
+          const headerComponent = document.querySelector('#header-component');
+          if (headerComponent) {
+            const isTouchDevice = 'ontouchstart' in window && navigator.maxTouchPoints > 0;
+            const overflowList = headerComponent?.querySelector('overflow-list');
+            const hasReachedMinimum = overflowList && overflowList.hasAttribute('minimum-reached');
+            headerComponent.dataset.menuStyle = isTouchDevice || hasReachedMinimum ? 'drawer' : 'menu';
           }
         })();
       </script>
@@ -106,6 +136,28 @@
 
     {% if settings.quick_add or settings.mobile_quick_add %}
       {% render 'quick-add-modal' %}
+    {% endif %}
+
+    {% if template == 'product' %}
+    <script>
+      (function() {
+        var comparePrice = 57.99;
+        function injectComparePrice() {
+          var priceContainer = document.querySelector('.price__container, [data-product-price], .price');
+          if (!priceContainer || priceContainer.querySelector('.custom-compare-price')) return;
+          var badge = document.createElement('s');
+          badge.className = 'custom-compare-price';
+          badge.textContent = '$' + comparePrice.toFixed(2);
+          badge.style.cssText = 'font-size:0.75em;color:rgba(0,0,0,0.4);text-decoration:line-through;margin-left:0.5em;font-weight:400;';
+          priceContainer.appendChild(badge);
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', function() { setTimeout(injectComparePrice, 500); });
+        } else {
+          setTimeout(injectComparePrice, 500);
+        }
+      })();
+    </script>
     {% endif %}
   </body>
 </html>

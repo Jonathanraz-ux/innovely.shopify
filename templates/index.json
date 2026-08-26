@@ -1,51 +1,148 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "custom_hero_1": {
       "type": "custom-hero",
       "blocks": {
-        "r1": { "type": "reassurance", "settings": { "text": "Invisible under clothing" } },
-        "r2": { "type": "reassurance", "settings": { "text": "Guaranteed comfort for 30 days" } },
-        "r3": { "type": "reassurance", "settings": { "text": "Free shipping" } }
+        "r1": {
+          "type": "reassurance",
+          "settings": {
+            "text": "Invisible under clothing"
+          }
+        },
+        "r2": {
+          "type": "reassurance",
+          "settings": {
+            "text": "Guaranteed comfort for 30 days"
+          }
+        },
+        "r3": {
+          "type": "reassurance",
+          "settings": {
+            "text": "Free shipping"
+          }
+        }
       },
-      "block_order": ["r1", "r2", "r3"],
+      "block_order": [
+        "r1",
+        "r2",
+        "r3"
+      ],
       "settings": {
         "eyebrow": "SMART POSTURE CORRECTOR",
         "title": "Achieve perfect posture.",
         "subtitle": "The first smart posture corrector that actively retrains your muscles.",
         "cta1_label": "Discover the Smart Posture Corrector",
         "cta1_link": "#produit",
-        "cta2_link": "#methode",
-        "image_main": ""
+        "cta2_link": "#methode"
       }
     },
     "custom_marquee_1": {
       "type": "custom-marquee",
       "blocks": {
-        "m1": { "type": "marquee_item", "settings": { "text": "Thoughtfully Designed" } },
-        "m2": { "type": "marquee_item", "settings": { "text": "Medical-Grade Silicone" } },
-        "m3": { "type": "marquee_item", "settings": { "text": "USB-C Rechargeable" } },
-        "m4": { "type": "marquee_item", "settings": { "text": "2-Year Warranty" } },
-        "m5": { "type": "marquee_item", "settings": { "text": "Discreet & Lightweight" } },
-        "m6": { "type": "marquee_item", "settings": { "text": "For Adults & Kids" } },
-        "m7": { "type": "marquee_item", "settings": { "text": "Free Shipping" } },
-        "m8": { "type": "marquee_item", "settings": { "text": "30-Day Money-Back Guarantee" } }
+        "m1": {
+          "type": "marquee_item",
+          "settings": {
+            "text": "Thoughtfully Designed"
+          }
+        },
+        "m2": {
+          "type": "marquee_item",
+          "settings": {
+            "text": "Medical-Grade Silicone"
+          }
+        },
+        "m3": {
+          "type": "marquee_item",
+          "settings": {
+            "text": "USB-C Rechargeable"
+          }
+        },
+        "m4": {
+          "type": "marquee_item",
+          "settings": {
+            "text": "2-Year Warranty"
+          }
+        },
+        "m5": {
+          "type": "marquee_item",
+          "settings": {
+            "text": "Discreet & Lightweight"
+          }
+        },
+        "m6": {
+          "type": "marquee_item",
+          "settings": {
+            "text": "For Adults & Kids"
+          }
+        },
+        "m7": {
+          "type": "marquee_item",
+          "settings": {
+            "text": "Free Shipping"
+          }
+        },
+        "m8": {
+          "type": "marquee_item",
+          "settings": {
+            "text": "30-Day Money-Back Guarantee"
+          }
+        }
       },
-      "block_order": ["m1", "m2", "m3", "m4", "m5", "m6", "m7", "m8"],
+      "block_order": [
+        "m1",
+        "m2",
+        "m3",
+        "m4",
+        "m5",
+        "m6",
+        "m7",
+        "m8"
+      ],
       "settings": {}
     },
     "custom_problem_1": {
       "type": "custom-problem",
       "blocks": {
-        "s1": { "type": "stat", "settings": { "value": "8h", "label": "spent on average sitting in front of screens every day" } },
-        "s2": { "type": "stat", "settings": { "value": "70%", "label": "of remote workers suffer from back or neck pain" } },
-        "s3": { "type": "stat", "settings": { "value": "2×", "label": "more tension when your head leans 15° forward" } }
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "value": "8h",
+            "label": "spent on average sitting in front of screens every day"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "value": "70%",
+            "label": "of remote workers suffer from back or neck pain"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "value": "2×",
+            "label": "more tension when your head leans 15° forward"
+          }
+        }
       },
-      "block_order": ["s1", "s2", "s3"],
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
       "settings": {
         "eyebrow": "The Problem",
         "title": "Your screens are ruining your posture. <em class=\"text-brand\">Slowly, but surely.</em>",
         "text": "<p>It starts with “just one more class,” “one last email,” “one more episode.” Eight hours later, your shoulders have dropped, your head is forward, and your back is taking the hit in silence.</p><p>What you’re feeling — fatigue, tension, back pain — is your body begging for a posture that no one ever taught you. The worst part? You get used to it. Until the day it becomes the norm.</p>",
-        "image": "",
         "badge": "8h / day",
         "tip": "<span class=\"font-semibold text-ink\">Every centimeter</span> your head moves forward adds up to <span class=\"font-semibold text-ink\">4 kg</span> of pressure on your cervical spine. Your back carries it for you. Every single day."
       }
@@ -53,11 +150,33 @@
     "custom_how_it_works_1": {
       "type": "custom-how-it-works",
       "blocks": {
-        "step1": { "type": "step", "settings": { "title": "Analyze your posture", "text": "Place the sensor on your back. It automatically calibrates your ideal posture in real time." } },
-        "step2": { "type": "step", "settings": { "title": "Feel the vibration", "text": "As soon as you slouch, a gentle vibration reminds you to straighten up without any pain." } },
-        "step3": { "type": "step", "settings": { "title": "Strengthen your back", "text": "Day after day, you build the muscle memory needed to stand up straight without thinking about it." } }
+        "step1": {
+          "type": "step",
+          "settings": {
+            "title": "Analyze your posture",
+            "text": "Place the sensor on your back. It automatically calibrates your ideal posture in real time."
+          }
+        },
+        "step2": {
+          "type": "step",
+          "settings": {
+            "title": "Feel the vibration",
+            "text": "As soon as you slouch, a gentle vibration reminds you to straighten up without any pain."
+          }
+        },
+        "step3": {
+          "type": "step",
+          "settings": {
+            "title": "Strengthen your back",
+            "text": "Day after day, you build the muscle memory needed to stand up straight without thinking about it."
+          }
+        }
       },
-      "block_order": ["step1", "step2", "step3"],
+      "block_order": [
+        "step1",
+        "step2",
+        "step3"
+      ],
       "settings": {
         "eyebrow": "THE METHOD",
         "title": "How it works",
@@ -66,8 +185,6 @@
     },
     "custom_featured_product_1": {
       "type": "custom-featured-product",
-      "blocks": {},
-      "block_order": [],
       "settings": {
         "product": "shopify://products/oem-adjustable-back-brace-straightening-detection-reminder-spine-vibrates-smart-posture-corrector",
         "eyebrow": "PATENTED SMART POSTURE CORRECTOR",
@@ -79,12 +196,51 @@
     "custom_comparison_1": {
       "type": "custom-comparison",
       "blocks": {
-        "f1": { "type": "feature", "settings": { "label": "Autonomous Retraining", "col1_val": "check", "col2_val": "cross", "col3_val": "partial", "col3_note": "Partial" } },
-        "f2": { "type": "feature", "settings": { "label": "Long-lasting Comfort", "col1_val": "check", "col2_val": "cross", "col3_val": "check" } },
-        "f3": { "type": "feature", "settings": { "label": "Smart Vibration", "col1_val": "check", "col2_val": "cross", "col3_val": "cross" } },
-        "f4": { "type": "feature", "settings": { "label": "Invisible Under Clothing", "col1_val": "check", "col2_val": "cross", "col3_val": "partial", "col3_note": "Model dependent" } }
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "label": "Autonomous Retraining",
+            "col1_val": "check",
+            "col2_val": "cross",
+            "col3_val": "partial",
+            "col3_note": "Partial"
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "label": "Long-lasting Comfort",
+            "col1_val": "check",
+            "col2_val": "cross",
+            "col3_val": "check"
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "label": "Smart Vibration",
+            "col1_val": "check",
+            "col2_val": "cross",
+            "col3_val": "cross"
+          }
+        },
+        "f4": {
+          "type": "feature",
+          "settings": {
+            "label": "Invisible Under Clothing",
+            "col1_val": "check",
+            "col2_val": "cross",
+            "col3_val": "partial",
+            "col3_note": "Model dependent"
+          }
+        }
       },
-      "block_order": ["f1", "f2", "f3", "f4"],
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4"
+      ],
       "settings": {
         "eyebrow": "COMPARISON",
         "title": "Why choose the Smart Posture Corrector?",
@@ -97,17 +253,90 @@
     "custom_social_proof_1": {
       "type": "custom-social-proof",
       "blocks": {
-        "rev1": { "type": "review", "settings": { "name": "Camille M.", "meta": "Using the Smart Posture Corrector for 3 months", "text": "In 3 weeks, my neck pain almost completely disappeared. I can't live without it." } },
-        "rev2": { "type": "review", "settings": { "name": "Louis B.", "meta": "Developer, working remotely for 2 years", "text": "The vibration is so subtle you forget about it... until you realize you're standing straighter!" } },
-        "rev3": { "type": "review", "settings": { "name": "Sarah R.", "meta": "Sports coach", "text": "I recommend it to all my clients. Visible results in less than a month." } },
-        "u1": { "type": "ugc", "settings": { "image": "shopify://shop_images/Gemini_Generated_Image_3zz9383zz9383zz9.png", "tag": "At the office", "name": "@camille.m" } },
-        "u2": { "type": "ugc", "settings": { "image": "shopify://shop_images/Gemini_Generated_Image_yo5m8wyo5m8wyo5m.png", "tag": "Focus mode", "name": "@thomas.dev" } },
-        "u3": { "type": "ugc", "settings": { "image": "shopify://shop_images/3.png", "tag": "On the move", "name": "@sarah.runs" } },
-        "u4": { "type": "ugc", "settings": { "image": "shopify://shop_images/6.jpg", "tag": "With family", "name": "@les_durand" } },
-        "u5": { "type": "ugc", "settings": { "image": "shopify://shop_images/1.jpg", "tag": "In meetings", "name": "@lucie.agile" } },
-        "u6": { "type": "ugc", "settings": { "image": "shopify://shop_images/ChatGPT_Image_26_juil._2026_12_44_29_1.png", "tag": "Product", "name": "@innovely.fr" } }
+        "rev1": {
+          "type": "review",
+          "settings": {
+            "name": "Camille M.",
+            "meta": "Using the Smart Posture Corrector for 3 months",
+            "text": "In 3 weeks, my neck pain almost completely disappeared. I can't live without it."
+          }
+        },
+        "rev2": {
+          "type": "review",
+          "settings": {
+            "name": "Louis B.",
+            "meta": "Developer, working remotely for 2 years",
+            "text": "The vibration is so subtle you forget about it... until you realize you're standing straighter!"
+          }
+        },
+        "rev3": {
+          "type": "review",
+          "settings": {
+            "name": "Sarah R.",
+            "meta": "Sports coach",
+            "text": "I recommend it to all my clients. Visible results in less than a month."
+          }
+        },
+        "u1": {
+          "type": "ugc",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_3zz9383zz9383zz9.png",
+            "tag": "At the office",
+            "name": "@camille.m"
+          }
+        },
+        "u2": {
+          "type": "ugc",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_yo5m8wyo5m8wyo5m.png",
+            "tag": "Focus mode",
+            "name": "@thomas.dev"
+          }
+        },
+        "u3": {
+          "type": "ugc",
+          "settings": {
+            "image": "shopify://shop_images/3.png",
+            "tag": "On the move",
+            "name": "@sarah.runs"
+          }
+        },
+        "u4": {
+          "type": "ugc",
+          "settings": {
+            "image": "shopify://shop_images/6.jpg",
+            "tag": "With family",
+            "name": "@les_durand"
+          }
+        },
+        "u5": {
+          "type": "ugc",
+          "settings": {
+            "image": "shopify://shop_images/1.jpg",
+            "tag": "In meetings",
+            "name": "@lucie.agile"
+          }
+        },
+        "u6": {
+          "type": "ugc",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_26_juil._2026_12_44_29_1.png",
+            "tag": "Product",
+            "name": "@innovely.fr"
+          }
+        }
       },
-      "block_order": ["rev1", "rev2", "rev3", "u1", "u2", "u3", "u4", "u5", "u6"],
+      "block_order": [
+        "rev1",
+        "rev2",
+        "rev3",
+        "u1",
+        "u2",
+        "u3",
+        "u4",
+        "u5",
+        "u6"
+      ],
       "settings": {
         "eyebrow": "OUR COMMUNITY",
         "title": "They straightened up.",
@@ -124,11 +353,39 @@
     "custom_lifestyle_1": {
       "type": "custom-lifestyle",
       "blocks": {
-        "b1": { "type": "moment", "settings": { "image": "shopify://shop_images/3.png", "tag": "At the office", "title": "8am - Focus mode", "text": "No more slouching in front of your screen. This device discreetly reminds you." } },
-        "b2": { "type": "moment", "settings": { "image": "shopify://shop_images/6.jpg", "tag": "On the move", "title": "12pm - Active", "text": "Maintain optimal posture wherever your day takes you." } },
-        "b3": { "type": "moment", "settings": { "image": "shopify://shop_images/1.jpg", "tag": "Evening", "title": "7pm - Recovery", "text": "Release accumulated tension. Your back will thank you tomorrow." } }
+        "b1": {
+          "type": "moment",
+          "settings": {
+            "image": "shopify://shop_images/3.png",
+            "tag": "At the office",
+            "title": "8am - Focus mode",
+            "text": "No more slouching in front of your screen. This device discreetly reminds you."
+          }
+        },
+        "b2": {
+          "type": "moment",
+          "settings": {
+            "image": "shopify://shop_images/6.jpg",
+            "tag": "On the move",
+            "title": "12pm - Active",
+            "text": "Maintain optimal posture wherever your day takes you."
+          }
+        },
+        "b3": {
+          "type": "moment",
+          "settings": {
+            "image": "shopify://shop_images/1.jpg",
+            "tag": "Evening",
+            "title": "7pm - Recovery",
+            "text": "Release accumulated tension. Your back will thank you tomorrow."
+          }
+        }
       },
-      "block_order": ["b1", "b2", "b3"],
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ],
       "settings": {
         "eyebrow": "PERFECT INTEGRATION",
         "title": "Your back, all day long.",
@@ -138,16 +395,62 @@
     "custom_faq_1": {
       "type": "custom-faq",
       "blocks": {
-        "q1": { "type": "faq_item", "settings": { "question": "How does the Smart Posture Corrector work?", "answer": "It uses a 6-axis gyroscope that detects micro-slouches of your spine in real time. It emits a gentle vibration as soon as you slouch past your ideal posture threshold." } },
-        "q2": { "type": "faq_item", "settings": { "question": "Is it visible under clothing?", "answer": "No, it is only 8mm thick and slips discreetly under your t-shirt or shirt. It is completely invisible." } },
-        "q3": { "type": "faq_item", "settings": { "question": "How long does it take to see results?", "answer": "Most of our users report visible improvements after 2 to 3 weeks of regular use (at least 30 mins/day)." } },
-        "q4": { "type": "faq_item", "settings": { "question": "What is the battery life?", "answer": "The battery lasts up to 7 days under normal use. A full charge takes about 1 hour and 30 minutes via USB-C." } },
-        "q5": { "type": "faq_item", "settings": { "question": "Is there a warranty?", "answer": "Yes, the Smart Posture Corrector comes with a 2-year warranty. In addition, we offer a 30-day risk-free money-back guarantee." } }
+        "q1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How does the Smart Posture Corrector work?",
+            "answer": "It uses a 6-axis gyroscope that detects micro-slouches of your spine in real time. It emits a gentle vibration as soon as you slouch past your ideal posture threshold."
+          }
+        },
+        "q2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is it visible under clothing?",
+            "answer": "No, it is only 8mm thick and slips discreetly under your t-shirt or shirt. It is completely invisible."
+          }
+        },
+        "q3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does it take to see results?",
+            "answer": "Most of our users report visible improvements after 2 to 3 weeks of regular use (at least 30 mins/day)."
+          }
+        },
+        "q4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is the battery life?",
+            "answer": "The battery lasts up to 7 days under normal use. A full charge takes about 1 hour and 30 minutes via USB-C."
+          }
+        },
+        "q5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is there a warranty?",
+            "answer": "Yes, the Smart Posture Corrector comes with a 2-year warranty. In addition, we offer a 30-day risk-free money-back guarantee."
+          }
+        }
       },
-      "block_order": ["q1", "q2", "q3", "q4", "q5"],
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5"
+      ],
       "settings": {
         "eyebrow": "FAQ",
         "title": "Frequently Asked Questions"
+      }
+    },
+    "custom_products_list_1": {
+      "type": "custom-products-list",
+      "settings": {
+        "eyebrow": "OUR PRODUCTS",
+        "title": "Discover our range",
+        "max_products": 4,
+        "columns_desktop": 3,
+        "background_color": "bg-paper"
       }
     }
   },
@@ -160,6 +463,7 @@
     "custom_comparison_1",
     "custom_social_proof_1",
     "custom_lifestyle_1",
+    "custom_products_list_1",
     "custom_faq_1"
   ]
 }

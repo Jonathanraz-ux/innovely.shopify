@@ -48,6 +48,7 @@
       "subtitle": "Using precision sensors, the Smart Posture Corrector detects your spinal slouching in real time and emits a subtle micro-vibration to naturally retrain your posture.",
       "verified_reviews": "Verified reviews",
       "low_stock_urgency": "Limited stock: only few left in stock!",
+      "limited_stock": "Limited stock — order now!",
       "no_product_selected": "No product selected",
       "no_product_selected_instructions": "Open this section's settings and choose a product in the theme editor. The purchase card only displays when a product is assigned.",
       "product_unavailable": "This product is no longer available."
@@ -112,6 +113,13 @@
       "b3_tag": "Evening",
       "b3_title": "7pm - Recovery",
       "b3_text": "Release accumulated tension. Your back will thank you tomorrow."
+    },
+    "products_list": {
+      "eyebrow": "OUR PRODUCTS",
+      "title": "Discover our range",
+      "discover": "Discover",
+      "view": "View",
+      "sold_out_badge": "Sold out"
     },
     "marquee": {
       "m1_text": "Thoughtfully Designed",
@@ -355,7 +363,7 @@
       "many": "Only {{ count }} left in stock"
     },
     "inventory_low_stock": "Low stock",
-    "inventory_in_stock": "In stock",
+    "inventory_in_stock": "Limited stock",
     "inventory_out_of_stock": "Out of stock",
     "item_count": {
       "one": "{{ count }} item",

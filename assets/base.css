@@ -2349,10 +2349,13 @@ product-price.text-block:is(.h1, .h2, .h3, .h4, .h5, .h6) .volume-pricing-note {
 }
 
 .compare-at-price {
+  font-size: 0.68em;
+  font-weight: 400;
   color: rgb(var(--color-rgb, var(--color-foreground-rgb)) / var(--opacity-subdued-text));
   text-decoration-line: line-through;
   text-decoration-thickness: 1.5px;
-  text-decoration-color: rgb(var(--color-rgb, var(--color-foreground-rgb)) / var(--opacity-30));
+  text-decoration-color: currentColor;
+  opacity: 0.75;
 }
 
 .price-item__group {
@@ -2361,6 +2364,12 @@ product-price.text-block:is(.h1, .h2, .h3, .h4, .h5, .h6) .volume-pricing-note {
 
 .price-item--sale {
   white-space: nowrap;
+}
+
+.price__sale {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.65rem;
 }
 
 .price__hidden {
@@ -4045,20 +4054,23 @@ body{
 
 /* Footer background force */
 .footer,
-.footer-utilities {
+.footer-utilities,
+[class*="footer"] {
   background-color: #060B16 !important;
   color: #ffffff !important;
 }
 
 /* Footer links */
 .footer a,
-.footer-utilities a {
+.footer-utilities a,
+[class*="footer"] a {
   color: #ffffff !important;
   text-decoration: none;
 }
 
 .footer a:hover,
-.footer-utilities a:hover {
+.footer-utilities a:hover,
+[class*="footer"] a:hover {
   color: #00BFFF !important; /* cyan accent hover */
   text-decoration: underline;
 }
@@ -4075,7 +4087,13 @@ body{
 .footer-utilities h3,
 .footer-utilities h4,
 .footer-utilities h5,
-.footer-utilities h6 {
+.footer-utilities h6,
+[class*="footer"] h1,
+[class*="footer"] h2,
+[class*="footer"] h3,
+[class*="footer"] h4,
+[class*="footer"] h5,
+[class*="footer"] h6 {
   color: #ffffff !important;
 }
 

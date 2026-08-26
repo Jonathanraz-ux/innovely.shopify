@@ -121,6 +121,11 @@
   <script src="{{ 'layered-slideshow.js' | asset_url }}" type="module" fetchpriority="low"></script>
 {% endif %}
 
+{%- comment -%} Required by the product media gallery slideshow (touch swipe on mobile) {%- endcomment -%}
+{% if template == 'product' or template.name == 'product' or request.page_type == 'product' %}
+  <script src="{{ 'slideshow.js' | asset_url }}" type="module" fetchpriority="low"></script>
+{% endif %}
+
 {% if localization.available_countries.size > 1 or localization.available_languages.size > 1 %}
   <script src="{{ 'localization.js' | asset_url }}" type="module" fetchpriority="low"></script>
 {% endif %}

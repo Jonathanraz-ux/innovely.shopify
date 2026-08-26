@@ -13,25 +13,26 @@
 
     <div class="reveal in-view" style="transition-delay: 140ms;">
       <div class="mt-16 overflow-x-auto pb-2">
-        <table class="w-full min-w-[720px] border-collapse">
-          <thead>
-            <tr>
-              <th scope="col" class="w-1/4"></th>
-              <th scope="col" class="w-1/4 rounded-2xl border border-brand/40 bg-brand-soft px-4 py-5 text-center">
-                <span class="font-display text-xl">{% render 'translate', key: 'innovely.comparison.col1_title', fallback: section.settings.col1_title %}</span>
-                <span class="mt-1 inline-block rounded-full bg-brand px-3 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-paper">
-                  {% render 'translate', key: 'innovely.comparison.col1_badge', fallback: section.settings.col1_badge %}
-                </span>
-              </th>
-              <th scope="col" class="w-1/4 rounded-2xl border border-line bg-paper px-4 py-5 text-center text-sm font-medium text-muted">
-                {% render 'translate', key: 'innovely.comparison.col2_title', fallback: section.settings.col2_title %}
-              </th>
-              <th scope="col" class="w-1/4 rounded-2xl border border-line bg-paper px-4 py-5 text-center text-sm font-medium text-muted">
-                {% render 'translate', key: 'innovely.comparison.col3_title', fallback: section.settings.col3_title %}
-              </th>
-            </tr>
-          </thead>
-          <tbody>
+        <div class="min-w-[720px]">
+          <!-- header -->
+          <div class="grid grid-cols-4 gap-3">
+            <div></div>
+            <div class="flex flex-col items-center justify-center rounded-2xl border border-brand/40 bg-brand-soft px-4 py-5 text-center">
+              <span class="font-display text-xl">{% render 'translate', key: 'innovely.comparison.col1_title', fallback: section.settings.col1_title %}</span>
+              <span class="mt-1 rounded-full bg-brand px-3 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-paper">
+                {% render 'translate', key: 'innovely.comparison.col1_badge', fallback: section.settings.col1_badge %}
+              </span>
+            </div>
+            <div class="flex items-center justify-center rounded-2xl border border-line bg-paper px-4 py-5 text-center text-sm font-medium text-muted">
+              {% render 'translate', key: 'innovely.comparison.col2_title', fallback: section.settings.col2_title %}
+            </div>
+            <div class="flex items-center justify-center rounded-2xl border border-line bg-paper px-4 py-5 text-center text-sm font-medium text-muted">
+              {% render 'translate', key: 'innovely.comparison.col3_title', fallback: section.settings.col3_title %}
+            </div>
+          </div>
+
+          <!-- rows -->
+          <div class="mt-3 space-y-3">
             {% for block in section.blocks %}
               {%- assign note_val = block.settings.col3_note -%}
               {%- if forloop.index == 1 -%}
@@ -43,8 +44,8 @@
               {%- if note_val_lower contains 'translation missing' -%}
                 {%- assign note_val = block.settings.col3_note -%}
               {%- endif -%}
-              <tr class="mt-3">
-                <th scope="row" class="pr-4 py-3 text-[15px] font-medium leading-snug text-ink text-left">
+              <div class="grid grid-cols-4 items-center gap-3">
+                <p class="pr-4 text-[15px] font-medium leading-snug text-ink">
                   {%- if forloop.index == 1 -%}
                     {% render 'translate', key: 'innovely.comparison.f1_label', fallback: block.settings.label %}
                   {%- elsif forloop.index == 2 -%}
@@ -56,26 +57,20 @@
                   {%- else -%}
                     {{ block.settings.label }}
                   {%- endif -%}
-                </th>
-                <td class="px-1 py-3">
-                  <div class="flex justify-center rounded-2xl bg-brand-soft/60 py-3">
-                    {% render 'comparison-cell', value: block.settings.col1_val, note: block.settings.col1_note %}
-                  </div>
-                </td>
-                <td class="px-1 py-3">
-                  <div class="flex justify-center rounded-2xl bg-paper py-3">
-                    {% render 'comparison-cell', value: block.settings.col2_val, note: block.settings.col2_note %}
-                  </div>
-                </td>
-                <td class="px-1 py-3">
-                  <div class="flex justify-center rounded-2xl bg-paper py-3">
-                    {% render 'comparison-cell', value: block.settings.col3_val, note: note_val %}
-                  </div>
-                </td>
-              </tr>
+                </p>
+                <div class="flex justify-center rounded-2xl bg-brand-soft/60 py-3">
+                  {% render 'comparison-cell', value: block.settings.col1_val, note: block.settings.col1_note %}
+                </div>
+                <div class="flex justify-center rounded-2xl bg-paper py-3">
+                  {% render 'comparison-cell', value: block.settings.col2_val, note: block.settings.col2_note %}
+                </div>
+                <div class="flex justify-center rounded-2xl bg-paper py-3">
+                  {% render 'comparison-cell', value: block.settings.col3_val, note: note_val %}
+                </div>
+              </div>
             {% endfor %}
-          </tbody>
-        </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>

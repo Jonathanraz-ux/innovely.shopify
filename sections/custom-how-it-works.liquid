@@ -1,4 +1,4 @@
-<section id="methode" style="background-color: #F8FAFC;">
+<section id="methode" class="bg-paper">
   <div class="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-32">
     <div class="mx-auto max-w-2xl text-center">
       <div class="reveal in-view">
@@ -22,7 +22,7 @@
         {% for block in section.blocks %}
           <div class="reveal in-view" style="transition-delay: {{ forloop.index0 | times: 140 }}ms;">
             <article class="group relative h-full rounded-4xl border border-line bg-paper p-8 transition-all duration-500 hover:-translate-y-1.5 hover:border-brand/40 hover:shadow-card lg:p-10">
-              <span class="absolute right-8 top-8 font-display text-5xl text-muted/80 transition-colors duration-500 group-hover:text-brand-mist">
+              <span class="absolute right-8 top-8 font-display text-5xl text-line transition-colors duration-500 group-hover:text-brand-mist">
                 0{{ forloop.index }}
               </span>
               <div class="relative inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-brand text-paper shadow-soft">

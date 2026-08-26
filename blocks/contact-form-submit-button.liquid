@@ -1,5 +1,18 @@
 
 {%- assign block_settings = block.settings -%}
+{%- assign submit_label = block_settings.label -%}
+{%- if submit_label contains 't:' -%}
+  {%- assign label_key = submit_label | remove_first: 't:' -%}
+  {%- assign translated_label = label_key | t -%}
+  {%- if translated_label contains 'translation missing' or translated_label contains 'Translation missing' or translated_label == label_key -%}
+    {%- assign submit_label = 'templates.contact.form.send' | t -%}
+    {%- if submit_label contains 'translation missing' or submit_label contains 'Translation missing' -%}
+      {%- assign submit_label = 'Envoyer' -%}
+    {%- endif -%}
+  {%- else -%}
+    {%- assign submit_label = translated_label -%}
+  {%- endif -%}
+{%- endif -%}
 {% render 'button-custom-styles', block_settings: block_settings, block_id: block.id %}
 <button
   type="submit"
@@ -7,7 +20,7 @@
   style="{% render 'size-style', settings: block_settings %}"
   {{ block.shopify_attributes }}
 >
-  {{ block_settings.label }}
+  {{ submit_label | default: 'Envoyer' }}
 </button>
 
 {% stylesheet %}

@@ -70,9 +70,9 @@
         <!-- main photo -->
         <div class="img-zoom relative aspect-[4/5] overflow-hidden rounded-4xl border border-line shadow-soft sm:aspect-[5/5.4]">
           {% if section.settings.image_main != blank %}
-            {{ section.settings.image_main | image_url: width: 1000 | image_tag: class: 'h-full w-full object-cover', loading: 'eager', fetchpriority: 'high' }}
+            {{ section.settings.image_main | image_url: width: 1000 | image_tag: class: 'h-full w-full object-cover', loading: 'eager' }}
           {% else %}
-            <img src="{{ 'hero-posture-before-after.jpg' | asset_url }}" alt="Smart Posture Corrector" width="750" height="939" class="h-full w-full object-cover" loading="eager" fetchpriority="high" />
+            <img src="{{ 'hero-posture-before-after.jpg' | asset_url }}" alt="Smart Posture Corrector" width="750" height="939" class="h-full w-full object-cover" loading="eager" />
           {% endif %}
           <div class="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/10 to-transparent"></div>
 
@@ -89,7 +89,7 @@
           </div>
 
           <!-- posture chip -->
-          <div class="animate-floaty absolute left-4 top-4 rounded-2xl border border-paper/20 bg-paper/90 px-4 py-3 shadow-card backdrop-blur">
+          <div class="animate-floaty absolute right-4 top-4 rounded-2xl border border-paper/20 bg-paper/90 px-4 py-3 shadow-card backdrop-blur">
             <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">
               {% render 'translate', key: 'innovely.hero.posture_label', fallback: section.settings.posture_label %}
             </p>

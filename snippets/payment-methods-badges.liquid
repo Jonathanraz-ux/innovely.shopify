@@ -1,0 +1,122 @@
+{%- doc -%}
+  Renders payment method icons/badges below more payment options, with click redirection to checkout.
+  @param {string} [class] - Optional additional CSS classes
+  @param {string} [form_id] - Optional ID of the associated product form
+{%- enddoc -%}
+
+<div 
+  class="payment-methods-badges-wrapper mt-3 flex flex-col items-center justify-center text-center {{ class }}"
+  data-payment-badges-form="{% if form_id %}{{ form_id }}{% else %}product-form-custom{% endif %}"
+>
+  <div 
+    class="payment-badges-grid flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 cursor-pointer transition-opacity duration-200 hover:opacity-95"
+    role="button"
+    tabindex="0"
+    aria-label="{{ 'products.product.more_payment_options' | t | default: 'More payment options' }}"
+    title="{{ 'products.product.more_payment_options' | t | default: 'More payment options' }}"
+  >
+    {%- assign badge_types = 'ach,american_express,apple_pay,diners_club,discover,google_pay,master,paypal,shopify_pay,visa' | split: ',' -%}
+    {%- for type in badge_types -%}
+      <span class="payment-badge-item inline-flex items-center justify-center transition-transform duration-200 hover:scale-105" data-payment-type="{{ type }}">
+        {%- if type == 'ach' -%}
+          {%- capture ach_svg -%}{{ 'ach' | payment_type_svg_tag: class: 'payment-badge-svg h-[24px] w-[38px] rounded-[3px] shadow-sm' }}{%- endcapture -%}
+          {%- if ach_svg contains '<svg' -%}
+            {{ ach_svg }}
+          {%- else -%}
+            <svg class="payment-badge-svg h-[24px] w-[38px] rounded-[3px] shadow-sm" viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="38" height="24" rx="3" fill="#FFFFFF"/>
+              <text x="19" y="16.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="900" fill="#000000" text-anchor="middle" letter-spacing="0.5">ACH</text>
+            </svg>
+          {%- endif -%}
+        {%- else -%}
+          {{ type | payment_type_svg_tag: class: 'payment-badge-svg h-[24px] w-[38px] rounded-[3px] shadow-sm' }}
+        {%- endif -%}
+      </span>
+    {%- endfor -%}
+  </div>
+</div>
+
+<style>
+  .payment-methods-badges-wrapper {
+    user-select: none;
+  }
+  .payment-badges-grid {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .payment-badge-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background: transparent;
+  }
+  .payment-badge-svg {
+    height: 24px;
+    width: 38px;
+    display: block;
+    border-radius: 3px;
+  }
+</style>
+
+<script>
+  (function() {
+    function initPaymentBadgesTrigger() {
+      var wrappers = document.querySelectorAll('.payment-methods-badges-wrapper:not([data-initialized])');
+      wrappers.forEach(function(wrapper) {
+        wrapper.setAttribute('data-initialized', 'true');
+        var grid = wrapper.querySelector('.payment-badges-grid');
+        if (!grid) return;
+
+        function triggerCheckout(e) {
+          if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+
+          var formId = wrapper.getAttribute('data-payment-badges-form');
+          var form = formId ? document.getElementById(formId) : null;
+          if (!form) {
+            form = wrapper.closest('form') || document.querySelector('form[action*="/cart/add"]');
+          }
+          if (!form) return;
+
+          // 1. Try triggering Shopify native more-options button if available
+          var moreOptionsBtn = form.querySelector('.shopify-payment-button__more-options') || document.querySelector('.shopify-payment-button__more-options');
+          if (moreOptionsBtn && typeof moreOptionsBtn.click === 'function') {
+            moreOptionsBtn.click();
+            return;
+          }
+
+          // 2. Direct checkout redirection fallback
+          var submitBtn = form.querySelector('button[type="submit"]');
+          if (submitBtn && typeof submitBtn.click === 'function') {
+            submitBtn.click();
+            return;
+          }
+
+          // 3. Fallback form submission
+          if (typeof form.requestSubmit === 'function') {
+            form.requestSubmit();
+          } else {
+            form.submit();
+          }
+        }
+
+        grid.addEventListener('click', triggerCheckout);
+        grid.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            triggerCheckout(e);
+          }
+        });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initPaymentBadgesTrigger);
+    } else {
+      initPaymentBadgesTrigger();
+    }
+    document.addEventListener('shopify:section:load', initPaymentBadgesTrigger);
+  })();
+</script>

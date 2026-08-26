@@ -41,7 +41,7 @@
           {% assign rev_count = rev_count | plus: 1 %}
           <div class="reveal in-view" style="transition-delay: {{ forloop.index0 | times: 120 }}ms;">
             <figure class="flex h-full flex-col rounded-4xl border border-white/20 bg-white p-8 shadow-card">
-              <div class="flex items-center gap-1.5 text-brand" role="img" aria-label="{% render 'translate', key: 'innovely.social_proof.stars_aria', fallback: '5 stars' %}">
+              <div class="flex items-center gap-1.5 text-brand" aria-label="{% render 'translate', key: 'innovely.social_proof.stars_aria', fallback: '5 stars' %}">
                 {% for j in (1..5) %}
                   <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 {% endfor %}
@@ -75,16 +75,12 @@
       <div class="reveal in-view">
         <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p class="eyebrow !text-white">{% render 'translate', key: 'innovely.social_proof.ugc_eyebrow', fallback: section.settings.ugc_eyebrow %}</p>
+            <p class="eyebrow">{% render 'translate', key: 'innovely.social_proof.ugc_eyebrow', fallback: section.settings.ugc_eyebrow %}</p>
             <h3 class="mt-4 font-display text-3xl leading-tight tracking-tight sm:text-4xl">
               {% render 'translate', key: 'innovely.social_proof.ugc_title', fallback: section.settings.ugc_title %}
             </h3>
           </div>
-          <a href="{{ section.settings.instagram_url }}" target="_blank" rel="noopener" class="group inline-flex items-center gap-2.5 text-sm font-medium text-white transition-colors hover:text-white/80">
-            <svg class="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-            @innovely
-            <span class="link-underline">{% render 'translate', key: 'innovely.social_proof.view_more', fallback: 'View more' %}</span>
-          </a>
+
         </div>
       </div>
 

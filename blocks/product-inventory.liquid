@@ -103,6 +103,12 @@
 
   .product-inventory__icon-in_stock {
     color: var(--color-instock);
+    animation: inventory-pulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes inventory-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
   }
 
   .product-inventory__icon-out_of_stock {

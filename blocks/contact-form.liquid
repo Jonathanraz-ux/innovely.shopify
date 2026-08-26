@@ -35,21 +35,23 @@
 
     {%- if form.errors and form_matches -%}
       <div
-        class="contact-form__error"
+        class="contact-form__error text-sm font-medium text-red-600 my-2 flex items-center gap-2"
         tabindex="-1"
         autofocus
         aria-live="polite"
       >
         {{- 'icon-error.svg' | inline_asset_content -}}
-
-        {{- form.errors.translated_fields.email | capitalize }}
-        {{ form.errors.messages.email -}}
+        {%- if request.locale.iso_code == 'fr' or request.locale.iso_code contains 'fr' -%}
+          L'adresse e-mail n'est pas valide. Veuillez entrer une adresse e-mail correcte.
+        {%- else -%}
+          Please enter a valid email address.
+        {%- endif -%}
       </div>
     {%- endif -%}
 
     {%- if form.posted_successfully? and form_matches -%}
       <div
-        class="contact-form__success"
+        class="contact-form__success text-sm font-medium text-emerald-600 my-2"
         tabindex="-1"
         autofocus
         aria-live="polite"
@@ -125,7 +127,7 @@
       {{- 'blocks.contact_form.comment' | t -}}
     </label>
     <textarea
-      rows="10"
+      rows="4"
       id="ContactForm-body"
       class="contact-form__input contact-form__input--textarea"
       name="contact[body]"

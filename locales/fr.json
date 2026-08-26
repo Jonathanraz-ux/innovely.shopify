@@ -48,6 +48,7 @@
       "subtitle": "Grâce à ses capteurs de précision, le correcteur de posture intelligent détecte l'affaissement de votre colonne en temps réel et émet une discrète micro-vibration pour rééduquer votre posture naturellement.",
       "verified_reviews": "Avis vérifiés",
       "low_stock_urgency": "Stock limité : plus que quelques-uns en stock !",
+      "limited_stock": "Stock limité — commandez maintenant !",
       "no_product_selected": "Aucun produit sélectionné",
       "no_product_selected_instructions": "Ouvrez les paramètres de cette section et choisissez un produit dans l'éditeur de thème. La carte d'achat ne s'affiche que lorsqu'un produit est assigné.",
       "product_unavailable": "Ce produit n'est plus disponible."
@@ -112,6 +113,13 @@
       "b3_tag": "Le soir",
       "b3_title": "19h - Récupération",
       "b3_text": "Relâcher les tensions accumulées. Votre dos vous remerciera demain."
+    },
+    "products_list": {
+      "eyebrow": "NOS PRODUITS",
+      "title": "Découvrez notre gamme",
+      "discover": "Découvrir",
+      "view": "Voir",
+      "sold_out_badge": "Épuisé"
     },
     "marquee": {
       "m1_text": "Conçu avec soin",
@@ -393,7 +401,7 @@
     "page_placeholder_content": "Sélectionnez une page pour afficher son contenu.",
     "placeholder_image": "Image du paramètre fictif",
     "inventory_low_stock": "Stock faible",
-    "inventory_in_stock": "En stock",
+    "inventory_in_stock": "Stock limité",
     "inventory_out_of_stock": "En rupture de stock",
     "inventory_low_stock_show_count": {
       "one": "{{ count }} restant(s)",
