@@ -1,12 +1,37 @@
+{%- comment -%}
+  Preload each unique font file only once. When several font settings point to
+  the same family/weight (e.g. body, heading and accent all use Inter), the
+  previous version emitted the exact same preload URL up to 4 times, costing
+  redundant requests on slow mobile connections.
+{%- endcomment -%}
+
+{%- assign preloaded_font_urls = '' -%}
+
 {%- unless settings.type_body_font.system? -%}
-  {{ settings.type_body_font | font_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'low' }}
+  {%- assign font_preload_url = settings.type_body_font | font_url -%}
+  {%- unless preloaded_font_urls contains font_preload_url -%}
+    {{ font_preload_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'low' }}
+    {%- assign preloaded_font_urls = preloaded_font_urls | append: font_preload_url | append: '|' -%}
+  {%- endunless -%}
 {%- endunless -%}
 {%- unless settings.type_subheading_font.system? -%}
-  {{ settings.type_subheading_font | font_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'low' }}
+  {%- assign font_preload_url = settings.type_subheading_font | font_url -%}
+  {%- unless preloaded_font_urls contains font_preload_url -%}
+    {{ font_preload_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'low' }}
+    {%- assign preloaded_font_urls = preloaded_font_urls | append: font_preload_url | append: '|' -%}
+  {%- endunless -%}
 {%- endunless -%}
 {%- unless settings.type_heading_font.system? -%}
-  {{ settings.type_heading_font | font_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'low' }}
+  {%- assign font_preload_url = settings.type_heading_font | font_url -%}
+  {%- unless preloaded_font_urls contains font_preload_url -%}
+    {{ font_preload_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'low' }}
+    {%- assign preloaded_font_urls = preloaded_font_urls | append: font_preload_url | append: '|' -%}
+  {%- endunless -%}
 {%- endunless -%}
 {%- unless settings.type_accent_font.system? -%}
-  {{ settings.type_accent_font | font_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'low' }}
+  {%- assign font_preload_url = settings.type_accent_font | font_url -%}
+  {%- unless preloaded_font_urls contains font_preload_url -%}
+    {{ font_preload_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'low' }}
+    {%- assign preloaded_font_urls = preloaded_font_urls | append: font_preload_url | append: '|' -%}
+  {%- endunless -%}
 {%- endunless -%}

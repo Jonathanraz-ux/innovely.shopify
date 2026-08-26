@@ -14,15 +14,14 @@
       >
     {%- endif -%}
 
-    {% comment %} This a way to wait for main content to load when navigating to a new page so that the view transitions can work consistently {% endcomment %}
-    {% if settings.transition_to_main_product or settings.page_transition_enabled %}
-      <link
-        rel="expect"
-        href="#MainContent"
-        blocking="render"
-        id="view-transition-render-blocker"
-      >
-    {% endif %}
+    {% comment %}
+      NOTE: the former <link rel="expect" blocking="render" href="#MainContent">
+      view-transition render blocker was removed: it held the browser's first
+      paint until the whole document was parsed, so on slow mobile networks the
+      page stayed blank ("site disappeared / not found") before popping in.
+      View transitions still work without it; they simply no longer gate the
+      first paint of the essential HTML structure.
+    {% endcomment %}
 
     {%- render 'meta-tags' -%}
     {%- render 'stylesheets' -%}

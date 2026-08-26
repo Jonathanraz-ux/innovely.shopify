@@ -339,3 +339,327 @@ main[data-template='product'] .product-information .innovely-card :is(p, li, spa
 .email-signup__button:not(.button-unstyled):not(.button-secondary) {
   background-color: var(--color-brand) !important;
 }
+
+/* ==========================================================================
+   INNOVELY — MOBILE REFINEMENTS LAYER (320px → 767px)
+   Goal: premium spacing, alignment and visual stability on smartphones.
+   Rules of engagement:
+     - Desktop (≥1024px) is never touched; tablet (768–1023px) keeps the
+       existing layout except where explicitly noted.
+     - No new sections, no text changes, no functional changes.
+     - Scoped to the custom homepage section anchors (#top, #probleme,
+       #methode, #produit, #comparison, #avis, #lifestyle,
+       #custom-products, #faq) plus the header/footer chrome.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. HEADER — stable height, no overlapping icons, comfortable touch targets
+   The stock mobile grid reserves two fixed 44px bookend tracks on the right
+   (`leftA leftB center rightA rightB`). Nothing occupies `rightA`, while the
+   whole actions cluster (language pill + account + cart) sits in the 44px
+   `rightB` track and overflows to the left — on ≤380px screens it collides
+   with the centered logo. Give the cluster its natural track instead.
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 749px) {
+  #header-component .header__columns,
+  #header-component[data-menu-style='drawer'] .header__columns {
+    grid-template-columns: var(--header-mobile-bookend) var(--header-mobile-bookend) minmax(0, 1fr) 0px auto;
+  }
+
+  /* Desktop-only optical correction that pulls the actions cluster over the
+     centered logo on small screens */
+  #header-component header-actions {
+    margin-inline-start: 0;
+  }
+
+  /* Logo shrinks gracefully instead of being overlapped by the actions */
+  #header-component .header-logo {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  #header-component .header-logo__image-container {
+    max-width: 100%;
+  }
+
+  #header-component .header-logo__image {
+    max-width: 100%;
+  }
+}
+
+/* Compact language pill on small phones so all header actions fit on one
+   line. Needs !important + ID specificity: the pill ships with its own
+   !important rules inside an inline <style> rendered after this sheet. */
+@media screen and (max-width: 430px) {
+  #header-component .language-selector-pill {
+    margin-inline: 2px !important;
+    padding: 2px !important;
+    gap: 2px !important;
+  }
+
+  #header-component .language-selector-pill .lang-btn {
+    padding: 6px 7px !important;
+    font-size: 11px !important;
+  }
+
+  /* A touch more breathing room for the actions cluster */
+  #header-component .header__columns {
+    padding-inline: 0 4px;
+  }
+
+  /* Guaranteed air between a fully-shrunk logo and the account/cart icons */
+  #header-component .header-logo {
+    margin-inline-end: 8px;
+  }
+}
+
+/* Very small phones: squeeze the pill a little more so the logo keeps air
+   around it instead of touching the account/cart icons */
+@media screen and (max-width: 359px) {
+  #header-component .language-selector-pill {
+    margin-inline: 0 !important;
+  }
+
+  #header-component .language-selector-pill .lang-btn {
+    padding: 6px 5px !important;
+  }
+}
+
+/* Announcement bar: on tiny screens the long uppercase line with 0.14em
+   tracking wraps awkwardly mid-word group; slightly tighter tracking keeps
+   it elegant at 320–419px. Text itself unchanged. */
+@media screen and (max-width: 419px) {
+  #header-group .announcement-wrapper {
+    letter-spacing: 0.06em;
+    padding-inline: 12px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. SHARED SECTION RHYTHM — uniform vertical spacing between all custom
+   homepage sections on mobile (was py-24 / huge gaps everywhere).
+   Tablet (≥768px) and desktop keep their original padding.
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 767px) {
+  #probleme > div,
+  #methode > div,
+  #produit > div,
+  #comparison > div,
+  #avis > div,
+  #lifestyle > div,
+  #custom-products > div,
+  #faq > div {
+    padding-top: 4.25rem;
+    padding-bottom: 4.25rem;
+  }
+
+  /* Hero breathes a little less on mobile too */
+  #top > div.grid {
+    padding-bottom: 4.5rem;
+    padding-top: 3rem;
+    gap: 2.75rem; /* was gap-14 (56px) between copy and image */
+  }
+
+  /* Tighter header→content rhythm inside sections */
+  #produit .mt-16,
+  #comparison .mt-16,
+  #avis .mt-16,
+  #lifestyle .mt-16,
+  #methode .relative.mt-20 {
+    margin-top: 2.75rem;
+  }
+
+  #avis .mt-24 {
+    margin-top: 3.5rem;
+  }
+
+  #custom-products .mb-16 {
+    margin-bottom: 2.75rem;
+  }
+
+  /* Hero H1: balanced line breaks ("Achieve perfect posture." wraps as
+     Achieve / perfect / posture. instead of an awkward rag); soften the
+     charter's 2px letterspacing which is heavy at 42px on small screens. */
+  #top h1.font-display {
+    text-wrap: balance;
+    letter-spacing: 0.5px;
+  }
+
+  /* Hero reassurance list stays airy but not sprawling */
+  #top ul.mt-10 {
+    margin-top: 2.25rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. PROBLEM STATS (#probleme) — "8h / 70% / 2×" stack with a calmer rhythm
+   and slightly scaled values that never fight the viewport width.
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 767px) {
+  #probleme .mt-12.grid {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    gap: 2rem;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  #probleme .font-display.text-5xl {
+    font-size: 2.5rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. HOW IT WORKS (#methode) — vertical scan rhythm, compact cards on the
+   narrowest screens; numbers stay clear of titles.
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 430px) {
+  #methode article.p-8 {
+    padding: 1.5rem;
+  }
+
+  #methode article .absolute.right-8.top-8 {
+    right: 1.5rem;
+    top: 1.5rem;
+    font-size: 2.25rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. FEATURED PRODUCT (#produit) — buy box priority: image → title →
+   variants → price → quantity → CTA. Touch-friendly chips and quantity,
+   price that never overflows on 320px.
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 767px) {
+  /* Variant chips: comfortable finger targets, vertically centered labels */
+  #product-form-custom .variant-chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+  }
+
+  /* Quantity stepper row: taller input, no cramped spinner field */
+  #Quantity-custom {
+    min-height: 40px;
+    min-width: 44px;
+  }
+
+  /* Add-to-cart keeps its full width and a solid presence */
+  #product-form-custom .add-to-cart-button {
+    min-height: 52px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  #produit .bg-paper.rounded-4xl {
+    padding: 1.5rem;
+  }
+
+  /* Price anchor: 48px → 40px keeps "$57.99" + compare + badge on one line */
+  #produit [data-price] {
+    font-size: 2.5rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. COMPARISON TABLE (#comparison) — intentional horizontal scroll limited
+   to the table only, with a discreet edge fade as the affordance and a thin
+   themed scrollbar. All rows/columns kept; the page itself never scrolls
+   sideways. Above 720px viewport nothing scrolls, so no affordance shown.
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 719px) {
+  #comparison .overflow-x-auto {
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-line, #dbe4ef) transparent;
+  }
+
+  #comparison .overflow-x-auto::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  #comparison .overflow-x-auto::-webkit-scrollbar-thumb {
+    background-color: var(--color-line, #dbe4ef);
+    border-radius: 999px;
+  }
+
+  #comparison .overflow-x-auto::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 8px; /* leave the scrollbar visible under the fade */
+    right: 0;
+    width: 36px;
+    pointer-events: none;
+    border-radius: 0 16px 16px 0;
+    background: linear-gradient(to left, rgba(244, 247, 251, 0.95), rgba(244, 247, 251, 0));
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7. SOCIAL PROOF (#avis) — stats & cards scale down cleanly on small
+   screens; UGC captions (tag + handle) are always visible on touch devices
+   where :hover never happens (they were unreachable before).
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 430px) {
+  #avis figure.p-8 {
+    padding: 1.5rem;
+  }
+
+  #avis .font-display.text-5xl {
+    font-size: 2.75rem;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  #avis .aspect-square figcaption,
+  #avis .aspect-square .bg-gradient-to-t {
+    opacity: 1;
+  }
+
+  /* Neutralize Tailwind v4's `translate`-based translate-y-3 offset */
+  #avis .aspect-square figcaption {
+    translate: none;
+  }
+
+  #avis .aspect-square .bg-gradient-to-t {
+    background-image: linear-gradient(to top, rgba(5, 11, 24, 0.8), rgba(5, 11, 24, 0.1), transparent);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. LIFESTYLE (#lifestyle) — moment cards keep their imagery ratio but lose
+   the excess empty band and inner padding on small screens.
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 480px) {
+  #lifestyle article.min-h-\[420px\] {
+    min-height: 360px;
+  }
+
+  #lifestyle article.p-8 {
+    padding: 1.5rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   9. PRODUCTS LIST (#custom-products) — the "Discover" link becomes a real
+   touch target without changing its label or style.
+   -------------------------------------------------------------------------- */
+#custom-products article a.rounded-full {
+  padding-block: 9px;
+}
+
+/* --------------------------------------------------------------------------
+   10. FOOTER — accordion headings (Useful Links / Support) get a proper
+   touch zone; newsletter input/button already stack via the theme below
+   750px. No links or items touched.
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 749px) {
+  footer .menu__details > summary.menu__heading {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}

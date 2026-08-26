@@ -70,9 +70,9 @@
         <!-- main photo -->
         <div class="img-zoom relative aspect-[4/5] overflow-hidden rounded-4xl border border-line shadow-soft sm:aspect-[5/5.4]">
           {% if section.settings.image_main != blank %}
-            {{ section.settings.image_main | image_url: width: 1000 | image_tag: class: 'h-full w-full object-cover', loading: 'eager' }}
+            {{ section.settings.image_main | image_url: width: 1000 | image_tag: class: 'h-full w-full object-cover', loading: 'eager', fetchpriority: 'high', decoding: 'async' }}
           {% else %}
-            <img src="{{ 'hero-posture-before-after.jpg' | asset_url }}" alt="Smart Posture Corrector" width="750" height="939" class="h-full w-full object-cover" loading="eager" />
+            <img src="{{ 'hero-posture-before-after.jpg' | asset_url }}" alt="Smart Posture Corrector" width="750" height="939" class="h-full w-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
           {% endif %}
           <div class="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/10 to-transparent"></div>
 
