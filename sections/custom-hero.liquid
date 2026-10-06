@@ -49,15 +49,14 @@
               <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-brand-soft text-brand">
                 <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
               </span>
-              {%- if forloop.index == 1 -%}
-                {% render 'translate', key: 'innovely.hero.r1_text', fallback: block.settings.text %}
-              {%- elsif forloop.index == 2 -%}
-                {% render 'translate', key: 'innovely.hero.r2_text', fallback: block.settings.text %}
-              {%- elsif forloop.index == 3 -%}
-                {% render 'translate', key: 'innovely.hero.r3_text', fallback: block.settings.text %}
-              {%- else -%}
-                {{ block.settings.text }}
-              {%- endif -%}
+              {%- case block.id -%}
+                {%- when 'r1' -%}
+                  {% render 'translate', key: 'innovely.hero.r1_text', fallback: block.settings.text %}
+                {%- when 'r3' -%}
+                  {% render 'translate', key: 'innovely.hero.r3_text', fallback: block.settings.text %}
+                {%- else -%}
+                  {{ block.settings.text }}
+                {%- endcase -%}
             </li>
           {% endfor %}
         </ul>
@@ -89,28 +88,30 @@
           </div>
 
           <!-- posture chip -->
-          <div class="animate-floaty absolute right-4 top-4 rounded-2xl border border-paper/20 bg-paper/90 px-4 py-3 shadow-card backdrop-blur">
-            <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">
-              {% render 'translate', key: 'innovely.hero.posture_label', fallback: section.settings.posture_label %}
-            </p>
-            <p class="font-display text-2xl text-ink">{% render 'translate', key: 'innovely.hero.posture_value', fallback: section.settings.posture_value %}</p>
-            <div class="mt-1.5 flex items-center gap-1 text-brand">
-              {% for i in (1..5) %}
-                <svg class="h-3 w-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              {% endfor %}
+          {%- if section.settings.show_claims -%}
+            <div class="animate-floaty absolute right-4 top-4 rounded-2xl border border-paper/20 bg-paper/90 px-4 py-3 shadow-card backdrop-blur">
+              <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">
+                {% render 'translate', key: 'innovely.hero.posture_label', fallback: section.settings.posture_label %}
+              </p>
+              <p class="font-display text-2xl text-ink">{% render 'translate', key: 'innovely.hero.posture_value', fallback: section.settings.posture_value %}</p>
+              <div class="mt-1.5 flex items-center gap-1 text-brand">
+                {% for i in (1..5) %}
+                  <svg class="h-3 w-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                {% endfor %}
+              </div>
             </div>
-          </div>
 
-          <!-- result chip -->
-          <div
-            class="animate-floaty absolute bottom-24 right-4 rounded-2xl border border-paper/20 bg-ink/80 px-4 py-3 shadow-card backdrop-blur"
-            style="animation-delay: 0.7s;"
-          >
-            <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-paper/60">
-              {% render 'translate', key: 'innovely.hero.result_label', fallback: section.settings.result_label %}
-            </p>
-            <p class="text-sm text-paper">{% render 'translate', key: 'innovely.hero.result_value', fallback: section.settings.result_value %}</p>
-          </div>
+            <!-- result chip -->
+            <div
+              class="animate-floaty absolute bottom-24 right-4 rounded-2xl border border-paper/20 bg-ink/80 px-4 py-3 shadow-card backdrop-blur"
+              style="animation-delay: 0.7s;"
+            >
+              <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-paper/60">
+                {% render 'translate', key: 'innovely.hero.result_label', fallback: section.settings.result_label %}
+              </p>
+              <p class="text-sm text-paper">{% render 'translate', key: 'innovely.hero.result_value', fallback: section.settings.result_value %}</p>
+            </div>
+          {%- endif -%}
         </div>
 
         <!-- secondary photo -->
@@ -147,6 +148,12 @@
       "id": "subtitle",
       "label": "Subtitle",
       "default": "Le premier correcteur de posture intelligent qui vous rééduque activement."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_claims",
+      "label": "Show floating claims and badges",
+      "default": false
     },
     {
       "type": "text",
@@ -238,12 +245,6 @@
           "type": "reassurance",
           "settings": {
             "text": "Invisible sous les vêtements"
-          }
-        },
-        {
-          "type": "reassurance",
-          "settings": {
-            "text": "Confort garanti 30 jours"
           }
         }
       ]

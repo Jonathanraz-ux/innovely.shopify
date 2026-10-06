@@ -7,13 +7,18 @@
   @param {string} drawer_id - The ID of the parent theme-drawer element (for the close button target)
   @param {string} [heading_id] - Optional ID for the heading element (for aria-labelledby)
   @param {string} [title_append] - Optional HTML to render after the title text (e.g., cart bubble, filter count)
+  @param {string} [close_aria_label] - Optional custom aria-label for the close button (defaults to actions.close translation)
+  @param {string} [close_title] - Optional title attribute for the close button
 
   @example
   {% render 'theme-drawer-header',
     title: 'content.cart_title' | t,
     drawer_id: 'cart-drawer',
     heading_id: 'cart-drawer-heading',
-    title_append: cart_bubble_html
+    title_append: cart_badge_html,
+    close_aria_label: 'Fermer le panier',
+    close_title: 'Fermer le panier',
+    close_icon: 'icon-close-cart.svg'
   %}
 {% enddoc %}
 
@@ -32,10 +37,19 @@
     class="theme-drawer__close-button"
     on:click="#{{ drawer_id }}/close"
     type="button"
-    aria-label="{{ 'actions.close' | t }}"
+    aria-label="{{ close_aria_label | default: 'actions.close' | t }}"
+    title="{{ close_title | default: close_aria_label | default: 'actions.close' | t }}"
   >
     <span class="svg-wrapper">
-      {{- 'icon-close.svg' | inline_asset_content -}}
+      {%- if close_icon == 'icon-close-cart.svg' -%}
+        {{- 'icon-close-cart.svg' | inline_asset_content -}}
+      {%- elsif close_icon == 'icon-close.svg' or close_icon == blank -%}
+        {{- 'icon-close.svg' | inline_asset_content -}}
+      {%- else -%}
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      {%- endif -%}
     </span>
   </button>
 </div>

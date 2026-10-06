@@ -22,6 +22,8 @@
           <article class="group relative flex h-full min-h-[420px] flex-col justify-end overflow-hidden rounded-4xl p-8 text-paper transition-transform duration-500 hover:-translate-y-1.5">
             {% if block.settings.image != blank %}
               <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title }}" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            {% elsif block.settings.asset_image != blank %}
+              <img src="{{ block.settings.asset_image | asset_url }}" alt="{{ block.settings.title }}" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
             {% else %}
               {{ 'collection-1' | placeholder_svg_tag: 'absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 bg-gray-100' }}
             {% endif %}
@@ -113,6 +115,12 @@
           "type": "image_picker",
           "id": "image",
           "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "asset_image",
+          "label": "Asset Image Filename",
+          "info": "Filename from assets folder (e.g. lifestyle-office.jpg). Used when no image is picked above."
         },
         {
           "type": "text",

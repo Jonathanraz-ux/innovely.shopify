@@ -9,6 +9,10 @@
  */
 {
   "sections": {
+    "promo_scroll_bar_1": {
+      "type": "promo-scroll-bar",
+      "settings": {}
+    },
     "custom_hero_1": {
       "type": "custom-hero",
       "blocks": {
@@ -16,12 +20,6 @@
           "type": "reassurance",
           "settings": {
             "text": "Invisible under clothing"
-          }
-        },
-        "r2": {
-          "type": "reassurance",
-          "settings": {
-            "text": "Guaranteed comfort for 30 days"
           }
         },
         "r3": {
@@ -33,7 +31,6 @@
       },
       "block_order": [
         "r1",
-        "r2",
         "r3"
       ],
       "settings": {
@@ -89,12 +86,6 @@
           "settings": {
             "text": "Free Shipping"
           }
-        },
-        "m8": {
-          "type": "marquee_item",
-          "settings": {
-            "text": "30-Day Money-Back Guarantee"
-          }
         }
       },
       "block_order": [
@@ -104,8 +95,7 @@
         "m4",
         "m5",
         "m6",
-        "m7",
-        "m8"
+        "m7"
       ],
       "settings": {}
     },
@@ -277,52 +267,136 @@
             "text": "I recommend it to all my clients. Visible results in less than a month."
           }
         },
+        "rev4": {
+          "type": "review",
+          "settings": {
+            "name": "Élodie C.",
+            "meta": "Physiotherapist, working with the device for a year",
+            "text": "I now offer it to all my patients who suffer from back pain. It really changes their daily comfort."
+          }
+        },
+        "rev5": {
+          "type": "review",
+          "settings": {
+            "name": "Hugo F.",
+            "meta": "Student, 22 years old",
+            "text": "After long study sessions at my desk I used to wake up with a stiff neck. Not anymore since I started wearing it."
+          }
+        },
+        "rev6": {
+          "type": "review",
+          "settings": {
+            "name": "Nathalie P.",
+            "meta": "Entrepreneur, 2 years of remote work",
+            "text": "The discreet vibration reminds me to sit up without ever interrupting my flow. Genuinely life-changing for me."
+          }
+        },
+        "rev7": {
+          "type": "review",
+          "settings": {
+            "name": "Marc A.",
+            "meta": "Nurse, 12-hour shifts",
+            "text": "I run after it all day and my shoulders finally thank me. Light, comfortable and really effective."
+          }
+        },
+        "rev8": {
+          "type": "review",
+          "settings": {
+            "name": "Sofia B.",
+            "meta": "Designer, stands a lot to draw",
+            "text": "I had almost given up on posture tools. This one is the first I forget I am wearing, and it actually works."
+          }
+        },
+        "rev9": {
+          "type": "review",
+          "settings": {
+            "name": "Julien V.",
+            "meta": "Customer for 4 weeks of use",
+            "text": "Subtle as it is, the reminder arrives exactly when I need it. I have recommended it to my whole team."
+          }
+        },
+        "rev10": {
+          "type": "review",
+          "settings": {
+            "name": "Lisa G.",
+            "meta": "Physical therapist",
+            "text": "A genuinely well-designed concept. I present it to my patients alongside their exercises, the results follow."
+          }
+        },
+        "rev11": {
+          "type": "review",
+          "settings": {
+            "name": "Karim T.",
+            "meta": "Accountant, works seated all day",
+            "text": "My back pain has noticeably decreased in a month. I would not go back to a day without it."
+          }
+        },
+        "rev12": {
+          "type": "review",
+          "settings": {
+            "name": "Pauline M.",
+            "meta": "Photographer, on the road constantly",
+            "text": "I carry heavy gear all day, this little device keeps my posture aligned and my energy up."
+          }
+        },
+        "rev13": {
+          "type": "review",
+          "settings": {
+            "name": "Rémi D.",
+            "meta": "Teacher",
+            "text": "Standing at the board for hours was exhausting. Now the reminder keeps me straight without me thinking about it."
+          }
+        },
+        "rev14": {
+          "type": "review",
+          "settings": {
+            "name": "Clara W.",
+            "meta": "Office worker, 8 years sitting at a desk",
+            "text": "The quality is impressive and the follow-up app is very clear. My posture improved within two weeks."
+          }
+        },
+        "rev15": {
+          "type": "review",
+          "settings": {
+            "name": "Antoine S.",
+            "meta": "Horse rider, 15 years of practice",
+            "text": "A more balanced posture rubs off on my riding. A surprising but very welcome bonus."
+          }
+        },
         "u1": {
           "type": "ugc",
           "settings": {
-            "image": "shopify://shop_images/Gemini_Generated_Image_3zz9383zz9383zz9.png",
-            "tag": "At the office",
-            "name": "@camille.m"
+            "image": ""
           }
         },
         "u2": {
           "type": "ugc",
           "settings": {
-            "image": "shopify://shop_images/Gemini_Generated_Image_yo5m8wyo5m8wyo5m.png",
-            "tag": "Focus mode",
-            "name": "@thomas.dev"
+            "image": ""
           }
         },
         "u3": {
           "type": "ugc",
           "settings": {
-            "image": "shopify://shop_images/3.png",
-            "tag": "On the move",
-            "name": "@sarah.runs"
+            "image": ""
           }
         },
         "u4": {
           "type": "ugc",
           "settings": {
-            "image": "shopify://shop_images/6.jpg",
-            "tag": "With family",
-            "name": "@les_durand"
+            "image": ""
           }
         },
         "u5": {
           "type": "ugc",
           "settings": {
-            "image": "shopify://shop_images/1.jpg",
-            "tag": "In meetings",
-            "name": "@lucie.agile"
+            "image": ""
           }
         },
         "u6": {
           "type": "ugc",
           "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_26_juil._2026_12_44_29_1.png",
-            "tag": "Product",
-            "name": "@innovely.fr"
+            "image": ""
           }
         }
       },
@@ -330,6 +404,18 @@
         "rev1",
         "rev2",
         "rev3",
+        "rev4",
+        "rev5",
+        "rev6",
+        "rev7",
+        "rev8",
+        "rev9",
+        "rev10",
+        "rev11",
+        "rev12",
+        "rev13",
+        "rev14",
+        "rev15",
         "u1",
         "u2",
         "u3",
@@ -356,7 +442,7 @@
         "b1": {
           "type": "moment",
           "settings": {
-            "image": "shopify://shop_images/3.png",
+            "asset_image": "lifestyle-office.jpg",
             "tag": "At the office",
             "title": "8am - Focus mode",
             "text": "No more slouching in front of your screen. This device discreetly reminds you."
@@ -365,7 +451,7 @@
         "b2": {
           "type": "moment",
           "settings": {
-            "image": "shopify://shop_images/6.jpg",
+            "asset_image": "lifestyle-active.jpg",
             "tag": "On the move",
             "title": "12pm - Active",
             "text": "Maintain optimal posture wherever your day takes you."
@@ -374,7 +460,7 @@
         "b3": {
           "type": "moment",
           "settings": {
-            "image": "shopify://shop_images/1.jpg",
+            "asset_image": "lifestyle-evening.jpg",
             "tag": "Evening",
             "title": "7pm - Recovery",
             "text": "Release accumulated tension. Your back will thank you tomorrow."
@@ -427,7 +513,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Is there a warranty?",
-            "answer": "Yes, the Smart Posture Corrector comes with a 2-year warranty. In addition, we offer a 30-day risk-free money-back guarantee."
+            "answer": "Yes, the Smart Posture Corrector comes with a 2-year warranty."
           }
         }
       },
@@ -455,6 +541,7 @@
     }
   },
   "order": [
+    "promo_scroll_bar_1",
     "custom_hero_1",
     "custom_marquee_1",
     "custom_problem_1",

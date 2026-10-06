@@ -21,7 +21,7 @@
   },
   "innovely": {
     "announcement": {
-      "text": "MONEY-BACK GUARANTEE | 2-YEAR WARRANTY"
+      "text": "FREE SHIPPING"
     },
     "product": {
       "disclosures_heading": "Product details"
@@ -39,7 +39,6 @@
       "result_label": "RESULTS",
       "result_value": "From 14 days",
       "r1_text": "Invisible under clothing",
-      "r2_text": "Guaranteed comfort for 30 days",
       "r3_text": "Free shipping"
     },
     "featured_product": {
@@ -89,16 +88,37 @@
       "rev2_text": "The vibration is so subtle you forget about it... until you realize you're standing straighter!",
       "rev3_meta": "Sports coach",
       "rev3_text": "I recommend it to all my clients. Visible results in less than a month.",
-      "u1_tag": "At the office",
-      "u2_tag": "Focus mode",
-      "u3_tag": "On the move",
-      "u4_tag": "With family",
-      "u5_tag": "In meetings",
-      "u6_tag": "Product",
+      "rev4_meta": "Physiotherapist, working with the device for a year",
+      "rev4_text": "I now offer it to all my patients who suffer from back pain. It really changes their daily comfort.",
+      "rev5_meta": "Student, 22 years old",
+      "rev5_text": "After long study sessions at my desk I used to wake up with a stiff neck. Not anymore since I started wearing it.",
+      "rev6_meta": "Entrepreneur, 2 years of remote work",
+      "rev6_text": "The discreet vibration reminds me to sit up without ever interrupting my flow. Genuinely life-changing for me.",
+      "rev7_meta": "Nurse, 12-hour shifts",
+      "rev7_text": "I run after it all day and my shoulders finally thank me. Light, comfortable and really effective.",
+      "rev8_meta": "Designer, stands a lot to draw",
+      "rev8_text": "I had almost given up on posture tools. This one is the first I forget I am wearing, and it actually works.",
+      "rev9_meta": "Customer for 4 weeks of use",
+      "rev9_text": "Subtle as it is, the reminder arrives exactly when I need it. I have recommended it to my whole team.",
+      "rev10_meta": "Physical therapist",
+      "rev10_text": "A genuinely well-designed concept. I present it to my patients alongside their exercises, the results follow.",
+      "rev11_meta": "Accountant, works seated all day",
+      "rev11_text": "My back pain has noticeably decreased in a month. I would not go back to a day without it.",
+      "rev12_meta": "Photographer, on the road constantly",
+      "rev12_text": "I carry heavy gear all day, this little device keeps my posture aligned and my energy up.",
+      "rev13_meta": "Teacher",
+      "rev13_text": "Standing at the board for hours was exhausting. Now the reminder keeps me straight without me thinking about it.",
+      "rev14_meta": "Office worker, 8 years sitting at a desk",
+      "rev14_text": "The quality is impressive and the follow-up app is very clear. My posture improved within two weeks.",
+      "rev15_meta": "Horse rider, 15 years of practice",
+      "rev15_text": "A more balanced posture rubs off on my riding. A surprising but very welcome bonus.",
       "ugc_eyebrow": "ON INSTAGRAM",
       "ugc_title": "Everywhere with you.",
       "stars_aria": "5 stars",
-      "view_more": "View more"
+      "view_more": "View more",
+      "carousel_label": "Customer testimonials",
+      "carousel_prev": "Previous testimonial",
+      "carousel_next": "Next testimonial"
     },
     "lifestyle": {
       "eyebrow": "PERFECT INTEGRATION",
@@ -128,8 +148,7 @@
       "m4_text": "2-Year Warranty",
       "m5_text": "Discreet & Lightweight",
       "m6_text": "For Adults & Kids",
-      "m7_text": "Free Shipping",
-      "m8_text": "30-Day Money-Back Guarantee"
+      "m7_text": "Free Shipping"
     },
     "faq": {
       "eyebrow": "FAQ",
@@ -143,7 +162,7 @@
       "q4_question": "What is the battery life?",
       "q4_answer": "The battery lasts up to 7 days under normal use. A full charge takes about 1 hour and 30 minutes via USB-C.",
       "q5_question": "Is there a warranty?",
-      "q5_answer": "Yes, the Smart Posture Corrector comes with a 2-year warranty. In addition, we offer a 30-day risk-free money-back guarantee."
+      "q5_answer": "Yes, the Smart Posture Corrector comes with a 2-year warranty."
     },
     "how_it_works": {
       "eyebrow": "THE METHOD",

@@ -79,7 +79,7 @@
         max="{{ variant.quantity_rule.max }}"
       {% endif %}
       step="{{ variant.quantity_rule.increment | default: 1 }}"
-      {% if can_update_quantity == false or variant.available == false %}
+      {% if can_update_quantity == false or variant.available == false and variant.inventory_management == 'shopify' and variant.inventory_policy == 'deny' %}
         disabled
       {% endif %}
     >

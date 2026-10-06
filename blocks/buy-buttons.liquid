@@ -4,12 +4,28 @@
   assign block_settings = block.settings
   assign product = closest.product
   if request.visual_preview_mode and product == blank
-    assign product = collections.all.products.first
+    for preview_product in collections.all.products
+      if preview_product.selected_or_first_available_variant.available
+        assign product = preview_product
+        break
+      endif
+    endfor
+    if product == blank
+      assign product = collections.all.products.first
+    endif
   endif
 
-  assign variant = closest.product.selected_or_first_available_variant
+  assign variant = product.selected_or_first_available_variant
   assign inventory_quantity = variant.inventory_quantity
   assign inventory_policy = variant.inventory_policy
+
+  assign variant_available = variant.available
+  if variant_available
+    else
+      if variant.inventory_management == blank or variant.inventory_policy == 'continue' or variant.inventory_quantity > 0
+        assign variant_available = true
+      endif
+    endif
 
   if variant.inventory_management == 'shopify'
     assign inventory_managed = true
@@ -23,7 +39,7 @@
       assign quantity_rule_soldout = true
     endif
 
-    if variant.available
+    if variant_available
       assign can_add_to_cart = true
       assign add_to_cart_text = 'products.product.add_to_cart' | t
     elsif inventory_managed and inventory_quantity <= 0 and inventory_policy == 'deny' or quantity_rule_soldout
@@ -260,7 +276,7 @@
     type="module"
   ></script>
 
-  {%- assign pick_up_availabilities = closest.product.selected_or_first_available_variant.store_availabilities
+  {%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities
     | where: 'pick_up_enabled', true
   -%}
 
@@ -270,8 +286,8 @@
       hidden
     {% endif %}
     data-section-id="{{ section.id }}"
-    data-product-url="{{ closest.product.url }}"
-    data-variant-id="{{ closest.product.selected_or_first_available_variant.id }}"
+    data-product-url="{{ product.url }}"
+    data-variant-id="{{ product.selected_or_first_available_variant.id }}"
     style="
       {% render 'spacing-style', settings: block_settings %}
       {% if block_settings.text_color != blank %}
@@ -337,10 +353,10 @@
         </h2>
         <div class="theme-drawer__header pickup-availability__header-container">
           <div class="pickup-availability__column">
-            <h4 class="pickup-location__h4">{{ closest.product.title }}</h4>
-            {% unless closest.product.has_only_default_variant %}
+            <h4 class="pickup-location__h4">{{ product.title }}</h4>
+            {% unless product.has_only_default_variant %}
               <p class="pickup-location__text-sm">
-                {{ closest.product.selected_or_first_available_variant.title }}
+                {{ product.selected_or_first_available_variant.title }}
               </p>
             {% endunless %}
           </div>

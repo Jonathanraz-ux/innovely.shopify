@@ -136,27 +136,5 @@
     {% if settings.quick_add or settings.mobile_quick_add %}
       {% render 'quick-add-modal' %}
     {% endif %}
-
-    {% if template == 'product' %}
-    <script>
-      (function() {
-        var comparePrice = 57.99;
-        function injectComparePrice() {
-          var priceContainer = document.querySelector('.price__container, [data-product-price], .price');
-          if (!priceContainer || priceContainer.querySelector('.custom-compare-price')) return;
-          var badge = document.createElement('s');
-          badge.className = 'custom-compare-price';
-          badge.textContent = '$' + comparePrice.toFixed(2);
-          badge.style.cssText = 'font-size:0.75em;color:rgba(0,0,0,0.4);text-decoration:line-through;margin-left:0.5em;font-weight:400;';
-          priceContainer.appendChild(badge);
-        }
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', function() { setTimeout(injectComparePrice, 500); });
-        } else {
-          setTimeout(injectComparePrice, 500);
-        }
-      })();
-    </script>
-    {% endif %}
   </body>
 </html>

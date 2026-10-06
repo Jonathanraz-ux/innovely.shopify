@@ -18,8 +18,6 @@
               {% render 'translate', key: 'innovely.marquee.m6_text', fallback: block.settings.text %}
             {%- elsif forloop.index == 7 -%}
               {% render 'translate', key: 'innovely.marquee.m7_text', fallback: block.settings.text %}
-            {%- elsif forloop.index == 8 -%}
-              {% render 'translate', key: 'innovely.marquee.m8_text', fallback: block.settings.text %}
             {%- else -%}
               {{ block.settings.text }}
             {%- endif -%}
@@ -59,8 +57,7 @@
         { "type": "marquee_item", "settings": { "text": "Garantie 2 ans" } },
         { "type": "marquee_item", "settings": { "text": "Discret et léger" } },
         { "type": "marquee_item", "settings": { "text": "Adapté adultes & enfants" } },
-        { "type": "marquee_item", "settings": { "text": "Livraison offerte" } },
-        { "type": "marquee_item", "settings": { "text": "30 jours satisfait ou remboursé" } }
+        { "type": "marquee_item", "settings": { "text": "Livraison offerte" } }
       ]
     }
   ]

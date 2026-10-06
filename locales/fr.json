@@ -21,7 +21,7 @@
   },
   "innovely": {
     "announcement": {
-      "text": "SATISFAIT OU REMBOURSE | GARANTIE 2 ANS"
+      "text": "LIVRAISON GRATUITE"
     },
     "product": {
       "disclosures_heading": "Fiche produit"
@@ -39,7 +39,6 @@
       "result_label": "RÉSULTATS",
       "result_value": "Dès 14 jours",
       "r1_text": "Invisible sous les vêtements",
-      "r2_text": "Confort garanti 30 jours",
       "r3_text": "Livraison offerte"
     },
     "featured_product": {
@@ -89,16 +88,37 @@
       "rev2_text": "La vibration est tellement discrète qu'on l'oublie... jusqu'à ce qu'on réalise qu'on se tient mieux !",
       "rev3_meta": "Coach sportive",
       "rev3_text": "Je le recommande à tous mes clients. Résultats visibles en moins d'un mois.",
-      "u1_tag": "Au bureau",
-      "u2_tag": "Focus mode",
-      "u3_tag": "En mouvement",
-      "u4_tag": "En famille",
-      "u5_tag": "En réunion",
-      "u6_tag": "Produit",
+      "rev4_meta": "Kinésithérapeute, porte le dispositif depuis un an",
+      "rev4_text": "Je le propose désormais à tous mes patients qui souffrent du dos. Ça change vraiment leur confort au quotidien.",
+      "rev5_meta": "Étudiante, 22 ans",
+      "rev5_text": "Après de longues séances de révision à mon bureau, je me réveillais avec le cou raide. Plus jamais depuis que je le porte.",
+      "rev6_meta": "Entrepreneur, 2 ans de télétravail",
+      "rev6_text": "La vibration discrète me rappelle de me redresser sans jamais interrompre mon travail. Un vrai changement pour moi.",
+      "rev7_meta": "Infirmière, gardes de 12 heures",
+      "rev7_text": "Je cours toute la journée et mes épaules me disent enfin merci. Léger, confortable et vraiment efficace.",
+      "rev8_meta": "Designer, travaille souvent debout",
+      "rev8_text": "J'avais presque abandonné les outils de posture. C'est le premier que j'oublie sur moi… et il fonctionne vraiment.",
+      "rev9_meta": "Client depuis 4 semaines d'utilisation",
+      "rev9_text": "Aussi subtil soit-il, le rappel arrive exactement au bon moment. Je l'ai recommandé à toute mon équipe.",
+      "rev10_meta": "Physiothérapeute",
+      "rev10_text": "Un concept réellement bien pensé. Je le présente à mes patients en complément de leurs exercices, les résultats suivent.",
+      "rev11_meta": "Comptable, travaille assise toute la journée",
+      "rev11_text": "Mes douleurs de dos ont nettement diminué en un mois. Impossible pour moi de revenir en arrière.",
+      "rev12_meta": "Photographe, constamment sur la route",
+      "rev12_text": "Je porte du matériel lourd toute la journée, ce petit dispositif garde ma posture alignée et mon énergie intacte.",
+      "rev13_meta": "Enseignante",
+      "rev13_text": "Rester debout au tableau pendant des heures était épuisant. Le rappel me maintient droite sans que j'y pense.",
+      "rev14_meta": "Employée de bureau, 8 ans assise au poste de travail",
+      "rev14_text": "La qualité est impressionnante et l'application de suivi très claire. Ma posture s'est améliorée en deux semaines.",
+      "rev15_meta": "Cavalière, 15 ans de pratique",
+      "rev15_text": "Une posture plus droite se ressent même à cheval. Un bonus surprenant, mais très apprécié.",
       "ugc_eyebrow": "SUR INSTAGRAM",
       "ugc_title": "Partout avec vous.",
       "stars_aria": "5 étoiles",
-      "view_more": "Voir plus"
+      "view_more": "Voir plus",
+      "carousel_label": "Témoignages clients",
+      "carousel_prev": "Témoignage précédent",
+      "carousel_next": "Témoignage suivant"
     },
     "lifestyle": {
       "eyebrow": "INTEGRATION PARFAITE",
@@ -128,8 +148,7 @@
       "m4_text": "Garantie 2 ans",
       "m5_text": "Discret et léger",
       "m6_text": "Adapté adultes & enfants",
-      "m7_text": "Livraison offerte",
-      "m8_text": "30 jours satisfait ou remboursé"
+      "m7_text": "Livraison offerte"
     },
     "faq": {
       "eyebrow": "FAQ",
@@ -143,7 +162,7 @@
       "q4_question": "Quelle est l'autonomie de la batterie ?",
       "q4_answer": "La batterie dure jusqu'à 7 jours en utilisation normale. La charge complète prend environ 1h30 via USB-C.",
       "q5_question": "Y a-t-il une garantie ?",
-      "q5_answer": "Oui, le correcteur de posture intelligent est garanti 2 ans. De plus, nous offrons 30 jours satisfait ou remboursé sans condition."
+      "q5_answer": "Oui, le correcteur de posture intelligent est garanti 2 ans."
     },
     "how_it_works": {
       "eyebrow": "LA MÉTHODE",

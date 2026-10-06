@@ -599,9 +599,7 @@ main[data-template='product'] .product-information .innovely-card :is(p, li, spa
 }
 
 /* --------------------------------------------------------------------------
-   7. SOCIAL PROOF (#avis) — stats & cards scale down cleanly on small
-   screens; UGC captions (tag + handle) are always visible on touch devices
-   where :hover never happens (they were unreachable before).
+   7. SOCIAL PROOF (#avis) — stats & cards scale down cleanly on small screens.
    -------------------------------------------------------------------------- */
 @media screen and (max-width: 430px) {
   #avis figure.p-8 {
@@ -610,22 +608,6 @@ main[data-template='product'] .product-information .innovely-card :is(p, li, spa
 
   #avis .font-display.text-5xl {
     font-size: 2.75rem;
-  }
-}
-
-@media (hover: none), (pointer: coarse) {
-  #avis .aspect-square figcaption,
-  #avis .aspect-square .bg-gradient-to-t {
-    opacity: 1;
-  }
-
-  /* Neutralize Tailwind v4's `translate`-based translate-y-3 offset */
-  #avis .aspect-square figcaption {
-    translate: none;
-  }
-
-  #avis .aspect-square .bg-gradient-to-t {
-    background-image: linear-gradient(to top, rgba(5, 11, 24, 0.8), rgba(5, 11, 24, 0.1), transparent);
   }
 }
 
