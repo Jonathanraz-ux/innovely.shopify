@@ -1,100 +1,89 @@
-<section class="promo-scroll-bar" aria-label="Promotion">
-  <div class="promo-scroll-bar__viewport">
-    <div class="promo-scroll-bar__track">
-      {% for i in (1..2) %}
-        <div class="promo-scroll-bar__group"{% if i == 2 %} aria-hidden="true"{% endif %}>
-          {% for j in (1..8) %}
-            <span class="promo-scroll-bar__item">
-              <span class="promo-scroll-bar__text">{% render 'translate', key: 'innovely.promo_bar.text', fallback: 'PROMOTION : -48% • LIMITED OFFER' %}</span>
-              <span class="promo-scroll-bar__dot" aria-hidden="true"></span>
-            </span>
-          {% endfor %}
-        </div>
-      {% endfor %}
-    </div>
-  </div>
+<section class="promo-scroll-bar" aria-label="{% render 'translate', key: 'innovely.promo_bar.aria_label', fallback: 'Promotion' %}">
+  {%- liquid
+    assign promo_product_handle = 'oem-adjustable-back-brace-straightening-detection-reminder-spine-vibrates-smart-posture-corrector'
+    assign promo_product = all_products[promo_product_handle]
+    assign promo_product_url = promo_product.url
+    if promo_product_url == blank
+      assign promo_product_url = routes.root_url | append: 'products/' | append: promo_product_handle
+    endif
+  -%}
+  <p class="promo-scroll-bar__text">
+    <strong class="promo-scroll-bar__highlight">{% render 'translate', key: 'innovely.promo_bar.highlight', fallback: '48% OFF' %}</strong>
+    {% render 'translate', key: 'innovely.promo_bar.message', fallback: 'your posture corrector · Limited offer —' %}
+    <a href="{{ promo_product_url }}" class="promo-scroll-bar__link">{% render 'translate', key: 'innovely.promo_bar.cta', fallback: 'Shop now →' %}</a>
+  </p>
 </section>
 
 <style>
   .promo-scroll-bar {
-    position: relative;
+    display: flex;
+    justify-content: center;
     width: 100%;
-    overflow: hidden;
+    box-sizing: border-box;
+    padding: 10px 16px;
     background-color: var(--color-brand);
     color: var(--color-paper);
-  }
-
-  .promo-scroll-bar__viewport {
+    text-align: center;
     overflow: hidden;
-    width: 100%;
-  }
-
-  .promo-scroll-bar__track {
-    display: flex;
-    width: max-content;
-    animation: promo-scroll-bar-move 32s linear infinite;
-  }
-
-  .promo-scroll-bar__group {
-    display: flex;
-    align-items: center;
-    flex: 0 0 auto;
-  }
-
-  .promo-scroll-bar__item {
-    display: flex;
-    align-items: center;
-    flex: 0 0 auto;
-    padding: 9px 0;
-    white-space: nowrap;
   }
 
   .promo-scroll-bar__text {
+    margin: 0;
+    max-width: 100%;
     font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    line-height: 1;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+    word-break: normal;
   }
 
-  .promo-scroll-bar__dot {
-    display: inline-block;
-    width: 5px;
-    height: 5px;
-    margin: 0 22px;
-    border-radius: 9999px;
-    background-color: currentColor;
-    opacity: 0.55;
+  .promo-scroll-bar__highlight {
+    font-weight: 700;
   }
 
-  @keyframes promo-scroll-bar-move {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
+  .promo-scroll-bar__link {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+  }
+
+  .promo-scroll-bar__link:hover,
+  .promo-scroll-bar__link:focus-visible {
+    text-decoration-thickness: 2px;
   }
 
   @media (min-width: 750px) {
+    .promo-scroll-bar {
+      padding: 11px 20px;
+    }
+
     .promo-scroll-bar__text {
       font-size: 13px;
+      letter-spacing: 0.035em;
     }
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .promo-scroll-bar__track {
-      animation: none;
+  @media (max-width: 749px) {
+    .promo-scroll-bar {
+      padding: 9px 12px;
+    }
+
+    .promo-scroll-bar__text {
+      font-size: 11px;
+      letter-spacing: 0.02em;
+      line-height: 1.4;
     }
   }
 </style>
 
 {% schema %}
 {
-  "name": "Promo Scroll Bar",
+  "name": "Promo Bar",
   "settings": [],
   "presets": [
-    { "name": "Promo Scroll Bar" }
+    { "name": "Promo Bar" }
   ]
 }
 {% endschema %}

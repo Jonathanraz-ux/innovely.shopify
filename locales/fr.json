@@ -151,7 +151,10 @@
       "m7_text": "Livraison offerte"
     },
     "promo_bar": {
-      "text": "PROMOTION : -48% • OFFRE LIMITÉE"
+      "aria_label": "Promotion",
+      "highlight": "−48 %",
+      "message": "sur votre correcteur de posture · Offre limitée —",
+      "cta": "Acheter →"
     },
     "faq": {
       "eyebrow": "FAQ",

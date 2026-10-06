@@ -151,7 +151,10 @@
       "m7_text": "Free Shipping"
     },
     "promo_bar": {
-      "text": "PROMOTION : -48% • LIMITED OFFER"
+      "aria_label": "Promotion",
+      "highlight": "48% OFF",
+      "message": "your posture corrector · Limited offer —",
+      "cta": "Shop now →"
     },
     "faq": {
       "eyebrow": "FAQ",
