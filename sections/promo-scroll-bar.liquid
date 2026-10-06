@@ -5,7 +5,7 @@
         <div class="promo-scroll-bar__group"{% if i == 2 %} aria-hidden="true"{% endif %}>
           {% for j in (1..8) %}
             <span class="promo-scroll-bar__item">
-              <span class="promo-scroll-bar__text">PROMOTION : -48%</span>
+              <span class="promo-scroll-bar__text">{% render 'translate', key: 'innovely.promo_bar.text', fallback: 'PROMOTION : -48% • LIMITED OFFER' %}</span>
               <span class="promo-scroll-bar__dot" aria-hidden="true"></span>
             </span>
           {% endfor %}
